@@ -18,6 +18,7 @@ class Business(db.Model):
     city = db.Column(db.String(100), nullable=False)
     state = db.Column(db.String(100), nullable=False)
     country = db.Column(db.String(100), nullable=False)
+    zip_code = db.Column(db.String(5), nullable=False)
     preview_image = db.Column(db.Integer, nullable=False)
     open = db.Column(db.String(15))
     close = db.Column(db.String(15))
