@@ -1,46 +1,55 @@
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.schema import Column, ForeignKey, Table
-from .db import add_prefix_for_prod
-Base = declarative_base()
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy.schema import db.Column, db.ForeignKey, db.Table
+from .db import add_prefix_for_prod, db
+# Base = declarative_base()
 
-favorites = Table(
+favorites = db.Table(
     "favorites",
-    Base.metadata,
-    Column("user_id", ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
-    Column("business_id", ForeignKey(add_prefix_for_prod("businesses.id")), primary_key=True)
+    db.Model.metadata,
+    db.Column("user_id", db.ForeignKey(
+        add_prefix_for_prod("users.id")), primary_key=True),
+    db.Column("business_id", db.ForeignKey(
+        add_prefix_for_prod("businesses.id")), primary_key=True)
 )
 
-business_amenities = Table(
+business_amenities = db.Table(
     "business_amenities",
-    Base.metadata,
-    Column("amenity_id", ForeignKey(add_prefix_for_prod("amenities.id")), primary_key=True),
-    Column("business_id", ForeignKey(add_prefix_for_prod("businesses.id")), primary_key=True)
+    db.Model.metadata,
+    db.Column("amenity_id", db.ForeignKey(
+        add_prefix_for_prod("amenities.id")), primary_key=True),
+    db.Column("business_id", db.ForeignKey(
+        add_prefix_for_prod("businesses.id")), primary_key=True)
 )
 
-business_types = Table(
+business_types = db.Table(
     "business_types",
-    Base.metadata,
-    Column("type_id", ForeignKey(add_prefix_for_prod("types.id")), primary_key=True),
-    Column("business_id", ForeignKey(add_prefix_for_prod("businesses.id")), primary_key=True)
+    db.Model.metadata,
+    db.Column("type_id", db.ForeignKey(
+        add_prefix_for_prod("types.id")), primary_key=True),
+    db.Column("business_id", db.ForeignKey(
+        add_prefix_for_prod("businesses.id")), primary_key=True)
 )
 
-useful_reviews = Table(
+useful_reviews = db.Table(
     "useful_review",
-    Base.metadata,
-    Column("review_id", ForeignKey(add_prefix_for_prod("review.id")), primary_key=True),
-    Column("user_id", ForeignKey(add_prefix_for_prod("user.id")), primary_key=True)
+    db.Model.metadata,
+    db.Column("review_id", db.ForeignKey(
+        add_prefix_for_prod("review.id")), primary_key=True),
+    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("user.id")), primary_key=True)
 )
 
-cool_reviews = Table(
+cool_reviews = db.Table(
     "cool_review",
-    Base.metadata,
-    Column("review_id", ForeignKey(add_prefix_for_prod("review.id")), primary_key=True),
-    Column("user_id", ForeignKey(add_prefix_for_prod("user.id")), primary_key=True)
+    db.Model.metadata,
+    db.Column("review_id", db.ForeignKey(
+        add_prefix_for_prod("review.id")), primary_key=True),
+    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("user.id")), primary_key=True)
 )
 
-funny_reviews = Table(
+funny_reviews = db.Table(
     "funny_review",
-    Base.metadata,
-    Column("review_id", ForeignKey(add_prefix_for_prod("review.id")), primary_key=True),
-    Column("user_id", ForeignKey(add_prefix_for_prod("user.id")), primary_key=True)
+    db.Model.metadata,
+    db.Column("review_id", db.ForeignKey(
+        add_prefix_for_prod("review.id")), primary_key=True),
+    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("user.id")), primary_key=True)
 )
