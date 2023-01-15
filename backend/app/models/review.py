@@ -28,7 +28,7 @@ class Review(db.Model):
                         back_populates="useful_review")
 
     cool = relationship("User",
-                        secondary=cool_reviews,
+                        secondary=cool_reviews, 
                         back_populates="cool_review")
 
     funny = relationship("User",
