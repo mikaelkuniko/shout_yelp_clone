@@ -78,14 +78,14 @@ def seed():
     seed_reviews()
 
 # business images
-@seed_commands.command('business_images')
+@seed_commands.command('business images')
 def seed():
     if environment == 'production':
         undo_business_images()
     seed_business_images()
 
 # review images
-@seed_commands.command('business_images')
+@seed_commands.command('review images')
 def seed():
     if environment == 'production':
         undo_review_images()
