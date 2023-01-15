@@ -13,7 +13,7 @@ def seed_businesses():
         city='Denton',
         state='TX',
         country='USA',
-        zip_code='76201'
+        zip_code='76201',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/e0EPesEFpP9A7_TW1DYpAg/348s.jpg',
         open='9:00 AM',
         close='9:00 PM'
@@ -79,10 +79,10 @@ by Kei Concepts.
         address='16129 Brookhurst Street',
         city='Fountain Valley',
         state='CA',
-        country='USA'
+        country='USA',
         zip_code = '92708',
-        preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/jh7LHPoCj-nlh12eSwIv1A/l.jpg'
-        open='10:00 AM'
+        preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/jh7LHPoCj-nlh12eSwIv1A/l.jpg',
+        open='10:00 AM',
         close='10:00 PM'
         )
 
