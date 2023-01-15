@@ -5,6 +5,7 @@ from .businesses import seed_businesses, undo_businesses
 from .amenities import seed_amenities, undo_amenities
 from .reviews import seed_reviews, undo_reviews
 from .business_images import seed_business_images, undo_business_images
+from .review_images import seed_review_images, undo_review_images
 
 from app.models.db import db, environment, SCHEMA
 
@@ -26,12 +27,14 @@ def seed():
         undo_amenities()
         undo_reviews()
         undo_business_images()
+        undo_review_images()
     seed_users()
     seed_types()
     seed_businesses()
     seed_amenities()
     seed_reviews()
     seed_business_images()
+    seed_review_images()
 
 
 # Creates the `flask seed users` command
@@ -81,6 +84,15 @@ def seed():
         undo_business_images()
     seed_business_images()
 
+# review images
+@seed_commands.command('business_images')
+def seed():
+    if environment == 'production':
+        undo_review_images()
+    seed_review_images()
+
+
+
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
@@ -91,23 +103,39 @@ def undo():
     undo_amenities()
     undo_reviews()
     undo_business_images()
+    undo_review_images()
 
-# # types
-# @seed_commands.command('undo')
-# def undo():
-#     undo_types()
+# types
+@seed_commands.command('undo users')
+def undo():
+    undo_users()
 
-# # businesses
-# @seed_commands.command('undo')
-# def undo():
-#     undo_businesses()
+# types
+@seed_commands.command('undo types')
+def undo():
+    undo_types()
 
-# # amenities
-# @seed_commands.command('undo')
-# def undo():
-#     undo_amenities()
+# businesses
+@seed_commands.command('undo businesses')
+def undo():
+    undo_businesses()
 
-# # reviews
-# @seed_commands.command('undo')
-# def undo():
-#     undo_reviews()
+# amenities
+@seed_commands.command('undo amenities')
+def undo():
+    undo_amenities()
+
+# reviews
+@seed_commands.command('undo reviews')
+def undo():
+    undo_reviews()
+
+# business images
+@seed_commands.command('undo business images')
+def undo():
+    undo_business_images()
+
+# review images
+@seed_commands.command('undo review images')
+def undo():
+    undo_review_images()
