@@ -4,6 +4,7 @@ from .types import seed_types, undo_types
 from .businesses import seed_businesses, undo_businesses
 from .amenities import seed_amenities, undo_amenities
 from .reviews import seed_reviews, undo_reviews
+from .business_images import seed_business_images, undo_business_images
 
 from app.models.db import db, environment, SCHEMA
 
@@ -24,11 +25,13 @@ def seed():
         undo_businesses()
         undo_amenities()
         undo_reviews()
+        undo_business_images()
     seed_users()
     seed_types()
     seed_businesses()
     seed_amenities()
     seed_reviews()
+    seed_business_images()
 
 
 # Creates the `flask seed users` command
@@ -71,6 +74,13 @@ def seed():
         undo_reviews()
     seed_reviews()
 
+# business images
+@seed_commands.command('business_images')
+def seed():
+    if environment == 'production':
+        undo_business_images()
+    seed_business_images()
+
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
@@ -80,6 +90,7 @@ def undo():
     undo_businesses()
     undo_amenities()
     undo_reviews()
+    undo_business_images()
 
 # # types
 # @seed_commands.command('undo')

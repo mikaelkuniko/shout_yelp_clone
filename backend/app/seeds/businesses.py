@@ -1,4 +1,4 @@
-from app.models import db, Business, environment, SCHEMA
+from app.models import db, environment, SCHEMA, Business
 
 
 # Adds a demo user, you can add other users here if you want
@@ -106,7 +106,6 @@ by Kei Concepts.
         open='5:00 PM',
         close='11:00 PM'
         )
-
 
     db.session.add(papajohns)
     db.session.add(tatsu)
