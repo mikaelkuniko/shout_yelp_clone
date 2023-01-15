@@ -34,22 +34,22 @@ useful_reviews = db.Table(
     "useful_review",
     db.Model.metadata,
     db.Column("review_id", db.ForeignKey(
-        add_prefix_for_prod("review.id")), primary_key=True),
-    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("user.id")), primary_key=True)
+        add_prefix_for_prod("reviews.id")), primary_key=True),
+    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True)
 )
 
 cool_reviews = db.Table(
     "cool_review",
     db.Model.metadata,
     db.Column("review_id", db.ForeignKey(
-        add_prefix_for_prod("review.id")), primary_key=True),
-    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("user.id")), primary_key=True)
+        add_prefix_for_prod("reviews.id")), primary_key=True),
+    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True)
 )
 
 funny_reviews = db.Table(
     "funny_review",
     db.Model.metadata,
     db.Column("review_id", db.ForeignKey(
-        add_prefix_for_prod("review.id")), primary_key=True),
-    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("user.id")), primary_key=True)
+        add_prefix_for_prod("reviews.id")), primary_key=True),
+    db.Column("user_id", db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True)
 )

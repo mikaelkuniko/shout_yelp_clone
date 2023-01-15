@@ -47,10 +47,12 @@ def seed_businesses():
         city='Los Angeles',
         state='CA',
         country='USA',
+        zip_code='90232',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/C0MbfZGgO_2VgL09LHrC_w/348s.jpg',
         open='5:00 PM',
         close='10:00 PM'
         )
+
     five_guys = Business(
         owner_id=3,
         name='Five Guys',
@@ -61,6 +63,7 @@ def seed_businesses():
         city='Baltimore',
         state='MD',
         country='USA',
+        zip_code='91745',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/qjRKSO__un5V7A4W-mPZ0Q/l.jpg',
         open='11:00 AM',
         close='10:00 PM'
@@ -98,6 +101,7 @@ by Kei Concepts.
         city='Fort Worth',
         state='TX',
         country='USA',
+        zip_code='77018',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/Xr9EucTmLMFFpCqsPUDOXA/l.jpg',
         open='5:00 PM',
         close='11:00 PM'
