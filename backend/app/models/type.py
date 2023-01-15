@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 from .join_tables import business_types
 
 class Type(db.Model):
@@ -10,6 +11,8 @@ class Type(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(50), nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
     business = relationship('Business',
                                 secondary=business_types,

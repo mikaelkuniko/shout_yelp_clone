@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 from .join_tables import favorites, business_amenities, business_types
 
 class Business(db.Model):
@@ -22,6 +23,9 @@ class Business(db.Model):
     preview_image = db.Column(db.Integer, nullable=False)
     open = db.Column(db.String(15))
     close = db.Column(db.String(15))
+    # Added created and updated at using datetime and importing func from sqlalchemy.sql
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
     user = relationship('User', back_populates='business')
     images = relationship('Business_Image', back_populates='business')

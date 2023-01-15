@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 from .join_tables import useful_reviews, cool_reviews, funny_reviews
 
@@ -13,8 +14,10 @@ class Review(db.Model):
     business_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("businesses.id")))
     review = db.Column(db.String(2000), nullable=False)
     stars = db.Column(db.Integer, nullable=False)
-    created_at = db.Column(db.Date)
-    updated_at = db.Column(db.Date)
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    # created_at = db.Column(db.Date)
+    # updated_at = db.Column(db.Date)
 
     user = relationship('User', back_populates='reviews')
     business = relationship('Business', back_populates='reviews')
