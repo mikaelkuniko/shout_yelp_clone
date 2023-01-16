@@ -49,6 +49,9 @@ class Review(db.Model):
             stars,
             created_at,
             updated_at,
+            useful,
+            cool,
+            funny
         }
         """
         return {
@@ -59,6 +62,9 @@ class Review(db.Model):
             "stars": self.stars,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
+            "useful": self.useful,
+            "cool": self.cool,
+            "funny": self.funny
         }
 
 class Review_Image(db.Model):

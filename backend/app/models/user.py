@@ -62,5 +62,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'user_businesses': self.user_businesses #may be redundant
         }
