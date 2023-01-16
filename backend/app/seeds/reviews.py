@@ -5,7 +5,7 @@ def seed_reviews():
     papajohns = Review(
         user_id = 1,
         business_id= 4,
-        review = "I always love coming to this location. They always make the pizza's quickly and the quality never diminishes with each visit",
+        review = "I always love coming to this location. They always make the pizza's quickly and the quality never diminishes with each visit.",
         stars = 4,
         )
     papajohns2 = Review(
@@ -29,7 +29,7 @@ def seed_reviews():
     five_guys = Review(
         user_id = 14,
         business_id= 4,
-        review = 'I heard Five Guys are known to give large batches of fries; however, this particular location did not seem to be as generous with their fries. Their Patty Melt Double Cheeseburger was absolutely greasy and filling! Just how I liked it. The burger was good but the rest of the service was not to par',
+        review = 'I heard Five Guys are known to give large batches of fries; however, this particular location did not seem to be as generous with their fries. Their Patty Melt Double Cheeseburger was absolutely greasy and filling! Just how I liked it. The burger was good but the rest of the service was not to par.',
         stars = 3,
         )
     etta = Review(

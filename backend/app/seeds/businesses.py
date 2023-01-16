@@ -1,12 +1,17 @@
 from app.models import db, environment, SCHEMA, Business
 
+# from .amenities import Amenity
+
+# amenities = Amenity.query.all()
+
+# print('--------------------- this is amenities -----------------------', amenities)
 
 # Adds a demo user, you can add other users here if you want
 def seed_businesses():
     papajohns = Business(
         owner_id=1,
-        name='Papajohns',
-        description='Mauris in aliquam sem fringilla ut morbi. Sed adipiscing diam donec adipiscing tristique risus. Id semper risus in hendrerit gravida rutrum.',
+        name='Papa Johns',
+        description='''For Papa Johns Pizza, the secret to success is much like the secret to making a better pizza - the more you put into it, the more you get out of it. Whether it's our signature sauce, toppings, our original fresh dough, or even the box itself, we invest in our ingredients to ensure that we always give you the finest quality pizza. For you, it's not just Better Ingredients. Better Pizza. It's a family gathering, memorable birthday, work celebration or simply a great meal. It's our goal to make sure you always have the best ingredients for every occasion. Call us for delivery or stop by for carryout to order your favorite, pizza,breadsticks, or wings today!''',
         phone_number='9781563214',
         business_url='https://www.papajohns.com/',
         address='1801 Alice Street',
