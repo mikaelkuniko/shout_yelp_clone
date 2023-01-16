@@ -28,20 +28,23 @@ class Business(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
     user = relationship('User', back_populates='business')
-    images = relationship('Business_Image', back_populates='business')
-    reviews = relationship('Review', back_populates='business')
+    images = relationship('Business_Image', back_populates='business', cascade='all, delete')
+    reviews = relationship('Review', back_populates='business', cascade='all, delete')
 
     user_favorites = relationship("User",
                                 secondary=favorites,
-                                back_populates='user_businesses')
+                                back_populates='user_businesses',
+                                cascade='all, delete')
 
     business_amenity = relationship('Amenity',
                                     secondary=business_amenities,
-                                    back_populates='business')
+                                    back_populates='business',
+                                    cascade='all, delete')
 
     business_type = relationship('Type',
                                 secondary=business_types,
-                                back_populates='business')
+                                back_populates='business',
+                                cascade='all, delete')
 
 
     def to_dict(self):

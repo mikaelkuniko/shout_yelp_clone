@@ -16,7 +16,8 @@ class Type(db.Model):
 
     business = relationship('Business',
                                 secondary=business_types,
-                                back_populates='business_type')
+                                back_populates='business_type',
+                                cascade='all, delete')
 
     def to_dict(self):
         """

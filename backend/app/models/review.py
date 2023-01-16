@@ -21,19 +21,22 @@ class Review(db.Model):
 
     user = relationship('User', back_populates='reviews')
     business = relationship('Business', back_populates='reviews')
-    images = relationship('Review_Image', back_populates='review')
+    images = relationship('Review_Image', back_populates='review', cascade='all, delete')
 
     useful = relationship("User",
                         secondary=useful_reviews,
-                        back_populates="useful_review")
+                        back_populates="useful_review",
+                        cascade='all, delete')
 
     cool = relationship("User",
-                        secondary=cool_reviews, 
-                        back_populates="cool_review")
+                        secondary=cool_reviews,
+                        back_populates="cool_review",
+                        cascade='all, delete')
 
     funny = relationship("User",
                         secondary=funny_reviews,
-                        back_populates="funny_review")
+                        back_populates="funny_review",
+                        cascade='all, delete')
 
     def to_dict(self):
         """

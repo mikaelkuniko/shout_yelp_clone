@@ -24,23 +24,27 @@ class User(db.Model, UserMixin):
 
     #--------------------------------------USER CLASS----------------------------------------
     business = relationship('Business', back_populates='user')
-    reviews = relationship('Review', back_populates='user')
+    reviews = relationship('Review', back_populates='user', cascade='all, delete')
 
     user_businesses = relationship("Business",
                                     secondary=favorites,
-                                    back_populates='user_favorites')
+                                    back_populates='user_favorites',
+                                    cascade='all, delete')
 
     useful_review = relationship("Review",
                                 secondary=useful_reviews,
-                                back_populates="useful")
+                                back_populates="useful",
+                                cascade='all, delete')
 
     cool_review = relationship("Review",
                                 secondary=cool_reviews,
-                                back_populates="cool")
+                                back_populates="cool",
+                                cascade='all, delete')
 
     funny_review = relationship("Review",
                                 secondary=funny_reviews,
-                                back_populates="funny")
+                                back_populates="funny",
+                                cascade='all, delete')
     #----------------------------------------------------------------------------------------
 
     @property

@@ -16,7 +16,8 @@ class Amenity(db.Model):
 
     business = relationship('Business',
                                     secondary=business_amenities,
-                                    back_populates='business_amenity')
+                                    back_populates='business_amenity',
+                                    cascade='all, delete')
 
     def to_dict(self):
         """

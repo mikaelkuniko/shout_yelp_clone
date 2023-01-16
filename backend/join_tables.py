@@ -15,7 +15,6 @@ with app.app_context():
     # print('Amenitites', amenities)
     # print('Types', types)
 
-    # randomBusiness = random.choice(businesses)
     def randomBusiness():
         return businesses[random.randint(0, len(businesses)-1)]
 
