@@ -1,6 +1,5 @@
 from app.models import db, environment, SCHEMA, Business
 
-
 # Adds a demo user, you can add other users here if you want
 def seed_businesses():
     papajohns = Business(
@@ -16,7 +15,7 @@ def seed_businesses():
         zip_code='76201',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/e0EPesEFpP9A7_TW1DYpAg/348s.jpg',
         open='9:00 AM',
-        close='9:00 PM'
+        close='9:00 PM',
         )
 
     tatsu = Business(
