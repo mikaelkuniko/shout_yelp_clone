@@ -15,18 +15,24 @@ with app.app_context():
     # print('Amenitites', amenities)
     # print('Types', types)
 
-    randomBusiness = random.choice(businesses)
-    print(randomBusiness)
+    # randomBusiness = random.choice(businesses)
+    def randomBusiness():
+        return businesses[random.randint(0, len(businesses)-1)]
 
-    users[0].user_businesses.append(randomBusiness)
-    db.session.add(users[0])
-    db.session.commit()
 
-    # for user in users:
-    #     user.user_businesses.append(randomBusiness)
-    #     db.session.add(user)
-    #     print(user.user_businesses)
-    #     db.session.commit()
+
+
+
+    # users[0].user_businesses.append(randomBusiness())
+    # db.session.add(users[0])
+    # db.session.commit()
+
+    for user in users:
+         businessId = randomBusiness()
+         user.user_businesses.append(businessId)
+         db.session.add(user)
+         print(user.user_businesses)
+         db.session.commit()
 
 
 
