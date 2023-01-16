@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9c5e1aa3bed4
+Revision ID: b7836d46ad17
 Revises: 
-Create Date: 2023-01-16 13:07:35.289563
+Create Date: 2023-01-16 11:50:34.362594
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9c5e1aa3bed4'
+revision = 'b7836d46ad17'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -67,6 +67,7 @@ def upgrade():
     op.create_table('business_amenities',
     sa.Column('amenity_id', sa.Integer(), nullable=False),
     sa.Column('business_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['amenity_id'], ['amenities.id'], ),
     sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
     sa.PrimaryKeyConstraint('amenity_id', 'business_id')
@@ -81,6 +82,7 @@ def upgrade():
     op.create_table('business_types',
     sa.Column('type_id', sa.Integer(), nullable=False),
     sa.Column('business_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
     sa.ForeignKeyConstraint(['type_id'], ['types.id'], ),
     sa.PrimaryKeyConstraint('type_id', 'business_id')
@@ -108,6 +110,7 @@ def upgrade():
     op.create_table('cool_review',
     sa.Column('review_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('review_id', 'user_id')
@@ -115,6 +118,7 @@ def upgrade():
     op.create_table('funny_review',
     sa.Column('review_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('review_id', 'user_id')
@@ -129,6 +133,7 @@ def upgrade():
     op.create_table('useful_review',
     sa.Column('review_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('review_id', 'user_id')

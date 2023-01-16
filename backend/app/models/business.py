@@ -63,7 +63,9 @@ class Business(db.Model):
             country,
             preview_image,
             open,
-            close
+            close,
+            business_type,
+            business_amenity
         }
         """
         return {
@@ -79,7 +81,9 @@ class Business(db.Model):
             "country": self.country,
             "preview_image": self.preview_image,
             "open": self.open,
-            "close": self.close
+            "close": self.close,
+            "business_type": self.business_type,
+            "business_amenity": self.business_amenity,
         }
 
 

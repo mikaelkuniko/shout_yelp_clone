@@ -1,4 +1,4 @@
-from app.models import db, User, Business, Review, Amenity, Type, environment, SCHEMA
+from app.models import db, User, Business, Review, Amenity, environment, SCHEMA
 from app import app
 import random
 
@@ -7,32 +7,65 @@ with app.app_context():
     businesses = Business.query.all()
     reviews = Review.query.all()
     amenities = Amenity.query.all()
-    types = Type.query.all()
+    # amenities = amenity.query.all()
 
     # print('Users', users)
     # print('Businesses', businesses)
     # print('Reviews', reviews)
     # print('Amenitites', amenities)
-    # print('Types', types)
+    # print('amenities', amenities)
 
     def randomBusiness():
         return businesses[random.randint(0, len(businesses)-1)]
-
-
-
-
 
     # users[0].user_businesses.append(randomBusiness())
     # db.session.add(users[0])
     # db.session.commit()
 
-    for user in users:
-         businessId = randomBusiness()
-         user.user_businesses.append(businessId)
-         db.session.add(user)
-         print(user.user_businesses)
-         db.session.commit()
+    # user favorites---------------------------
+    # for user in users:
+    #      business = randomBusiness()
+    #      user.user_businesses.append(business)
+    #      db.session.add(user)
+    #      print(user.user_businesses)
+    #      db.session.commit()
 
+    # business types----------------------------
+    # businesses[0].business_type.append(type[0])    
+    # businesses[1].business_type.append(type[1])    
+    # businesses[2].business_type.append(type[0])    
+    # businesses[3].business_type.append(type[0])    
+    # businesses[4].business_type.append(type[1])       
+    # businesses[4].business_type.append(type[2])       
+    # businesses[5].business_type.append(type[3])    
+
+
+    # business amenities------------------------
+    # businesses[0].business_amenity.append(amenities[0])    
+    # businesses[0].business_amenity.append(amenities[1])    
+    # businesses[0].business_amenity.append(amenities[4])    
+    # businesses[1].business_amenity.append(amenities[1])    
+    # businesses[1].business_amenity.append(amenities[2])    
+    # businesses[1].business_amenity.append(amenities[5])    
+    # businesses[2].business_amenity.append(amenities[0])    
+    # businesses[2].business_amenity.append(amenities[3])    
+    # businesses[2].business_amenity.append(amenities[2])    
+    # businesses[3].business_amenity.append(amenities[5])    
+    # businesses[3].business_amenity.append(amenities[4])    
+    # businesses[3].business_amenity.append(amenities[1])    
+    # businesses[4].business_amenity.append(amenities[2])       
+    # businesses[4].business_amenity.append(amenities[3])       
+    # businesses[4].business_amenity.append(amenities[0])       
+    # businesses[5].business_amenity.append(amenities[5])    
+    # businesses[5].business_amenity.append(amenities[4])    
+    # businesses[5].business_amenity.append(amenities[1])    
+
+    # for business in businesses:
+    #     db.session.add(business)
+    # db.session.commit()
+
+    # review useful
+    
 
 
 # # Adds a demo user, you can add other users here if you want
