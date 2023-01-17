@@ -27,46 +27,46 @@ with app.app_context():
     # db.session.commit()
 
     # user favorites---------------------------
-    # for user in users:
-    #      business = randomBusiness()
-    #      user.user_businesses.append(business)
-    #      db.session.add(user)
-    #      print(user.user_businesses)
-    #      db.session.commit()
+    for user in users:
+         business = randomBusiness()
+         user.user_businesses.append(business)
+         db.session.add(user)
+         print(user.user_businesses)
+         db.session.commit()
 
     # business types----------------------------
-    # businesses[0].business_type.append(types[0])
-    # businesses[1].business_type.append(types[1])
-    # businesses[2].business_type.append(types[0])
-    # businesses[3].business_type.append(types[0])
-    # businesses[4].business_type.append(types[1])
-    # businesses[4].business_type.append(types[2])
-    # businesses[5].business_type.append(types[3])
+    businesses[0].business_type.append(types[0])
+    businesses[1].business_type.append(types[1])
+    businesses[2].business_type.append(types[0])
+    businesses[3].business_type.append(types[0])
+    businesses[4].business_type.append(types[1])
+    businesses[4].business_type.append(types[2])
+    businesses[5].business_type.append(types[3])
 
 
     # business amenities------------------------
-    # businesses[0].business_amenity.append(amenities[0])
-    # businesses[0].business_amenity.append(amenities[1])
-    # businesses[0].business_amenity.append(amenities[4])
-    # businesses[1].business_amenity.append(amenities[1])
-    # businesses[1].business_amenity.append(amenities[2])
-    # businesses[1].business_amenity.append(amenities[5])
-    # businesses[2].business_amenity.append(amenities[0])
-    # businesses[2].business_amenity.append(amenities[3])
-    # businesses[2].business_amenity.append(amenities[2])
-    # businesses[3].business_amenity.append(amenities[5])
-    # businesses[3].business_amenity.append(amenities[4])
-    # businesses[3].business_amenity.append(amenities[1])
-    # businesses[4].business_amenity.append(amenities[2])
-    # businesses[4].business_amenity.append(amenities[3])
-    # businesses[4].business_amenity.append(amenities[0])
-    # businesses[5].business_amenity.append(amenities[5])
-    # businesses[5].business_amenity.append(amenities[4])
-    # businesses[5].business_amenity.append(amenities[1])
+    businesses[0].business_amenity.append(amenities[0])
+    businesses[0].business_amenity.append(amenities[1])
+    businesses[0].business_amenity.append(amenities[4])
+    businesses[1].business_amenity.append(amenities[1])
+    businesses[1].business_amenity.append(amenities[2])
+    businesses[1].business_amenity.append(amenities[5])
+    businesses[2].business_amenity.append(amenities[0])
+    businesses[2].business_amenity.append(amenities[3])
+    businesses[2].business_amenity.append(amenities[2])
+    businesses[3].business_amenity.append(amenities[5])
+    businesses[3].business_amenity.append(amenities[4])
+    businesses[3].business_amenity.append(amenities[1])
+    businesses[4].business_amenity.append(amenities[2])
+    businesses[4].business_amenity.append(amenities[3])
+    businesses[4].business_amenity.append(amenities[0])
+    businesses[5].business_amenity.append(amenities[5])
+    businesses[5].business_amenity.append(amenities[4])
+    businesses[5].business_amenity.append(amenities[1])
 
-    # for business in businesses:
-    #     db.session.add(business)
-    #     db.session.commit()
+    for business in businesses:
+        db.session.add(business)
+        db.session.commit()
 
     # review useful-----------------------------------------
     for review in reviews:
@@ -79,6 +79,9 @@ with app.app_context():
     for review in reviews:
         user = randomUser()
         review.cool.append(user)
+        # set_cool = set(review.cool)
+        # list_cool = list(set_cool)
+        # review.cool = list_cool
         db.session.add(review)
         db.session.commit()
 
