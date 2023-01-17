@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9c5e1aa3bed4
+Revision ID: b65125817611
 Revises: 
-Create Date: 2023-01-16 13:07:35.289563
+Create Date: 2023-01-17 15:54:30.797285
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9c5e1aa3bed4'
+revision = 'b65125817611'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -46,7 +46,7 @@ def upgrade():
     )
     op.create_table('businesses',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('owner_id', sa.Integer(), nullable=True),
+    sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('description', sa.String(length=2000), nullable=False),
     sa.Column('phone_number', sa.String(length=10), nullable=False),
@@ -56,9 +56,9 @@ def upgrade():
     sa.Column('state', sa.String(length=100), nullable=False),
     sa.Column('country', sa.String(length=100), nullable=False),
     sa.Column('zip_code', sa.String(length=5), nullable=False),
-    sa.Column('preview_image', sa.Integer(), nullable=False),
-    sa.Column('open', sa.String(length=15), nullable=True),
-    sa.Column('close', sa.String(length=15), nullable=True),
+    sa.Column('preview_image', sa.String(length=1000), nullable=False),
+    sa.Column('open', sa.String(length=15), nullable=False),
+    sa.Column('close', sa.String(length=15), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
@@ -67,6 +67,7 @@ def upgrade():
     op.create_table('business_amenities',
     sa.Column('amenity_id', sa.Integer(), nullable=False),
     sa.Column('business_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['amenity_id'], ['amenities.id'], ),
     sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
     sa.PrimaryKeyConstraint('amenity_id', 'business_id')
@@ -81,6 +82,7 @@ def upgrade():
     op.create_table('business_types',
     sa.Column('type_id', sa.Integer(), nullable=False),
     sa.Column('business_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
     sa.ForeignKeyConstraint(['type_id'], ['types.id'], ),
     sa.PrimaryKeyConstraint('type_id', 'business_id')
@@ -108,6 +110,7 @@ def upgrade():
     op.create_table('cool_review',
     sa.Column('review_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('review_id', 'user_id')
@@ -115,6 +118,7 @@ def upgrade():
     op.create_table('funny_review',
     sa.Column('review_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('review_id', 'user_id')
@@ -129,6 +133,7 @@ def upgrade():
     op.create_table('useful_review',
     sa.Column('review_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('review_id', 'user_id')

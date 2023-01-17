@@ -76,7 +76,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             "profile_pic": self.profile_pic,
-            "business": self.business.to_dict_no_user(),
+            "business": [business.to_dict_no_user() for business in self.business],
             "reviews": [review.to_dict() for review in self.reviews],
             "user_businesses": [business.to_dict_no_user() for business in self.user_businesses],
             # "useful_review": [useful.to_dict() for useful in self.useful_review],

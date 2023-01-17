@@ -67,7 +67,7 @@ class Business(db.Model):
             user,
             images,
             num_reviews,
-            avg_rating,
+            sum_rating,
             business_amenities,
             business_types
 
@@ -90,7 +90,7 @@ class Business(db.Model):
             "user": self.user.to_dict_none(),
             "images": [image.to_dict() for image in self.images],
             "num_reviews": len(self.reviews),
-            "avg_rating": sum([review.to_dict()['stars'] for review in self.reviews]) / len(self.reviews),
+            "sum_rating": sum([review.to_dict()['stars'] for review in self.reviews]),
             "business_amenities": self.business_amenity,
             "business_types": self.business_type
         }
@@ -114,7 +114,7 @@ class Business(db.Model):
             close,
             images,
             num_reviews,
-            avg_rating
+            sum_rating
         }
         """
         return {
@@ -133,7 +133,7 @@ class Business(db.Model):
             "close": self.close,
             "images": [image.to_dict() for image in self.images],
             "num_reviews": len(self.reviews),
-            "avg_rating": sum([review.to_dict()['stars'] for review in self.reviews]) / len(self.reviews),
+            "sum_rating": sum([review.to_dict()['stars'] for review in self.reviews])
         }
 
 
