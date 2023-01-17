@@ -2,7 +2,8 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Business
 from sqlalchemy import or_
-from ..forms import Search_Form
+from ..models.db import db
+from ..forms import Search_Form, Business_Form
 
 business_routes = Blueprint('business', __name__)
 
@@ -41,3 +42,54 @@ def search():
 
         #             results.append(business.to_dict())
         return {'businesses': [result.to_dict() for result in results]}
+
+
+# CREATE
+@business_routes.route('/new', methods=['POST'])
+def new_form():
+    form = Business_Form()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        new_business = Business()
+        form.populate_obj(new_business)
+
+        db.session.add(new_business)
+        db.session.commit()
+        return new_business.to_dict(), 201
+
+    if form.errors:
+        return {
+             "errors": form.errors
+        }, 400
+
+# UPDATE
+@business_routes.route('/<int:id>', methods=['PUT'])
+def update_business_by_id(id):
+    current_biz = Business.query.get(id)
+
+    if not current_biz:
+        return {"errors": "Business not found"}, 404
+
+    form = Business_Form()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        form.populate_obj(current_biz)
+
+        db.session.add(current_biz)
+        db.session.commit()
+        return current_biz.to_dict(), 201
+
+    if form.errors:
+        return {
+            "errors": form.errors
+        }, 400
+
+# DELETE
+@business_routes.route('/<int:id>', methods=['DELETE'])
+def delete_item(id):
+    biz = Business.query.get(id)
+    if not biz:
+        return {"errors": "Business not found"}, 404
+    return {"message": "business deleted"}
