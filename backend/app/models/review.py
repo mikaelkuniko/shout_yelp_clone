@@ -43,20 +43,28 @@ class Review(db.Model):
         Returns a dict representing Review
         {
             id,
-            user_id,
+            user,
             business_id,
             review,
             stars,
+            images,
+            useful,
+            cool,
+            funny
             created_at,
             updated_at,
         }
         """
         return {
             "id": self.id,
-            "user_id": self.user_id,
+            "user": self.user.to_dict_none(), #changed this from user_id, not sure if it works.
             "business_id": self.business_id,
             "review": self.review,
             "stars": self.stars,
+            "images": [image.to_dict() for image in self.images],
+            "useful": len(self.useful),
+            "cool": len(self.cool),
+            "funny": len(self.funny),
             "created_at": self.created_at,
             "updated_at": self.updated_at,
         }

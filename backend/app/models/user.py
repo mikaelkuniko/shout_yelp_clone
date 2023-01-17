@@ -59,8 +59,44 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        '''
+        Returns a dict representing User
+        {
+            id,
+            username,
+            email,
+            profile_pic,
+            business,
+            reviews,
+            user_businesses
+        }
+        '''
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            "profile_pic": self.profile_pic,
+            "business": self.business.to_dict_no_user(),
+            "reviews": [review.to_dict() for review in self.reviews],
+            "user_businesses": [business.to_dict_no_user() for business in self.user_businesses],
+            # "useful_review": [useful.to_dict() for useful in self.useful_review],
+            # "cool_review": [cool.to_dict() for cool in self.cool_review],
+            # "funny_review": [funny.to_dict() for funny in self.funny_review],
+        }
+
+    def to_dict_none(self):
+        '''
+        Returns a dict representing User without relationships
+        {
+            id,
+            username,
+            email,
+            profile_pic
+        }
+        '''
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            "profile_pic": self.profile_pic,
         }
