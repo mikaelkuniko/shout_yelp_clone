@@ -6,6 +6,7 @@ from .amenities import seed_amenities, undo_amenities
 from .reviews import seed_reviews, undo_reviews
 from .business_images import seed_business_images, undo_business_images
 from .review_images import seed_review_images, undo_review_images
+from .join_tables import seed_join_tables, undo_join_tables
 
 from app.models.db import db, environment, SCHEMA
 
@@ -28,6 +29,7 @@ def seed():
         undo_reviews()
         undo_business_images()
         undo_review_images()
+        undo_join_tables()
     seed_users()
     seed_types()
     seed_businesses()
@@ -35,6 +37,7 @@ def seed():
     seed_reviews()
     seed_business_images()
     seed_review_images()
+    seed_join_tables()
 
 
 # Creates the `flask seed users` command
@@ -91,6 +94,10 @@ def seed():
         undo_review_images()
     seed_review_images()
 
+@seed_commands.command('join_tables')
+def seed():
+    seed_join_tables()
+
 
 
 # Creates the `flask seed undo` command
@@ -104,38 +111,43 @@ def undo():
     undo_reviews()
     undo_business_images()
     undo_review_images()
+    undo_join_tables()
 
 # types
-@seed_commands.command('undo users')
+@seed_commands.command('undo_users')
 def undo():
     undo_users()
 
 # types
-@seed_commands.command('undo types')
+@seed_commands.command('undo_types')
 def undo():
     undo_types()
 
 # businesses
-@seed_commands.command('undo businesses')
+@seed_commands.command('undo_businesses')
 def undo():
     undo_businesses()
 
 # amenities
-@seed_commands.command('undo amenities')
+@seed_commands.command('undo_amenities')
 def undo():
     undo_amenities()
 
 # reviews
-@seed_commands.command('undo reviews')
+@seed_commands.command('undo_reviews')
 def undo():
     undo_reviews()
 
 # business images
-@seed_commands.command('undo business_images')
+@seed_commands.command('undo_business_images')
 def undo():
     undo_business_images()
 
 # review images
-@seed_commands.command('undo review_images')
+@seed_commands.command('undo_review_images')
 def undo():
     undo_review_images()
+
+@seed_commands.command('undo_join_tables')
+def undo():
+    undo_join_tables()
