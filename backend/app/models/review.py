@@ -69,10 +69,7 @@ class Review(db.Model):
             "cool": len(self.cool),
             "funny": len(self.funny),
             "created_at": self.created_at,
-            "updated_at": self.updated_at,
-            "useful": self.useful,
-            "cool": self.cool,
-            "funny": self.funny
+            "updated_at": self.updated_at
         }
 
 class Review_Image(db.Model):

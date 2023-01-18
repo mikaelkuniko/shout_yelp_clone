@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Business
+from app.models import Business, Review
+import json
 from sqlalchemy import or_
 from ..models.db import db
 from ..forms import Search_Form, Business_Form
@@ -42,6 +43,21 @@ def search():
     print('businesses', businesses)
 
     return { "businesses": [business.to_dict() for business in businesses] }
+
+# GET ONE
+@business_routes.route('/<int:id>')
+def get_one(id):
+    biz = Business.query.get(id)
+    biz_to_dict = biz.to_dict()
+    if not biz:
+        return {"errors": "Business not found"}, 404
+    reviews = Review.query.filter(Review.id == biz_to_dict["id"]).all()
+    print("-------------------------", reviews)
+    review_avg = biz_to_dict['sum_rating'] / biz_to_dict["num_reviews"]
+    biz_to_dict["reviews"] = [review.to_dict() for review in reviews]
+    biz_to_dict["review_avg"] = review_avg
+    print("----------------------------", biz_to_dict)
+    return {"business": biz_to_dict}
 
 
 # CREATE
@@ -90,6 +106,8 @@ def update_business_by_id(id):
 @business_routes.route('/<int:id>', methods=['DELETE'])
 def delete_item(id):
     biz = Business.query.get(id)
+    db.session.delete(biz)
+    db.session.commit()
     if not biz:
         return {"errors": "Business not found"}, 404
     return {"message": "business deleted"}
