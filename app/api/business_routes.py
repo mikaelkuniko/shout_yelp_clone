@@ -37,7 +37,8 @@ def search():
     else:
         business = Business.query.filter(*business_query).all()
         if business:
-            businesses.append(*business)
+            for biz in business:
+                businesses.append(biz)
 
     print('businesses', businesses)
 
@@ -140,19 +141,19 @@ def add_biz_image(id):
         }, 400
 
 # GET ALL REVIEWS FOR BUSINESS (untested)
-@business_routes.route('/<int:id>/reviews')
-def current_reviews(id):
-    '''
-    Gets all the reviews of the business
-    '''
+# @business_routes.route('/<int:id>/reviews')
+# def current_reviews(id):
+#     '''
+#     Gets all the reviews of the business
+#     '''
 
-    current_biz = Business.query.get_or_404(id)
-    if not current_biz:
-        return {"errors": "Business not found"}, 404
-    if len(current_biz.reviews == 0):
-        return {"alert": "Business has not been reviewed"}
-    else:
-        return {"businessReviews": [review.to_dict for review in current_biz.reviews]}
+#     current_biz = Business.query.get_or_404(id)
+#     if not current_biz:
+#         return {"errors": "Business not found"}, 404
+#     # if len(current_biz.reviews == 0):
+#     #     return {"alert": "Business has not been reviewed"}
+#     else:
+#         return {"businessReviews": [review.to_dict() for review in current_biz.reviews]}
 
 # CREATE REVIEW FOR BUSINESS (untested)
 @business_routes.route('/<int:id>/reviews', methods=['POST'])
@@ -172,6 +173,7 @@ def create_review(id):
     if form.validate_on_submit():
         new_review = Review()
         form.populate_obj(new_review)
+        new_review.business_id = id
         current_biz.reviews.append(new_review)
         db.session.add(new_review)
         db.session.commit
