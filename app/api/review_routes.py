@@ -17,6 +17,7 @@ def all_reviews():
     for review in reviews:
         # print(review.to_dict())
         all_reviews.append(review.to_dict())
+        # print("Hi there")
         # print({"Reviews": all_reviews})
     # return {"Reviews": [review.to_dict() for review in reviews]}
     return {"Reviews": all_reviews}
