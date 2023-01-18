@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 
 import Review from './components/Reviews'
 import { allReviews } from './store/review';
+import CreateReviewForm from './components/Reviews/CreateReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,13 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Review />
+        </Route>
+        <Route path='/writeareview' exact={true} >
+            {/* change to the search business form
+            to then redirect you to /biz/bizId/writeareview */}
+        </Route>
+        <Route path='/biz/:bizId/writeareview' exact={true} >
+          <CreateReviewForm />
         </Route>
         <Route path='/biz/:businessId' exact={true}>
           <BusinessDetails/>
