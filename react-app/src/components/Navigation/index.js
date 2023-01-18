@@ -1,9 +1,10 @@
-
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import { useHistory } from "react-router-dom";
+import LowerNav from './LowerNav'
+import ProfileButton from './ProfileButton';
 
 import './index.css'
 
@@ -30,36 +31,18 @@ const Navigation = ({ loaded }) => {
           <span>form goes here</span>
         </div>
         <div className='upper-right-buttons'>
-          <div className='nav-button-container'>
-              <NavLink exact to="/biz">CREATE BIZ</NavLink>
-              <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink>
-              <div>
-                {!sessionUser && (
-                  <div>
-                    <NavLink exact to="/login">
-                      <button className='login-button'>
-                        login
-                      </button>
-                    </NavLink>
-                    <NavLink exact to="/signup">
-                      <button className='signup-button'>
-                        Sign Up
-                      </button>
-                    </NavLink>
-                  </div>
-                )}
-                {sessionUser && (
-                  <div>
-                    <button onClick={logout} className='logout-user'>
-                      Log Out
-                    </button>
-                  </div>
-                )}
-              </div>
+          <div className='nav-buttons-container'>
+            <NavLink exact to="/biz">CREATE BIZ</NavLink>
+            <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink>
+            <div>
+              <ProfileButton user={sessionUser} />
+            </div>
           </div>
         </div>
       </div>
-
+      <div>
+        <LowerNav />
+      </div>
     </div>
   );
 }

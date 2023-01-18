@@ -4,9 +4,6 @@ import { useDispatch } from 'react-redux';
 import './Login.css';
 import LoginForm from '../auth/LoginForm'
 
-
-
-
 function Login() {
   const dispatch = useDispatch()
   const handleLogin = (e) => {
