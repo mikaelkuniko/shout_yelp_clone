@@ -92,7 +92,7 @@ class Business(db.Model):
             "num_reviews": len(self.reviews),
             "sum_rating": sum([review.to_dict()['stars'] for review in self.reviews]),
             "business_amenities": [amenity.to_dict()['name'] for amenity in self.business_amenity],
-            "business_types": [typ.to_dict()['type'] for typ in self.business_type]
+            "business_types": [type.to_dict()['type'] for type in self.business_type]
         }
 
     def to_dict_no_user(self):
