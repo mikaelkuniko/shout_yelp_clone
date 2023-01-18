@@ -1,5 +1,6 @@
 
 const CREATE = 'reviews/CREATE'
+const ALL = 'reviews/ALL'
 const USER = 'reviews/USER'
 const BIZ = 'reviews/BIZ'
 const UPDATE = 'reviews/UPDATE'
@@ -9,6 +10,13 @@ const createReview = (review) => {
     return {
         type: CREATE,
         review
+    }
+}
+
+const loadAllReviews = (reviews) => {
+    return {
+        type: ALL,
+        reviews
     }
 }
 
@@ -73,6 +81,15 @@ export const bizReviews = (bizId) => async dispatch => {
     }
 }
 
+export const allReviews = () => async dispatch => {
+    const response = await fetch(`/api/reviews`)
+
+    if(response.ok){
+        const reviews = await response.json()
+        dispatch(loadAllReviews(reviews))
+    }
+}
+
 export const reviewUpdate = (review) => async dispatch => {
     const response = await fetch(`/api/reviews/${review.id}`, {
         method: 'PUT',
@@ -101,7 +118,7 @@ export const removeReview = (reviewId, bizId) => async dispatch => {
 
 const initialState = { allReviews: {}, business: {}, user: {} }
 
-const reviewReducer = (state = initialState, action) => {
+export default function reducer (state = initialState, action) {
     let newState;
     switch(action.type) {
         case CREATE:
@@ -110,9 +127,15 @@ const reviewReducer = (state = initialState, action) => {
             newState.user[action.review.id] = action.review // do we want all of these??
             newState.allReviews[action.review.id] = action.review
             return newState
+        case ALL:
+            newState = {...state, allReviews: {...state.allReviews}, business: {...state.business}, user: {...state.user}}
+            action.reviews.Reviews.forEach(review => {
+                newState.allReviews[review.id] = review
+            });
+            return newState
         case USER:
             newState = {...state, user: {...state.user}}
-            action.reviews.Reviews.forEach(review => {
+            action.reviews.userReviews.forEach(review => {
                 newState.user[review.id] = review
             });
             return newState
@@ -133,5 +156,3 @@ const reviewReducer = (state = initialState, action) => {
             return state
     }
 }
-
-export default reviewReducer
