@@ -60,7 +60,7 @@ class Review(db.Model):
         """
         return {
             "id": self.id,
-            "user": self.user.to_dict_none(), #changed this from user_id, not sure if it works.
+            "user": self.user_id,
             "business_id": self.business_id,
             "review": self.review,
             "stars": self.stars,
@@ -69,10 +69,7 @@ class Review(db.Model):
             "cool": len(self.cool),
             "funny": len(self.funny),
             "created_at": self.created_at,
-            "updated_at": self.updated_at,
-            "useful": self.useful,
-            "cool": self.cool,
-            "funny": self.funny
+            "updated_at": self.updated_at
         }
 
 class Review_Image(db.Model):
