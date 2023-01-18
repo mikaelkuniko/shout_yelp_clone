@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import { allReviews } from '../../store/review'
 import ReviewDetails from './ReviewDetails'
+import './index.css'
 
+function Reviews() {
+    const totalReviews = useSelector(state => state.reviews.allReviews)
 
-function Review() {
-    stateReviews = useSelector(state => state.session.reviews)
-    if(!stateReviews === undefined) return null
-
-    reviews = Object.values(stateReviews)
+    const reviews = Object.values(totalReviews)
 
     return (
-        <div>
+        <div className='reviewsContainer'>
             {reviews.map((review) => (
                 <ReviewDetails key={review.id} {...review} />
             ))}
         </div>
     )
-    }
+}
 
-export default Review
+export default Reviews
