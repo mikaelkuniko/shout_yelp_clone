@@ -9,7 +9,7 @@ from ..forms import Search_Form, Business_Form
 business_routes = Blueprint('business', __name__)
 
 
-
+# Search businesses
 @business_routes.route('/search', methods=['POST'])
 def search():
     form = Search_Form()
@@ -31,7 +31,6 @@ def search():
 
         for query in location_query:
             business = Business.query.filter(*business_query, query).all()
-            print('BUSINESS -----------', business)
             if business:
                 for biz in business:
                     businesses.append(biz)
@@ -52,11 +51,9 @@ def get_one(id):
     if not biz:
         return {"errors": "Business not found"}, 404
     reviews = Review.query.filter(Review.id == biz_to_dict["id"]).all()
-    print("-------------------------", reviews)
     review_avg = biz_to_dict['sum_rating'] / biz_to_dict["num_reviews"]
     biz_to_dict["reviews"] = [review.to_dict() for review in reviews]
     biz_to_dict["review_avg"] = review_avg
-    print("----------------------------", biz_to_dict)
     return {"business": biz_to_dict}
 
 
