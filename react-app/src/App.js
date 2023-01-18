@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Login from './components/Login-Signup/Login';
-import SignUpForm from './components/auth/SignUpForm';
+import SignUp from './components/Login-Signup/Signup';
 import Navigation from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+import UsersList from './components/User/UsersList';
+import User from './components/User/User';
 import { authenticate } from './store/session';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
           <Login />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
+          <SignUp />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
