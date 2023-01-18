@@ -108,3 +108,6 @@ def delete_item(id):
     if not biz:
         return {"errors": "Business not found"}, 404
     return {"message": "business deleted"}
+
+# CREATE BUSINESS IMAGE
+
