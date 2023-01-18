@@ -1,8 +1,5 @@
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy.schema import db.Column, db.ForeignKey, db.Table
-from .db import add_prefix_for_prod, db
+from .db import add_prefix_for_prod, db, environment, SCHEMA
 from sqlalchemy.sql import func
-# Base = declarative_base()
 
 favorites = db.Table(
     "favorites",
@@ -60,3 +57,11 @@ funny_reviews = db.Table(
     db.Column("user_id", db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
     db.Column("created_at", db.DateTime(timezone=True), default=func.now())
 )
+
+if environment == "production":
+    favorites.schema = SCHEMA
+    business_amenities.schema = SCHEMA
+    business_types.schema = SCHEMA
+    useful_reviews.schema = SCHEMA
+    cool_reviews.schema = SCHEMA
+    funny_reviews.schema = SCHEMA
