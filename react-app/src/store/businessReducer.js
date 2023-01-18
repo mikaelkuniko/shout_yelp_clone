@@ -29,10 +29,12 @@ const remove = bizId => ({
     bizId
 })
 
-export const getOneSpot = (id) => async dispatch => {
+export const getOneBusiness = (id) => async dispatch => {
     const response = await fetch(`/api/biz/${id}`);
     if (response.ok){
-        const business = await response.json();
+        const businessObj = await response.json();
+        const business = businessObj.business
+        console.log('BUSINESS IN THUNK', business)
         dispatch(getOne(business))
         return business
     }
@@ -54,7 +56,7 @@ const businessReducer = (state = initialState, action) => {
                 allBusinesses: {...state.allBusinesses},
                 singleBusiness: {}
             }
-            newState.singleBusiness = action.spot
+            newState.singleBusiness = action.biz
             return newState
         }
         default:

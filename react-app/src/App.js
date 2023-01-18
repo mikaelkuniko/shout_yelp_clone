@@ -7,6 +7,7 @@ import Navigation from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/User/UsersList';
 import User from './components/User/User';
+import BusinessDetails from './components/Business';
 import { authenticate } from './store/session';
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
+        </Route>
+        <Route path='/biz/:businessId' exact={true}>
+          <BusinessDetails/>
         </Route>
       </Switch>
     </BrowserRouter>
