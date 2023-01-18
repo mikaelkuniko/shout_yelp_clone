@@ -9,6 +9,9 @@ import UsersList from './components/User/UsersList';
 import User from './components/User/User';
 import { authenticate } from './store/session';
 
+import Review from './components/Reviews'
+import { allReviews } from './store/review';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -16,6 +19,7 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
+      await dispatch(allReviews())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -41,7 +45,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <Review />
         </Route>
       </Switch>
     </BrowserRouter>
