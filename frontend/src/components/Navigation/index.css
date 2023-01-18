@@ -1,0 +1,19 @@
+.nav-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.upper-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.upper-right-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-buttons-container{
+    display: flex;
+    flex-direction: row;
+}

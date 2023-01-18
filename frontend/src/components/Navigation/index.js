@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import { useHistory } from "react-router-dom";
+import LowerNav from './LowerNav'
 
 import './index.css'
 
@@ -30,7 +31,7 @@ const Navigation = ({loaded}) => {
           <span>form goes here</span>
         </div>
         <div className='upper-right-buttons'>
-          <div className='nav-button-container'>
+          <div className='nav-buttons-container'>
             <NavLink exact to="/biz">CREATE BIZ</NavLink>
             <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink>
             {!sessionUser && (
@@ -57,7 +58,9 @@ const Navigation = ({loaded}) => {
           </div>
         </div>
       </div>
-
+      <div>
+        <LowerNav/>
+      </div>
     </div>
   );
 }
