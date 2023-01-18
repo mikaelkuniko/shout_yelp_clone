@@ -60,7 +60,7 @@ class Review(db.Model):
         """
         return {
             "id": self.id,
-            "user": self.user.to_dict_none(), #changed this from user_id, not sure if it works.
+            "user": self.user_id,
             "business_id": self.business_id,
             "review": self.review,
             "stars": self.stars,
