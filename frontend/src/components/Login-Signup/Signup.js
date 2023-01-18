@@ -4,9 +4,6 @@ import React from 'react'
 import './Signup.css';
 import SignUpForm from '../auth/SignUpForm'
 
-
-
-
 function SignUp() {
   
   return (

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { useModal } from "../../context/Modal";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -10,6 +11,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
+  const { closeModal } = useModal();
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -39,6 +41,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
+    closeModal()
     return <Redirect to='/' />;
   }
 
