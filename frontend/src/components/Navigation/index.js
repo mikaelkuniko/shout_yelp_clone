@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import { useHistory } from "react-router-dom";
+import ProfileButton from './ProfileButton';
 
 import './index.css'
 
@@ -34,27 +35,7 @@ const Navigation = ({ loaded }) => {
               <NavLink exact to="/biz">CREATE BIZ</NavLink>
               <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink>
               <div>
-                {!sessionUser && (
-                  <div>
-                    <NavLink exact to="/login">
-                      <button className='login-button'>
-                        login
-                      </button>
-                    </NavLink>
-                    <NavLink exact to="/signup">
-                      <button className='signup-button'>
-                        Sign Up
-                      </button>
-                    </NavLink>
-                  </div>
-                )}
-                {sessionUser && (
-                  <div>
-                    <button onClick={logout} className='logout-user'>
-                      Log Out
-                    </button>
-                  </div>
-                )}
+                  <ProfileButton user={sessionUser}/>    
               </div>
           </div>
         </div>
