@@ -5,7 +5,7 @@ import businessReducer from './businessReducer';
 import reviews from './review'
 const rootReducer = combineReducers({
   session,
-  business: businessReducer
+  business: businessReducer,
   reviews
 });
 
