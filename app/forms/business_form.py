@@ -13,7 +13,7 @@ class Business_Form(FlaskForm):
     state = StringField('state', validators=[DataRequired()])
     country = StringField('country', validators=[DataRequired()])
     zip_code = StringField('zip code', validators=[DataRequired()])
-    preview_image = IntegerField('preview image', validators=[DataRequired()])
+    preview_image = StringField('preview image', validators=[DataRequired()])
     open = StringField('open', validators=[DataRequired()])
     close = StringField('close', validators=[DataRequired()])
     submit = SubmitField('submit')
