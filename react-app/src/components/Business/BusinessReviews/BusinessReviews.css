@@ -1,6 +1,31 @@
 .bizReview {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border: solid black 1px;
     width: 40em;
 }
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.reviewRating {
+    display: flex;
+    gap: 0.2em;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 0.5em;
+}
+
+.fill {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: rgb(255, 100, 61);
+}
+
