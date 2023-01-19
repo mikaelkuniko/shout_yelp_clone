@@ -106,7 +106,7 @@ def delete_review(id):
     if not review:
         return { "errors": "Review not found"}, 404
 
-    if current_user != review.user_id:
+    if current_user != review.user:
         return { "errors": "Forbidden"}, 403
 
     db.session.delete(review)

@@ -2,7 +2,6 @@
 const CREATE = 'reviews/CREATE'
 const ALL = 'reviews/ALL'
 const USER = 'reviews/USER'
-const BIZ = 'reviews/BIZ'
 const UPDATE = 'reviews/UPDATE'
 const DELETE = 'reviews/DELETE'
 
@@ -23,13 +22,6 @@ const loadAllReviews = (reviews) => {
 const loadUserReviews = (reviews) => {
     return {
         type: USER,
-        reviews
-    }
-}
-
-const loadBusinessReviews = (reviews) => {
-    return {
-        type: BIZ,
         reviews
     }
 }
@@ -72,15 +64,6 @@ export const userReviews = () => async dispatch => {
     }
 }
 
-export const bizReviews = (bizId) => async dispatch => {
-    const response = await fetch(`/api/biz/${bizId}/reviews`)
-
-    if(response.ok){
-        const reviews = await response.json()
-        dispatch(loadBusinessReviews(reviews))
-    }
-}
-
 export const allReviews = () => async dispatch => {
     const response = await fetch(`/api/reviews`)
 
@@ -116,19 +99,19 @@ export const removeReview = (reviewId, bizId) => async dispatch => {
     }
 }
 
-const initialState = { allReviews: {}, business: {}, user: {} }
+const initialState = { allReviews: {}, user: {} }
 
 export default function reducer (state = initialState, action) {
     let newState;
     switch(action.type) {
         case CREATE:
-            newState = {...state, allReviews: {...state.allReviews}, business: {...state.business}, user: {...state.user}}
-            newState.business[action.review.id] = action.review
-            newState.user[action.review.id] = action.review // do we want all of these??
+            console.log("IN REDUCER CREATE", action)
+            newState = {...state, allReviews: {...state.allReviews}, user: {...state.user}}
+            newState.user[action.review.id] = action.review
             newState.allReviews[action.review.id] = action.review
             return newState
         case ALL:
-            newState = {...state, allReviews: {...state.allReviews}, business: {...state.business}, user: {...state.user}}
+            newState = {...state, allReviews: {...state.allReviews}, user: {...state.user}}
             action.reviews.Reviews.forEach(review => {
                 newState.allReviews[review.id] = review
             });
@@ -139,18 +122,12 @@ export default function reducer (state = initialState, action) {
                 newState.user[review.id] = review
             });
             return newState
-        case BIZ:
-            newState = {...state, business: {}}
-            action.reviews.Reviews.forEach(review => {
-                newState.business[review.id] = review
-            });
-            return newState
         case UPDATE:
-            return {...state, business: {...state.business, [action.review.id]: action.review}}
+            return {...state, allReviews: {...state.allReviews, [action.review.id]: action.review}}
         case DELETE:
-            newState = {business: {...state.business}, user: {...state.user}}
-            if(newState.business[action.reviewId]) delete newState.business[action.reviewId]
+            newState = {allReviews: {...state.allReviews}, user: {...state.user}}
             if(newState.user[action.reviewId]) delete newState.user[action.reviewId]
+            if(newState.allReviews[action.reviewId]) delete newState.allReviews[action.reviewId]
             return newState
         default:
             return state

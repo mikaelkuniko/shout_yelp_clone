@@ -20,9 +20,9 @@ function CreateReviewForm() {
     const updateImage = (e) => setImage(e.target.value)
 
     const clearData = (createdReview) => {
-        setReview('')
-        setStars('')
-        setErrors([])
+        // setReview('')
+        // setStars('')
+        // setErrors([])
 
         // history.push(`/`)
     }
@@ -30,15 +30,25 @@ function CreateReviewForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const payload = {
-            review,
-            stars,
-            image
+        let payload;
+        if(image){
+            payload= {
+                review,
+                stars,
+                image
+            }
+        } else {
+            payload= {
+                review,
+                stars
+            }
         }
+
 
         console.log(payload)
 
-        // await dispatch(reviewCreate(bizId, review)).then(createdReview => clearData(createdReview)).catch(
+        await dispatch(reviewCreate(bizId, payload))
+        // .then(createdReview => clearData(createdReview)).catch(
         //     async (res) => {
         //         const data = await res.json();
         //         if (data && data.errors) setErrors(data.errors);
@@ -70,7 +80,6 @@ function CreateReviewForm() {
             <input style={{"borderRadius":"0px 0px 10px 10px"}}
                 type={'url'}
                 placeholder={'Image'}
-                required
                 value={image}
                 onChange={updateImage}
             />
