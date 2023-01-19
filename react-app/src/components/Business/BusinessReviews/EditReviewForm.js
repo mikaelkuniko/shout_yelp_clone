@@ -54,7 +54,7 @@ function EditReviewForm() {
     }
 
 
-    if(user.id !== reviewData.user) history.push('/pageNotFound')
+    if(user.id !== reviewData.user.id) history.push('/pageNotFound')
     return (
         <div className='reviewForm'>
             <form onSubmit={handleSubmit} className='reviewForm'>

@@ -84,6 +84,24 @@ class User(db.Model, UserMixin):
             # "funny_review": [funny.to_dict() for funny in self.funny_review],
         }
 
+    def to_dict_info(self):
+        '''
+        Returns a dict representing User
+        {
+            id,
+            username,
+            email,
+            profile_pic,
+        }
+        '''
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            "profile_pic": self.profile_pic,
+
+        }
+
     def to_dict_none(self):
         '''
         Returns a dict representing User without relationships
