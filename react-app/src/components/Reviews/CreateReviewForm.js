@@ -19,12 +19,12 @@ function CreateReviewForm() {
     const updateStars = (e) => setStars(e.target.value)
     const updateImage = (e) => setImage(e.target.value)
 
-    const clearData = (createdReview) => {
-        // setReview('')
-        // setStars('')
-        // setErrors([])
+    const clearData = (newReview) => {
+        setReview('')
+        setStars('')
+        setErrors([])
 
-        // history.push(`/`)
+        history.push(`/biz/${newReview.business_id}`)
     }
 
     const handleSubmit = async (e) => {
@@ -47,12 +47,14 @@ function CreateReviewForm() {
 
         console.log(payload)
 
-        await dispatch(reviewCreate(bizId, payload))
-        // .then(createdReview => clearData(createdReview)).catch(
-        //     async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //     }); // change the bizId --------------------------------------------------
+        const newReview = await dispatch(reviewCreate(bizId, payload))
+        .then(createdReview => clearData(createdReview)).catch(
+            async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            }); // change the bizId --------------------------------------------------
+
+        clearData(newReview)
     }
     return (
         <div className='reviewForm'>
