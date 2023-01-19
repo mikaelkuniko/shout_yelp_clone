@@ -27,24 +27,26 @@ class Business(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
-    user = relationship('User', back_populates='business')
-    images = relationship('Business_Image', back_populates='business', cascade='all, delete')
-    reviews = relationship('Review', back_populates='business', cascade='all, delete')
+    # - Many to One: Business has one User through owner_id
+    user = db.relationship('User', back_populates='business')
 
-    user_favorites = relationship("User",
+    # - One to Many: Business has many images through business_id
+    images = db.relationship('Business_Image', back_populates='business', cascade='all, delete-orphan')
+
+    # - One to Many: Business has many reviews through business_id
+    reviews = db.relationship('Review', back_populates='business', cascade='all, delete-orphan')
+
+    user_favorites = db.relationship("User",
                                 secondary=favorites,
-                                back_populates='user_businesses',
-                                cascade='all, delete')
+                                back_populates='user_businesses')
 
-    business_amenity = relationship('Amenity',
+    business_amenity = db.relationship('Amenity',
                                     secondary=business_amenities,
-                                    back_populates='business',
-                                    cascade='all, delete')
+                                    back_populates='business')
 
-    business_type = relationship('Type',
+    business_type = db.relationship('Type',
                                 secondary=business_types,
-                                back_populates='business',
-                                cascade='all, delete')
+                                back_populates='business')
 
 
     def to_dict(self):
