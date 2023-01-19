@@ -47,14 +47,14 @@ function CreateReviewForm() {
 
         console.log(payload)
 
-        const newReview = await dispatch(reviewCreate(bizId, payload))
+        let newReview = await dispatch(reviewCreate(bizId, payload))
         .then(createdReview => clearData(createdReview)).catch(
             async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             }); // change the bizId --------------------------------------------------
 
-        clearData(newReview)
+        if(newReview) clearData(newReview)
     }
     return (
         <div className='reviewForm'>

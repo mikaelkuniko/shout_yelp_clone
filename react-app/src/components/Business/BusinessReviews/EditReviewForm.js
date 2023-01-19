@@ -11,7 +11,7 @@ function EditReviewForm() {
     const user = useSelector(state => state.session.user)
     const [ review, setReview ] = useState(reviewData.review)
     const [ stars, setStars ] = useState(reviewData.stars)
-    const [ image, setImage ] = useState(reviewData.image)
+    const [ image, setImage ] = useState(reviewData.images[0].url)
     const [ errors, setErrors ] = useState([])
 
     const updateReview = (e) => setReview(e.target.value)
