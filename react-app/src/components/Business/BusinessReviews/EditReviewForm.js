@@ -15,10 +15,6 @@ function EditReviewForm() {
     const [ image, setImage ] = useState(reviewData.image)
     const [ errors, setErrors ] = useState([])
 
-
-
-    console.log("REVIEW DATA IN THE UPDATE FORM", reviewData)
-
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
     const updateImage = (e) => setImage(e.target.value)
@@ -48,18 +44,17 @@ function EditReviewForm() {
             }
         }
 
-
-        console.log(payload)
-
-        const theReview = await dispatch(reviewUpdate(reviewData.id, payload))
+        let theReview = await dispatch(reviewUpdate(reviewData.id, payload))
         .then(createdReview => clearData(createdReview)).catch(
             async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             }); // change the bizId --------------------------------------------------
 
-        clearData(theReview)
+        if(theReview) clearData(theReview)
     }
+
+
     if(user.id !== reviewData.user) history.push('/pageNotFound')
     return (
         <div className='reviewForm'>
