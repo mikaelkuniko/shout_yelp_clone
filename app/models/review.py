@@ -16,8 +16,6 @@ class Review(db.Model):
     stars = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
-    # created_at = db.Column(db.Date)
-    # updated_at = db.Column(db.Date)
 
     user = db.relationship('User', back_populates='reviews')
     business = db.relationship('Business', back_populates='reviews')
@@ -50,14 +48,11 @@ class Review(db.Model):
             funny
             created_at,
             updated_at,
-            useful,
-            cool,
-            funny
         }
         """
         return {
             "id": self.id,
-            "user": self.user_id,
+            "user": self.user.to_dict_info(),
             "business_id": self.business_id,
             "review": self.review,
             "stars": self.stars,

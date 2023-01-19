@@ -29,7 +29,7 @@ function BusinessReviews(review) {
                 <div className='userInfo'>
                     <h4>profile pic</h4>
                     <div>
-                        <h4>User id: {review.user}</h4>
+                        <h4>User id: {review.user.id}</h4>
                         <h4>username</h4>
                     </div>
                 </div>
@@ -51,10 +51,10 @@ function BusinessReviews(review) {
                 </div>
             </div>
             <div>
-                {currentUser && currentUser.id === review.user && (
+                {currentUser && currentUser.id === review.user.id && (
                     <button onClick={deleteAReview}>Delete Review</button>
                 )}
-                {currentUser && currentUser.id === review.user && (
+                {currentUser && currentUser.id === review.user.id && (
                     <Link to={`/biz/${review.business_id}/reviews/${review.id}/edit`}>Edit</Link>
                 )}
             </div>

@@ -75,8 +75,8 @@ def edit_review(id):
     if not review:
         return { "errors": "Review not found"}, 404
 
-    if current_user != review.user:
-        return { "errors": "Forbidden"}, 403
+    if current_user.id != review.user.id:
+        return { "errors": "Forbidden"}, 40
 
     form = ReviewForm()
 
@@ -106,7 +106,7 @@ def delete_review(id):
     if not review:
         return { "errors": "Review not found"}, 404
 
-    if current_user != review.user:
+    if current_user.id != review.user.id:
         return { "errors": "Forbidden"}, 403
 
     db.session.delete(review)
