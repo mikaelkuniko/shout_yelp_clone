@@ -1,17 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './ReviewDetails.css'
-import { removeReview } from '../../store/review'
 
 function ReviewDetails(review) {
-    const dispatch = useDispatch()
-    const currentUser = useSelector(state => state.session.user)
-
-    const deleteAReview = async () => {
-        await dispatch(removeReview(review.id, review.spotId))
-    }
-
     if(!review) return null
     return (
         <div className='reviewCard'>
@@ -29,11 +20,6 @@ function ReviewDetails(review) {
                     </div>
                 ) : (null)}
             </Link>
-            <div>
-                {currentUser && currentUser.id === review.user && (
-                    <button onClick={deleteAReview}>Delete Review</button>
-                )}
-            </div>
         </div>
     )
 }
