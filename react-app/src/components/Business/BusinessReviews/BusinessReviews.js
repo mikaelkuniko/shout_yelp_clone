@@ -11,23 +11,44 @@ function BusinessReviews(review) {
     const deleteAReview = async () => {
         await dispatch(removeReview(review.id, review.spotId))
     }
+    let noFill = <i className="fa-solid fa-star stars noFill" />
+    let fill = <i className="fa-solid fa-star stars fill" />
+    const stars = []
+
+    for(let i = 0; i < 5; i++){
+        console.log(review.id)
+        if (i < review.stars) stars.push(fill)
+        else stars.push(noFill)
+    }
+
 
     if(!review) return null
     return (
         <div className='bizReview'>
             <div>
-                <h4>User id: {review.user} --------- Stars: {review.stars}</h4>
-                <p>Review: {review.review}</p>
-                <div>
-                    <span>Useful: {review.useful} </span>
-                    <span>Cool: {review.cool} </span>
-                    <span>Funny: {review.funny}</span>
+                <div className='userInfo'>
+                    <h4>profile pic</h4>
+                    <div>
+                        <h4>User id: {review.user}</h4>
+                        <h4>username</h4>
+                    </div>
                 </div>
+                <div className='reviewRating'>Stars:
+                {stars.map((star, i) => (
+                    <span key={i}>{star}</span>
+                    ))}
+                </div>
+                <p>{review.review}</p>
                 {review.images.length ? (
                     <div style={{"display":"flex", "alignItems":"center"}}>
                         <img style={{"height":"100px", "width":"100px"}} src={review.images[0].url} alt={'pic'}/>
                     </div>
                 ) : (null)}
+                <div>
+                    <span>Useful: {review.useful} </span>
+                    <span>Cool: {review.cool} </span>
+                    <span>Funny: {review.funny}</span>
+                </div>
             </div>
             <div>
                 {currentUser && currentUser.id === review.user && (
