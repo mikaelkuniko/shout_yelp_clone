@@ -1,21 +1,23 @@
-import { useParams, Link, NavLink, useHistory } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getOneBusiness } from "../../store/businessReducer";
 import './index.css'
+import BusinessReviews from "./BusinessReviews/BusinessReviews";
 
 const BusinessDetails = () => {
-    const history = useHistory()
     const dispatch = useDispatch()
     const { businessId } = useParams()
-    console.log('BUSINESS ID FROM PARAMS', businessId)
+    // console.log('BUSINESS ID FROM PARAMS', businessId)
     const business = useSelector((state)=> state.businesses.singleBusiness)
-    console.log('BUSINESS FROM USE SELECTOR', business)
-    const currentUser = useSelector((state)=> state.session.user)
+    const totalReviews = Object.values(useSelector((state)=> state.reviews.allReviews))
+    // console.log('BUSINESS FROM USE SELECTOR', business)
+
+    const bizReviews = totalReviews.filter((review) => Number(businessId) === Number(review.business_id))
 
     useEffect(()=>{
         dispatch(getOneBusiness(businessId))
-    }, [dispatch])
+    }, [dispatch, bizReviews.length, businessId])
     if(!business.name) return null
     else return (
         <div>
@@ -24,7 +26,14 @@ const BusinessDetails = () => {
                 <li>{business.description}</li>
                 <li>{business.phone_number}</li>
                 <li>{business.city}</li>
-
+                <li>{business.review_avg}</li>
+                {/* <li>Rating: {avgRating}</li> */}
+                <Link to={`/biz/${businessId}/writeareview`}>Write a Review</Link>
+                <div className="reviews">
+                    {bizReviews.map((review) => (
+                        <BusinessReviews key={review.id} {...review}/>
+                    ))}
+                </div>
             </ul>
         </div>
     )

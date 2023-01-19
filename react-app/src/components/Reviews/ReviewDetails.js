@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import './ReviewDetails.css'
 
 function ReviewDetails(review) {
-
     if(!review) return null
     return (
         <div className='reviewCard'>

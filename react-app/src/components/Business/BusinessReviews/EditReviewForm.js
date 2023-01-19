@@ -1,30 +1,29 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-import { reviewCreate } from '../../store/review'
-import './CreateReviewForm.css'
+import { reviewUpdate } from '../../../store/review'
 
-function CreateReviewForm() {
+function EditReviewForm() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const [ review, setReview ] = useState('')
-    const [ stars, setStars ] = useState('')
-    const [ image, setImage ] = useState('')
+    const { reviewId } = useParams()
+    const reviewData = useSelector(state => state.reviews.allReviews[reviewId])
+    const user = useSelector(state => state.session.user)
+    const [ review, setReview ] = useState(reviewData.review)
+    const [ stars, setStars ] = useState(reviewData.stars)
+    const [ image, setImage ] = useState(reviewData.images[0].url)
     const [ errors, setErrors ] = useState([])
-
-    const { bizId } = useParams()
-
 
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
     const updateImage = (e) => setImage(e.target.value)
 
-    const clearData = (newReview) => {
+    const clearData = (editedReview) => {
         setReview('')
         setStars('')
         setErrors([])
 
-        history.push(`/biz/${newReview.business_id}`)
+        history.push(`/biz/${editedReview.business_id}`)
     }
 
     const handleSubmit = async (e) => {
@@ -44,18 +43,18 @@ function CreateReviewForm() {
             }
         }
 
-
-        console.log(payload)
-
-        let newReview = await dispatch(reviewCreate(bizId, payload))
+        let theReview = await dispatch(reviewUpdate(reviewData.id, payload))
         .then(createdReview => clearData(createdReview)).catch(
             async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             }); // change the bizId --------------------------------------------------
 
-        if(newReview) clearData(newReview)
+        if(theReview) clearData(theReview)
     }
+
+
+    if(user.id !== reviewData.user) history.push('/pageNotFound')
     return (
         <div className='reviewForm'>
             <form onSubmit={handleSubmit} className='reviewForm'>
@@ -91,4 +90,4 @@ function CreateReviewForm() {
     )
 }
 
-export default CreateReviewForm
+export default EditReviewForm

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import Business, Review, Business_Image
 import json
 from sqlalchemy import or_
@@ -181,9 +181,10 @@ def create_review(id):
         new_review = Review()
         form.populate_obj(new_review)
         new_review.business_id = id
+        new_review.user = current_user
         current_biz.reviews.append(new_review)
         db.session.add(new_review)
-        db.session.commit
+        db.session.commit()
 
         return new_review.to_dict(), 200
 

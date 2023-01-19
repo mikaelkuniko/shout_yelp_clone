@@ -14,10 +14,9 @@ class Amenity(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
-    business = relationship('Business',
+    business = db.relationship('Business',
                                     secondary=business_amenities,
-                                    back_populates='business_amenity',
-                                    cascade='all, delete')
+                                    back_populates='business_amenity')
 
     def to_dict(self):
         """

@@ -14,6 +14,8 @@ import Review from './components/Reviews'
 import { allReviews } from './store/review';
 import BusinessSearchPage from './components/Search';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
+import PageNotFound from './components/PageNotFound';
+import EditReviewForm from './components/Business/BusinessReviews/EditReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -62,6 +64,12 @@ function App() {
         </Route>
         <Route path='/biz/:businessId' exact={true}>
           <BusinessDetails/>
+        </Route>
+        <Route path='/biz/:bizId/reviews/:reviewId/edit'>
+            <EditReviewForm />
+        </Route>
+        <Route path='/pageNotFound'>
+          <PageNotFound />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -19,24 +19,21 @@ class Review(db.Model):
     # created_at = db.Column(db.Date)
     # updated_at = db.Column(db.Date)
 
-    user = relationship('User', back_populates='reviews')
-    business = relationship('Business', back_populates='reviews')
-    images = relationship('Review_Image', back_populates='review', cascade='all, delete')
+    user = db.relationship('User', back_populates='reviews')
+    business = db.relationship('Business', back_populates='reviews')
+    images = db.relationship('Review_Image', back_populates='review', cascade='all, delete-orphan')
 
-    useful = relationship("User",
+    useful = db.relationship("User",
                         secondary=useful_reviews,
-                        back_populates="useful_review",
-                        cascade='all, delete')
+                        back_populates="useful_review")
 
-    cool = relationship("User",
+    cool = db.relationship("User",
                         secondary=cool_reviews,
-                        back_populates="cool_review",
-                        cascade='all, delete')
+                        back_populates="cool_review")
 
-    funny = relationship("User",
+    funny = db.relationship("User",
                         secondary=funny_reviews,
-                        back_populates="funny_review",
-                        cascade='all, delete')
+                        back_populates="funny_review")
 
     def to_dict(self):
         """
