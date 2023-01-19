@@ -5,19 +5,33 @@ import './index.css'
 
 
 const BusinessSearchPage = () => {
-    const businessesObj = useSelector(state=> state.businesses.allBusinesses)
-    const businesses = Object.values(businessesObj)
+    const dispatch = useDispatch()
+
+    let search = window.location.search
+    console.log('PATHNAME', window.location)
+
     useEffect(() => {
-        dispatchEvent(businessSearch())
-    }, [dispatch])
+        dispatch(businessSearch(search))
+    }, [search])
+    const businessesObj = useSelector(state=> state.businesses.allBusinesses)
+    console.log("BUSINESSESOBJ IN SEARCH", businessesObj)
+    const businesses = Object.values(businessesObj)
+    console.log("BUSINESSES IN SEARCH", businesses)
 
     if(!businesses){
         return null
     }
     return (
         <div className="businesses-container">
-            {businesses.map}
+            <ul>
+                {businesses.map((business)=>(
+                    <li>
+                        {`${business.name}`}
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 
 }
+export default BusinessSearchPage

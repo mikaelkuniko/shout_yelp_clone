@@ -42,10 +42,12 @@ export const getOneBusiness = (id) => async dispatch => {
 }
 
 export const businessSearch = (params) => async dispatch => {
-    const response = await fetch(`/api/biz/${params}`)
+    console.log('PARAMS IN THUNK', params)
+    const response = await fetch(`/api/biz/search${params}`)
     if (response.ok){
         const searchResultsObj = await response.json();
-        const searchResults = searchResultsObj.business
+        console.log('RESPONSE', searchResultsObj)
+        const searchResults = searchResultsObj.businesses
         dispatch(load(searchResults))
         return searchResults
     }
@@ -63,6 +65,7 @@ const businessReducer = (state = initialState, action) => {
         case LOAD:{
             newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
             let business2={}
+            console.log('ACTION.BUSINESSES', action.businesses)
             action.businesses.forEach(business => {
                 business2[business.id] = business
             });
