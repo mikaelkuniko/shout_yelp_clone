@@ -16,7 +16,7 @@ const AddBusinessForm = () => {
 
     let minutes = []
     let createMinutes = () => {
-        for (let i = 1; i < 60; i++) {
+        for (let i = 0; i < 60; i++) {
             minutes.push(i)
         }
         return minutes
@@ -66,7 +66,7 @@ const AddBusinessForm = () => {
         if(closeAMPM.length == 0) errors.push("Business hours must be valid")
 
         setErrors(errors);
-    }, [name, description, phoneNumber, businessUrl, address, city, state, country, zipCode, open, close])
+    }, [name, description, phoneNumber, businessUrl, address, city, state, country, zipCode, openHours, openMinutes, openAMPM, closeHours, closeMinutes, closeAMPM])
 
     useEffect(()=>{
 

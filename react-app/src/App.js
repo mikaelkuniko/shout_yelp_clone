@@ -16,6 +16,7 @@ import BusinessSearchPage from './components/Search';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
 import PageNotFound from './components/PageNotFound';
 import EditReviewForm from './components/Business/BusinessReviews/EditReviewForm';
+import CreateBusinessForm from './components/Business/CreateBusinessForm'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +52,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Review />
+        </Route>
+        <Route path='/biz'>
+          <CreateBusinessForm/>
         </Route>
         <Route path='/writeareview' exact={true} >
             {/* change to the search business form
