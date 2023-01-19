@@ -10,13 +10,20 @@ business_routes = Blueprint('business', __name__)
 
 
 # Search businesses
-@business_routes.route('/search', methods=['POST'])
+@business_routes.route('/search', methods=['GET'])
 def search():
+    business_search = ""
+    location_search = ""
     form = Search_Form()
-
-    data = form.data
-    business_search = data["search"] # request.args.get["search"]
-    location_search = data["location"] # request.args.get["location"]
+    if form.errors:
+        return {
+        "errors": form.errors
+        }
+    args = request.args
+    if "business" in args:
+        business_search = args.get('business')
+    if "location" in args:
+        location_search = args.get('location')
 
     business_query = []
     location_query = []

@@ -4,14 +4,14 @@ const DELETE = 'bizes/DELETE'
 const GET_ONE = 'bizes/GET_ONE'
 const CREATE_IMG = 'bizes/image/CREATE'
 
-const load = bizes => ({
+const load = businesses => ({
     type: LOAD,
-    bizes
+    businesses
 })
 
-const create = biz => ({
+const create = business => ({
     type: CREATE,
-    biz
+    business
 })
 
 const createImage = image => ({
@@ -19,14 +19,14 @@ const createImage = image => ({
     image
 })
 
-const getOne = biz => ({
+const getOne = business => ({
     type: GET_ONE,
-    biz
+    business
 })
 
-const remove = bizId => ({
+const remove = businessId => ({
     type: DELETE,
-    bizId
+    businessId
 })
 
 export const getOneBusiness = (id) => async dispatch => {
@@ -41,6 +41,16 @@ export const getOneBusiness = (id) => async dispatch => {
     return response
 }
 
+export const businessSearch = (params) => async dispatch => {
+    const response = await fetch(`/api/biz/${params}`)
+    if (response.ok){
+        const searchResultsObj = await response.json();
+        const searchResults = searchResultsObj.business
+        dispatch(load(searchResults))
+        return searchResults
+    }
+    return response
+}
 
 
 
@@ -50,13 +60,23 @@ const initialState = {allBusinesses: {}, singleBusiness: {}}
 const businessReducer = (state = initialState, action) => {
     let newState;
     switch (action.type){
+        case LOAD:{
+            newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
+            let business2={}
+            action.businesses.forEach(business => {
+                business2[business.id] = business
+            });
+            newState.allBusinesses = business2
+            return newState
+
+        }
         case GET_ONE: {
             newState = {
                 ...state,
                 allBusinesses: {...state.allBusinesses},
                 singleBusiness: {}
             }
-            newState.singleBusiness = action.biz
+            newState.singleBusiness = action.business
             return newState
         }
         default:
