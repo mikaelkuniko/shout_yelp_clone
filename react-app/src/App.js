@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSelector } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Login from './components/Login-Signup/Login';
@@ -13,6 +13,8 @@ import { authenticate } from './store/session';
 import Review from './components/Reviews'
 import { allReviews } from './store/review';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
+import PageNotFound from './components/PageNotFound';
+import EditReviewForm from './components/Business/BusinessReviews/EditReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +60,12 @@ function App() {
         </Route>
         <Route path='/biz/:businessId' exact={true}>
           <BusinessDetails/>
+        </Route>
+        <Route path='/biz/:bizId/reviews/:reviewId/edit'>
+            <EditReviewForm />
+        </Route>
+        <Route path='/pageNotFound'>
+          <PageNotFound />
         </Route>
       </Switch>
     </BrowserRouter>

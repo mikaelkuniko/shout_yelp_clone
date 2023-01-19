@@ -84,6 +84,7 @@ export const reviewUpdate = (reviewId, review) => async dispatch => {
     if(response.ok){
         const review = await response.json()
         dispatch(updateReview(review))
+        return review
     }
 }
 

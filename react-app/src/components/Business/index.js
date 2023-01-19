@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getOneBusiness } from "../../store/businessReducer";
 import './index.css'
-import BusinessReviews from "./Reviews/BusinessReviews";
+import BusinessReviews from "./BusinessReviews/BusinessReviews";
 
 const BusinessDetails = () => {
     const history = useHistory()
