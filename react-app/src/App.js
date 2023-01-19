@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 
 import Review from './components/Reviews'
 import { allReviews } from './store/review';
+import BusinessSearchPage from './components/Search';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
 import PageNotFound from './components/PageNotFound';
 import EditReviewForm from './components/Business/BusinessReviews/EditReviewForm';
@@ -54,6 +55,9 @@ function App() {
         <Route path='/writeareview' exact={true} >
             {/* change to the search business form
             to then redirect you to /biz/bizId/writeareview */}
+        </Route>
+        <Route path='/biz/search' exact={true}>
+          <BusinessSearchPage/>
         </Route>
         <Route path='/biz/:bizId/writeareview' exact={true} >
           <CreateReviewForm />

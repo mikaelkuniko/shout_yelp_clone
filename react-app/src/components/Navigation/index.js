@@ -5,6 +5,7 @@ import * as sessionActions from '../../store/session';
 import { useHistory } from "react-router-dom";
 import LowerNav from './LowerNav'
 import ProfileButton from './ProfileButton';
+import SearchBar from './SearchBar'
 
 import './index.css'
 
@@ -28,7 +29,7 @@ const Navigation = ({ loaded }) => {
           </NavLink>
         </div>
         <div className='search-bar-form-container'>
-          <span>form goes here</span>
+          <SearchBar/>
         </div>
         <div className='upper-right-buttons'>
           <div className='nav-buttons-container'>
