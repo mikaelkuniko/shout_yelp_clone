@@ -33,7 +33,7 @@ function BusinessReviews(review) {
                         <h4>username</h4>
                     </div>
                 </div>
-                <div className='reviewRating'>Stars:
+                <div className='reviewRating'>
                 {stars.map((star, i) => (
                     <span key={i}>{star}</span>
                     ))}

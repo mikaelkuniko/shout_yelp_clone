@@ -21,11 +21,14 @@
     justify-content: center;
     color: white;
     border-radius: 0.5em;
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .fill {
-    width: 1.5em;
-    height: 1.5em;
     background-color: rgb(255, 100, 61);
 }
 
+.noFill {
+    background-color:rgb(187, 186, 192);
+}
