@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { reviewUpdate } from '../../../store/review'
-import PageNotFound from '../../PageNotFound'
 
 function EditReviewForm() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { bizId, reviewId } = useParams()
+    const { reviewId } = useParams()
     const reviewData = useSelector(state => state.reviews.allReviews[reviewId])
     const user = useSelector(state => state.session.user)
     const [ review, setReview ] = useState(reviewData.review)

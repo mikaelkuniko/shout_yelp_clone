@@ -12,10 +12,6 @@ function BusinessReviews(review) {
         await dispatch(removeReview(review.id, review.spotId))
     }
 
-    const updateAReview = async () => {
-        await dispatch(removeReview(review.id, review.spotId))
-    }
-
     if(!review) return null
     return (
         <div className='bizReview'>
