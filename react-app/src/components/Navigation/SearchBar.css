@@ -1,0 +1,14 @@
+.search-bar-form-container{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-input{
+    width: 1500px;
+}

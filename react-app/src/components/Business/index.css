@@ -3,3 +3,13 @@
     align-items: center;
     flex-direction: column;
 }
+
+.photo-carousel{
+    display: flex;
+    flex-direction: row;
+}
+
+.carousel-image{
+    width: 200px;
+    height:200px;
+}
