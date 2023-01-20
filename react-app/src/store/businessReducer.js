@@ -1,8 +1,8 @@
 const LOAD = 'bizes/LOAD'
 const CREATE = 'bizes/CREATE'
+const UPDATE = 'bizes/UPDATE'
 const DELETE = 'bizes/DELETE'
 const GET_ONE = 'bizes/GET_ONE'
-const CREATE_IMG = 'bizes/image/CREATE'
 
 const load = businesses => ({
     type: LOAD,
@@ -14,19 +14,19 @@ const create = business => ({
     business
 })
 
-// const createImage = image => ({
-//     type: CREATE,
-//     image
-// })
+const update = business => ({
+    type: UPDATE,
+    business
+})
 
 const getOne = business => ({
     type: GET_ONE,
     business
 })
 
-const remove = businessId => ({
+const remove = id => ({
     type: DELETE,
-    businessId
+    id
 })
 
 export const getOneBusiness = (id) => async dispatch => {
@@ -34,7 +34,6 @@ export const getOneBusiness = (id) => async dispatch => {
     if (response.ok){
         const businessObj = await response.json();
         const business = businessObj.business
-        // console.log('BUSINESS IN THUNK', business)
         dispatch(getOne(business))
         return business
     }
@@ -42,7 +41,6 @@ export const getOneBusiness = (id) => async dispatch => {
 }
 
 export const businessSearch = (params) => async dispatch => {
-    // console.log('PARAMS IN THUNK', params)
     const response = await fetch(`/api/biz/search${params}`)
     if (response.ok){
         const searchResultsObj = await response.json();
@@ -62,19 +60,14 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
           },
           body: JSON.stringify(newBiz)
     });
-    // console.log('this is newBiz', newBiz)
-    // console.log('this is newBiz response', response)
-    // console.log('this is bizImage', bizImage)
 
     if(response.ok){
         const createdBiz = await response.json();
         const {image_url} = bizImage
-        // console.log('-------------This is the created business------------', createdBiz)
         let newBizImage = {
             business_id: createdBiz.id,
             url: image_url
         }
-        // console.log('---------------This is new biz image------------------', newBizImage)
         const newImageResponse = await fetch(`/api/biz/${createdBiz.id}/images`, {
             method: 'POST',
             headers: {
@@ -85,11 +78,38 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
         if(newImageResponse.ok){
             const newImage = await newImageResponse.json();
             dispatch(create(createdBiz));
-            // dispatch(createImage(newImage))
             return createdBiz
         }
     }
+}
 
+export const updateBusiness = (business) => async dispatch => {
+    const response = await fetch(`/api/biz/${business.id}`, {
+        method: 'PUT',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(business)
+    })
+
+    if(response.ok){
+        const review = await response.json()
+        dispatch(update(business))
+        return business
+    }
+}
+
+
+export const deleteBusiness = (id) => async dispatch => {
+    // console.log('PARAMS IN THUNK', params)
+    const response = await fetch(`/api/biz/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    if (response.ok){
+        const deletedBiz = await response.json()
+        dispatch(remove(id))
+        return deletedBiz
+    }
+    return response
 }
 
 
@@ -103,13 +123,11 @@ const businessReducer = (state = initialState, action) => {
         case LOAD:{
             newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
             let business2={}
-            // console.log('ACTION.BUSINESSES', action.businesses)
             action.businesses.forEach(business => {
                 business2[business.id] = business
             });
             newState.allBusinesses = business2
             return newState
-
         }
         case GET_ONE: {
             newState = {
@@ -122,11 +140,18 @@ const businessReducer = (state = initialState, action) => {
         }
         case CREATE: {
             newState = {...state}
-            // console.log('this is the business that was created', action)
             let newAllBusinesses = {...state.allBusinesses, [action.business.id]: action.business}
-            // [action.business.id]: action.business goes into obj above
-            // new all businesses may be incorrect
             newState.allBusinesses = newAllBusinesses
+            return newState
+        }
+        case UPDATE: {
+            newState = {...state, allBusinesses: {...state.allBusinesses} }
+            newState.allBusinesses[action.business.id] = action.business
+            return newState
+        }
+        case DELETE: {
+            newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
+            delete newState.allBusinesses[action.id]
             return newState
         }
         default:
