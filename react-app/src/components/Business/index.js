@@ -20,7 +20,24 @@ const BusinessDetails = () => {
     }, [dispatch, bizReviews.length, businessId])
     if(!business.name) return null
     else return (
-        <div>
+        <div className="photo-header">
+            <div className="photo-content-container">
+
+            </div>
+            <div className="photo-carousel">
+                <div className="carousel-image">
+                    <img src={business.images[0].url}/>
+                </div>
+
+                <div className="carousel-image">
+                    <img src={business.images[1].url}/>
+                </div>
+
+                <div className="carousel-image">
+                    <img src={business.images[2].url}/>
+                </div>
+
+            </div>
             <ul>
                 <li>{business.name}</li>
                 <li>{business.description}</li>

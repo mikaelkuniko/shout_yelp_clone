@@ -8,9 +8,6 @@ const BusinessSearchPage = () => {
     const dispatch = useDispatch()
 
     let search = window.location.search
-    console.log('PATHNAME', window.location)
-    let state = useSelector(state=> state)
-    console.log('STATE', state)
 
     useEffect(() => {
         dispatch(businessSearch(search))

@@ -12,7 +12,7 @@ const SearchBar = () => {
     const dispatch = useDispatch()
 
     let pathname = window.location
-    console.log("PATHNAME ORIGIN", window.location)
+    console.log("LOCATION", window.location)
     // console.log("PATHNAME pathname", pathname.pathname)
 
 
