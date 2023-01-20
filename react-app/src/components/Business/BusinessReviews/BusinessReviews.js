@@ -16,7 +16,6 @@ function BusinessReviews(review) {
     const stars = []
 
     for(let i = 0; i < 5; i++){
-        console.log(review.id)
         if (i < review.stars) stars.push(fill)
         else stars.push(noFill)
     }
@@ -27,10 +26,9 @@ function BusinessReviews(review) {
         <div className='bizReview'>
             <div>
                 <div className='userInfo'>
-                    <h4>profile pic</h4>
+                    {review.user.profile_pic !== null ? <img src={review.user.profile_pic} alt='profile_pic' /> : <i className="fa-regular fa-user pic"></i> }
                     <div>
-                        <h4>User id: {review.user.id}</h4>
-                        <h4>username</h4>
+                        <h4>{review.user.username}</h4>
                     </div>
                 </div>
                 <div className='reviewRating'>
