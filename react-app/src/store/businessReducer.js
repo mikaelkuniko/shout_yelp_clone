@@ -1,6 +1,7 @@
 const LOAD = 'bizes/LOAD'
 const CREATE = 'bizes/CREATE'
 const UPDATE = 'bizes/UPDATE'
+const UPDATE = 'bizes/UPDATE'
 const DELETE = 'bizes/DELETE'
 const GET_ONE = 'bizes/GET_ONE'
 
@@ -18,6 +19,10 @@ const update = business => ({
     type: UPDATE,
     business
 })
+const update = business => ({
+    type: UPDATE,
+    business
+})
 
 const getOne = business => ({
     type: GET_ONE,
@@ -25,7 +30,9 @@ const getOne = business => ({
 })
 
 const remove = id => ({
+const remove = id => ({
     type: DELETE,
+    id
     id
 })
 
@@ -110,6 +117,18 @@ export const deleteBusiness = (id) => async dispatch => {
         return deletedBiz
     }
     return response
+export const deleteBusiness = (id) => async dispatch => {
+    // console.log('PARAMS IN THUNK', params)
+    const response = await fetch(`/api/biz/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    if (response.ok){
+        const deletedBiz = await response.json()
+        dispatch(remove(id))
+        return deletedBiz
+    }
+    return response
 }
 
 
@@ -142,6 +161,16 @@ const businessReducer = (state = initialState, action) => {
             newState = {...state}
             let newAllBusinesses = {...state.allBusinesses, [action.business.id]: action.business}
             newState.allBusinesses = newAllBusinesses
+            return newState
+        }
+        case UPDATE: {
+            newState = {...state, allBusinesses: {...state.allBusinesses} }
+            newState.allBusinesses[action.business.id] = action.business
+            return newState
+        }
+        case DELETE: {
+            newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
+            delete newState.allBusinesses[action.id]
             return newState
         }
         case UPDATE: {

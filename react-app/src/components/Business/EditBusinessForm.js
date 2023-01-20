@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as businessActions from '../../store/businessReducer'
-import { useHistory } from "react-router-dom";
-import './CreateBusinessForm.css'
+import { useHistory, useParams } from "react-router-dom";
+import './EditBusinessForm.css'
 
-const AddBusinessForm = () => {
+const EditBusinessForm = () => {
     let hours = []
     let createHours = () => {
         for (let i = 1; i < 13; i++) {
@@ -44,6 +44,7 @@ const AddBusinessForm = () => {
     const [closeAMPM, setCloseAMPM] = useState('PM')
     const [errors, setErrors] = useState([])
     const history = useHistory()
+    const {bizId} = useParams()
 
     useEffect(()=> {
         // do the errors
@@ -72,6 +73,44 @@ const AddBusinessForm = () => {
 
     }, [errors])
 
+    useEffect(()=>{
+        dispatch(businessActions.getOneBusiness(bizId))
+            .then((res)=>{
+                console.log('--------this is the response-------', res)
+                setName(res.name)
+                setDescription(res.description)
+                setPhoneNumber(res.phone_number)
+                setBusinessUrl(res.business_url)
+                setAddress(res.address)
+                setCity(res.city)
+                setState(res.state)
+                setCountry(res.country)
+                setZipCode(res.zip_code)
+                setPreviewImage(res.preview_image)
+                let openTime = res.open
+                let openSplit = openTime.split(' ')
+                let openHoursMins = openSplit[0].split(':')
+                setOpenHours(openHoursMins[0])
+                setOpenMinutes(openHoursMins[1])
+                setOpenAMPM(openSplit[1])
+                let closeTime = res.close
+                let closeSplit = closeTime.split(' ')
+                let closeHoursMins = closeSplit[0].split(':')
+                setCloseHours(closeHoursMins[0])
+                setCloseMinutes(closeHoursMins[1])
+                setCloseAMPM(closeSplit[1])
+                // setOpenHours(res.open_hours)
+                // setOpenMinutes(res.open_minutes)
+                // setOpenAMPM(res.open_AMPM)
+                // setCloseHours(res.close_hours)
+                // setCloseMinutes(res.close_minutes)
+                // setCloseAMPM(res.close_AMPM)
+            })
+    }, [dispatch])
+
+    const businessData = useSelector((state)=> state.businesses.singleBusiness)
+    // console.log('----------this is the current state-------', businessData)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
@@ -90,26 +129,17 @@ const AddBusinessForm = () => {
             // open: openHours + ':' + openMinutes + ' ' + openAMPM,
             // close: closeHours + ':' + closeMinutes + ' ' +closeAMPM,
         }
-        // unsure if imgpayload is necessary
-       const imgPayload = {
-        image_url: previewImage
-       }
+        return dispatch(businessActions.updateBusiness(payload, bizId))
+            .then(()=> history.push(`/biz/${bizId}`))
 
-        // console.log('This is imgPayload',imgPayload)
-        let newBizId;
-        return dispatch(businessActions.addBusiness(payload, imgPayload))
-            .then((res)=> newBizId = res.id)
-            // .then((res)=> console.log('this is res', res))
-            .then(() => history.push(`/biz/${newBizId}`))
-        // unfinished
     }
 
     return (
         <div className='outerDiv'>
-            <div className='add-spot-div'>
-                <h3 id ='add-business-text'>Add Business</h3>
+            <div className='edit-spot-div'>
+                <h3 id ='add-business-text'>Edit Business</h3>
                 <form onSubmit={handleSubmit} className='add-business-form'>
-                    <div className='add-business-inputs'>
+                    <div className='edit-business-inputs'>
                         <p>Name</p>
                         <label>
                             <input
@@ -271,7 +301,7 @@ const AddBusinessForm = () => {
                             </ul>
                         </div>
                     )}
-                     <button id='add-business-button' type="submit" disabled={!!errors.length}>Add Business</button>
+                     <button id='edit-business-button' type="submit" disabled={!!errors.length}>Edit Business</button>
                 </form>
             </div>
         </div>
@@ -279,4 +309,4 @@ const AddBusinessForm = () => {
 
 }
 
-export default AddBusinessForm
+export default EditBusinessForm
