@@ -7,7 +7,7 @@ function ReviewDetails(review) {
     return (
         <div className='reviewCard'>
             <Link to={`/biz/${review.business_id}`}>
-                <h4>User id: {review.user} --------- Stars: {review.stars}</h4>
+                <h4>User id: {review.user.id} --------- Stars: {review.stars}</h4>
                 <p>Review: {review.review}</p>
                 <div>
                     <span>Useful: {review.useful} </span>

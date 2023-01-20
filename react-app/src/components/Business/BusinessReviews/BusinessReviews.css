@@ -32,3 +32,9 @@
 .noFill {
     background-color:rgb(187, 186, 192);
 }
+
+.pic {
+    font-size: 3em;
+    color: lightgray;
+    padding: 0.25em;
+}

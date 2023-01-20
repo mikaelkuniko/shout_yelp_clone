@@ -35,9 +35,25 @@ const Navigation = ({ loaded }) => {
           <div className='nav-buttons-container'>
             <NavLink exact to="/biz">CREATE BIZ</NavLink>
             <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink>
-            <div>
+            {!sessionUser && (
+              <div>
+                <NavLink exact to="/login">
+                  <button className='login-button'>
+                  login
+                  </button>
+                </NavLink>
+                <NavLink exact to="/sign-up">
+                  <button className='signup-button'>
+                    Sign Up
+                  </button>
+                </NavLink>
+              </div>
+            )}
+            {sessionUser && (
+              <div>
               <ProfileButton user={sessionUser} />
             </div>
+            )}
           </div>
         </div>
       </div>

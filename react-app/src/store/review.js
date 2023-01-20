@@ -41,18 +41,37 @@ const deleteReview = (reviewId) => {
 }
 
 export const reviewCreate = (bizId, review) => async dispatch => {
+    console.log('in the thunk business id', bizId, '\n', 'review', review, '\n----------------')
     const response = await fetch(`/api/biz/${bizId}/reviews`, {
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(review)
       })
 
-      if(response.ok){
-        const review = await response.json()
-        dispatch(createReview(review))
-        return review
-      }
+    if(response.ok){
+        const newReview = await response.json()
+        if(review.image){
+            const payload = {
+                "review_id": newReview.id,
+                "url": review.image
+            }
+            const imageResponse = await fetch(`/api/reviews/${newReview.id}/images`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(payload)
+            })
+            if(imageResponse.ok){
+                const i = await imageResponse.json()
+                newReview.images = [i]
+                dispatch(createReview(newReview))
+                return newReview
+            }
+        }
+        dispatch(createReview(newReview))
+        return newReview
+    }
 }
+
 
 
 export const userReviews = () => async dispatch => {

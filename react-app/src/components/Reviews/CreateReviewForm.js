@@ -48,11 +48,13 @@ function CreateReviewForm() {
         console.log(payload)
 
         let newReview = await dispatch(reviewCreate(bizId, payload))
-        .then(createdReview => clearData(createdReview)).catch(
-            async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            }); // change the bizId --------------------------------------------------
+        // .then(createdReview => clearData(createdReview)).catch(
+        //     async (res) => {
+        //         const data = await res.json();
+        //         if (data && data.errors) setErrors(data.errors);
+        //     }); // change the bizId --------------------------------------------------
+        console.log('IN THE FORM AFTER DISPATCH', newReview)
+
 
         if(newReview) clearData(newReview)
     }

@@ -9,10 +9,13 @@ const BusinessSearchPage = () => {
 
     let search = window.location.search
     console.log('PATHNAME', window.location)
+    let state = useSelector(state=> state)
+    console.log('STATE', state)
 
     useEffect(() => {
         dispatch(businessSearch(search))
     }, [search])
+    console.log("SEARCH IN USE EFFECT", search)
     const businessesObj = useSelector(state=> state.businesses.allBusinesses)
     console.log("BUSINESSESOBJ IN SEARCH", businessesObj)
     const businesses = Object.values(businessesObj)
