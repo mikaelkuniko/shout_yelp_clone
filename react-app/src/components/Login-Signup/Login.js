@@ -12,9 +12,6 @@ function Login() {
   };
   return (
     <div>
-        <button onClick={handleLogin} className= "demo-user-button">
-            DEMO USER
-        </button>
         <LoginForm/>
     </div>
   )

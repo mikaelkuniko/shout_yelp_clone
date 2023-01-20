@@ -14,10 +14,10 @@ const create = business => ({
     business
 })
 
-const createImage = image => ({
-    type: CREATE,
-    image
-})
+// const createImage = image => ({
+//     type: CREATE,
+//     image
+// })
 
 const getOne = business => ({
     type: GET_ONE,
@@ -34,7 +34,7 @@ export const getOneBusiness = (id) => async dispatch => {
     if (response.ok){
         const businessObj = await response.json();
         const business = businessObj.business
-        console.log('BUSINESS IN THUNK', business)
+        // console.log('BUSINESS IN THUNK', business)
         dispatch(getOne(business))
         return business
     }
@@ -42,7 +42,7 @@ export const getOneBusiness = (id) => async dispatch => {
 }
 
 export const businessSearch = (params) => async dispatch => {
-    console.log('PARAMS IN THUNK', params)
+    // console.log('PARAMS IN THUNK', params)
     const response = await fetch(`/api/biz/search${params}`)
     if (response.ok){
         const searchResultsObj = await response.json();
@@ -52,6 +52,44 @@ export const businessSearch = (params) => async dispatch => {
         return searchResults
     }
     return response
+}
+
+export const addBusiness = (newBiz, bizImage) => async dispatch => {
+    const response = await fetch(`/api/biz/new`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newBiz)
+    });
+    // console.log('this is newBiz', newBiz)
+    // console.log('this is newBiz response', response)
+    // console.log('this is bizImage', bizImage)
+
+    if(response.ok){
+        const createdBiz = await response.json();
+        const {image_url} = bizImage
+        // console.log('-------------This is the created business------------', createdBiz)
+        let newBizImage = {
+            business_id: createdBiz.id,
+            url: image_url
+        }
+        // console.log('---------------This is new biz image------------------', newBizImage)
+        const newImageResponse = await fetch(`/api/biz/${createdBiz.id}/images`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(newBizImage)
+        })
+        if(newImageResponse.ok){
+            const newImage = await newImageResponse.json();
+            dispatch(create(createdBiz));
+            // dispatch(createImage(newImage))
+            return createdBiz
+        }
+    }
+
 }
 
 
@@ -65,7 +103,7 @@ const businessReducer = (state = initialState, action) => {
         case LOAD:{
             newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
             let business2={}
-            console.log('ACTION.BUSINESSES', action.businesses)
+            // console.log('ACTION.BUSINESSES', action.businesses)
             action.businesses.forEach(business => {
                 business2[business.id] = business
             });
@@ -80,6 +118,15 @@ const businessReducer = (state = initialState, action) => {
                 singleBusiness: {}
             }
             newState.singleBusiness = action.business
+            return newState
+        }
+        case CREATE: {
+            newState = {...state}
+            // console.log('this is the business that was created', action)
+            let newAllBusinesses = {...state.allBusinesses, [action.business.id]: action.business}
+            // [action.business.id]: action.business goes into obj above
+            // new all businesses may be incorrect
+            newState.allBusinesses = newAllBusinesses
             return newState
         }
         default:

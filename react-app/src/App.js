@@ -16,6 +16,8 @@ import BusinessSearchPage from './components/Search';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
 import PageNotFound from './components/PageNotFound';
 import EditReviewForm from './components/Business/BusinessReviews/EditReviewForm';
+import CreateBusinessForm from './components/Business/CreateBusinessForm'
+import UserFavorites from './components/User/UserFavorites';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,8 +51,14 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <ProtectedRoute path='/user-favorites' exact={true} >
+          <UserFavorites />
+        </ProtectedRoute>
         <Route path='/' exact={true} >
           <Review />
+        </Route>
+        <Route exact path='/biz'>
+          <CreateBusinessForm/>
         </Route>
         <Route path='/writeareview' exact={true} >
             {/* change to the search business form

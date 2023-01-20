@@ -71,7 +71,7 @@ def search():
                         if biz.id not in business_id_list:
                             businesses.append(biz)
 
-    print('businesses', businesses)
+    # print('businesses', businesses)
 
     return { "businesses": [business.to_dict() for business in businesses] }
 
@@ -83,7 +83,10 @@ def get_one(id):
     if not biz:
         return {"errors": "Business not found"}, 404
     reviews = Review.query.filter(Review.id == biz_to_dict["id"]).all()
-    review_avg = biz_to_dict['sum_rating'] / biz_to_dict["num_reviews"]
+    if biz_to_dict["num_reviews"] == 0:
+        review_avg = 0
+    else:
+        review_avg = biz_to_dict['sum_rating'] / biz_to_dict["num_reviews"]
     biz_to_dict["reviews"] = [review.to_dict() for review in reviews]
     biz_to_dict["review_avg"] = review_avg
     return {"business": biz_to_dict}
@@ -95,11 +98,13 @@ def get_one(id):
 def new_form():
     form = Business_Form()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    # print('This is form data', form.data)
+    # print('-------------current
+    #  user-----------', current_user.id)
     if form.validate_on_submit():
         new_business = Business()
         form.populate_obj(new_business)
-
+        new_business.owner_id = current_user.id
         db.session.add(new_business)
         db.session.commit()
         return new_business.to_dict(), 201
@@ -155,15 +160,16 @@ def add_biz_image(id):
     current_biz = Business.query.get_or_404(id)
     form = BusinessImageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    # print('----------this is image form data------------', form.data)
     if not current_biz:
         return {"errors": "Business not found"}, 404
 
     if form.validate_on_submit():
         new_business_image = Business_Image()
         form.populate_obj(new_business_image)
-        current_biz.images.append()
+        current_biz.images.append(new_business_image)
         db.session.add(new_business_image)
-        db.session.commit(new_business_image)
+        db.session.commit()
         return new_business_image.to_dict(), 201
 
     if form.errors:
