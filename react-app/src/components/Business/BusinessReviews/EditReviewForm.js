@@ -11,12 +11,10 @@ function EditReviewForm() {
     const user = useSelector(state => state.session.user)
     const [ review, setReview ] = useState(reviewData.review)
     const [ stars, setStars ] = useState(reviewData.stars)
-    const [ image, setImage ] = useState(reviewData.images[0].url)
     const [ errors, setErrors ] = useState([])
 
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
-    const updateImage = (e) => setImage(e.target.value)
 
     const clearData = (editedReview) => {
         setReview('')
@@ -29,19 +27,13 @@ function EditReviewForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        let payload;
-        if(image){
-            payload= {
-                review,
-                stars,
-                image
-            }
-        } else {
-            payload= {
-                review,
-                stars
-            }
+
+
+        let payload= {
+            review,
+            stars,
         }
+
 
         let theReview = await dispatch(reviewUpdate(reviewData.id, payload))
         .then(createdReview => clearData(createdReview)).catch(
@@ -71,18 +63,12 @@ function EditReviewForm() {
                 value={review}
                 onChange={updateReview}
             />
-            <input
+            <input style={{"borderRadius":"0px 0px 10px 10px"}}
                 type={'number'}
                 placeholder={'Stars'}
                 required
                 value={stars}
                 onChange={updateStars}
-            />
-            <input style={{"borderRadius":"0px 0px 10px 10px"}}
-                type={'url'}
-                placeholder={'Image'}
-                value={image}
-                onChange={updateImage}
             />
             <button>Submit</button>
             </form>
