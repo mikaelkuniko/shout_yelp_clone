@@ -1,16 +1,17 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getOneBusiness } from "../../store/businessReducer";
+import { getOneBusiness, deleteBusiness } from "../../store/businessReducer";
 import './index.css'
 import BusinessReviews from "./BusinessReviews/BusinessReviews";
 import { authenticate } from '../../store/session';
 
 const BusinessDetails = () => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const { businessId } = useParams()
     const [bookMark, setBookMark] = useState(false)
-    
+
     const currentUser = useSelector(state => state.session.user)
     let  userBusinesses;
 
@@ -18,14 +19,14 @@ const BusinessDetails = () => {
         userBusinesses = currentUser.user_businesses
     }
 
-    
+
     // console.log('BUSINESS ID FROM PARAMS', businessId)
     const business = useSelector((state)=> state.businesses.singleBusiness)
     const totalReviews = Object.values(useSelector((state)=> state.reviews.allReviews))
     // console.log('BUSINESS FROM USE SELECTOR', business)
-    
+
     const bizReviews = totalReviews.filter((review) => Number(businessId) === Number(review.business_id))
-    
+
     // When the bookmark is filled
     const handleDelete = async (e) => {
         e.preventDefault();
@@ -37,7 +38,7 @@ const BusinessDetails = () => {
         const message = await response.json();
         if(message) dispatch(authenticate())
     };
-    
+
     // When the bookmark is unfilled
     const handleAdd = async (e) => {
         e.preventDefault();
@@ -49,11 +50,24 @@ const BusinessDetails = () => {
         const message = await response.json();
         if(message) dispatch(authenticate())
     };
-    
+
+    // delete business
+    const removeBusiness = () => {
+        console.log("BUSINESS ID",business.id)
+        dispatch(deleteBusiness(business.id))
+        history.push('/')
+        alert('Business Deleted')
+    }
+
+    // edit business
+    const editBusiness = () => {
+        history.push(`/biz/${business.id}/edit`)
+    }
+
     useEffect(()=>{
         dispatch(getOneBusiness(businessId))
     }, [dispatch, bizReviews.length, businessId])
-    
+
     useEffect(() => {
         if(userBusinesses) {
             for(let i = 0; i < userBusinesses.length - 1; i++) {
@@ -63,9 +77,9 @@ const BusinessDetails = () => {
             }
         }
     }, [])
-    
+
     if(!business.name) return null
-    
+
     else return (
         <div>
             <ul>
@@ -76,9 +90,9 @@ const BusinessDetails = () => {
                 <li>{business.review_avg}</li>
                 {/* <li>Rating: {avgRating}</li> */}
                 <Link to={`/biz/${businessId}/writeareview`}>Write a Review</Link>
-                { currentUser && 
+                { currentUser &&
                 (<>
-                    {bookMark ? 
+                    {bookMark ?
                         <button onClick={handleDelete}>
                             <i className="fa-solid fa-bookmark"></i>
                         </button>
@@ -89,6 +103,12 @@ const BusinessDetails = () => {
                     }
                 </>)
                 }
+                { currentUser && currentUser.id === business.owner_id && (
+                    <div>
+                        <button onClick={removeBusiness}>Delete Business</button>
+                        <button onClick={editBusiness}>Edit Business</button>
+                    </div>
+                )}
                 <div className="reviews">
                     {bizReviews.map((review) => (
                         <BusinessReviews key={review.id} {...review}/>
