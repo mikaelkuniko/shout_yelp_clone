@@ -107,7 +107,7 @@ export default function reducer (state = initialState, action) {
     let newState;
     switch(action.type) {
         case CREATE:
-            console.log("IN REDUCER CREATE", action)
+            // console.log("IN REDUCER CREATE", action)
             newState = {...state, allReviews: {...state.allReviews}, user: {...state.user}}
             newState.user[action.review.id] = action.review
             newState.allReviews[action.review.id] = action.review
