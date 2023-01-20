@@ -27,10 +27,16 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const demoUser = (e) => {
+  const demoUser = async (e) => {
     e.preventDefault();
-    setEmail('demo@aa.io')
-    setPassword('password')
+    // setEmail('demo@aa.io')
+    // setPassword('password')
+    let demoEmail = 'demo@aa.io'
+    let demoPw = 'password'
+    const demo = await dispatch(login(demoEmail, demoPw))
+    if (demo){
+      setErrors(demo);
+    }
   }
 
   if (user) {
