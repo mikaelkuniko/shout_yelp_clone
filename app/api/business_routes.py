@@ -132,15 +132,16 @@ def add_biz_image(id):
     current_biz = Business.query.get_or_404(id)
     form = BusinessImageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('----------this is image form data------------', form.data)
     if not current_biz:
         return {"errors": "Business not found"}, 404
 
     if form.validate_on_submit():
         new_business_image = Business_Image()
         form.populate_obj(new_business_image)
-        current_biz.images.append()
+        current_biz.images.append(new_business_image)
         db.session.add(new_business_image)
-        db.session.commit(new_business_image)
+        db.session.commit()
         return new_business_image.to_dict(), 201
 
     if form.errors:

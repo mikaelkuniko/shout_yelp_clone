@@ -53,7 +53,7 @@ function App() {
         <Route path='/' exact={true} >
           <Review />
         </Route>
-        <Route path='/biz'>
+        <Route exact path='/biz'>
           <CreateBusinessForm/>
         </Route>
         <Route path='/writeareview' exact={true} >

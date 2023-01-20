@@ -98,9 +98,9 @@ const AddBusinessForm = () => {
         // console.log('This is imgPayload',imgPayload)
         let newBizId;
         return dispatch(businessActions.addBusiness(payload, imgPayload))
-            // .then((res)=> newBizId = res.id)
+            .then((res)=> newBizId = res.id)
             .then((res)=> console.log('this is res', res))
-            // .then(() => history.push(`/biz/${newBizId}`))
+            .then(() => history.push(`/biz/${newBizId}`))
         // unfinished
     }
 

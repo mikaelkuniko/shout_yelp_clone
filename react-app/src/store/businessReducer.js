@@ -14,10 +14,10 @@ const create = business => ({
     business
 })
 
-const createImage = image => ({
-    type: CREATE,
-    image
-})
+// const createImage = image => ({
+//     type: CREATE,
+//     image
+// })
 
 const getOne = business => ({
     type: GET_ONE,
@@ -67,13 +67,15 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
     console.log('this is bizImage', bizImage)
 
     if(response.ok){
-        const newBiz = await response.json();
+        const createdBiz = await response.json();
         const {image_url} = bizImage
+        console.log('-------------This is the created business------------', createdBiz)
         let newBizImage = {
-            business_id: newBiz.id,
-            image_url
+            business_id: createdBiz.id,
+            url: image_url
         }
-        const newImageResponse = await fetch(`/api/biz/${newBiz.id}/images`, {
+        console.log('---------------This is new biz image------------------', newBizImage)
+        const newImageResponse = await fetch(`/api/biz/${createdBiz.id}/images`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -82,9 +84,9 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
         })
         if(newImageResponse.ok){
             const newImage = await newImageResponse.json();
-            dispatch(create(newBiz));
-            dispatch(createImage(newImage))
-            return newBiz
+            dispatch(create(createdBiz));
+            // dispatch(createImage(newImage))
+            return createdBiz
         }
     }
 
@@ -120,8 +122,9 @@ const businessReducer = (state = initialState, action) => {
         }
         case CREATE: {
             newState = {...state}
-            console.log('this is the business that was created', action.business)
+            console.log('this is the business that was created', action)
             let newAllBusinesses = {...state.allBusinesses, [action.business.id]: action.business}
+            // [action.business.id]: action.business goes into obj above
             // new all businesses may be incorrect
             newState.allBusinesses = newAllBusinesses
             return newState
