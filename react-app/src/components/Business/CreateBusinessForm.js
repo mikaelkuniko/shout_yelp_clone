@@ -8,20 +8,20 @@ const AddBusinessForm = () => {
     let hours = []
     let createHours = () => {
         for (let i = 1; i < 13; i++) {
-            hours.push(i)
+            hours.push(`${i}`)
         }
         return hours
     }
     createHours()
 
-    let minutes = []
-    let createMinutes = () => {
-        for (let i = 0; i < 60; i++) {
-            minutes.push(i)
-        }
-        return minutes
-    }
-    createMinutes()
+    let minutes = ['00', '15', '30', '45']
+    // let createMinutes = () => {
+    //     for (let i = 0; i < 60; i++) {
+    //         minutes.push(i)
+    //     }
+    //     return minutes
+    // }
+    // createMinutes()
 
     const AMPM = ['AM', 'PM']
 
@@ -36,12 +36,12 @@ const AddBusinessForm = () => {
     const [country, setCountry] = useState('')
     const [zipCode, setZipCode] = useState('')
     const [previewImage, setPreviewImage] = useState('')
-    const [openHours, setOpenHours] = useState('')
-    const [closeHours, setCloseHours] = useState('')
-    const [openMinutes, setOpenMinutes] = useState('')
-    const [closeMinutes, setCloseMinutes] = useState('')
-    const [openAMPM, setOpenAMPM] = useState('')
-    const [closeAMPM, setCloseAMPM] = useState('')
+    const [openHours, setOpenHours] = useState(8)
+    const [closeHours, setCloseHours] = useState(8)
+    const [openMinutes, setOpenMinutes] = useState(0)
+    const [closeMinutes, setCloseMinutes] = useState(0)
+    const [openAMPM, setOpenAMPM] = useState('AM')
+    const [closeAMPM, setCloseAMPM] = useState('PM')
     const [errors, setErrors] = useState([])
     const history = useHistory()
 
@@ -57,7 +57,7 @@ const AddBusinessForm = () => {
         if(state.length == 0) errors.push("State must be inputted")
         if(country.length == 0) errors.push("Country must be inputted")
         if(zipCode.length == 0) errors.push("Zipcode must be inputted")
-        if(previewImage.length == 0) errors.push("At least one preview image must be uploaded")
+        // if(previewImage.length == 0) errors.push("At least one preview image must be uploaded")
         if(openHours < 0 || openHours > 12) errors.push("Business hours must be valid")
         if(closeHours < 0 || closeHours > 12) errors.push("Business hours must be valid")
         if(openMinutes < 0 || openMinutes > 59) errors.push("Business hours must be valid")
@@ -77,25 +77,30 @@ const AddBusinessForm = () => {
         const payload = {
             name,
             description,
-            phoneNumber,
-            businessUrl,
+            phone_number: phoneNumber,
+            business_url: businessUrl,
             address,
             city,
             state,
             country,
-            zipCode,
-            previewImage,
+            zip_code: zipCode,
+            preview_image: previewImage,
             open: `${openHours}:${openMinutes} ${openAMPM}`,
             close: `${closeHours}:${closeMinutes} ${closeAMPM}`,
+            // open: openHours + ':' + openMinutes + ' ' + openAMPM,
+            // close: closeHours + ':' + closeMinutes + ' ' +closeAMPM,
         }
         // unsure if imgpayload is necessary
-        const imgPayload = {
-            imageUrl: previewImage
-        }
+       const imgPayload = {
+        image_url: previewImage
+       }
+
+        // console.log('This is imgPayload',imgPayload)
         let newBizId;
         return dispatch(businessActions.addBusiness(payload, imgPayload))
-            .then((res)=> newBizId = res.id)
-            .then(() => history.push(`/biz/${newBizId}`))
+            // .then((res)=> newBizId = res.id)
+            .then((res)=> console.log('this is res', res))
+            // .then(() => history.push(`/biz/${newBizId}`))
         // unfinished
     }
 
@@ -218,17 +223,17 @@ const AddBusinessForm = () => {
                         <div className='opening-times'>
                         <p>Opening hours</p>
                         <label>
-                        <select onChange={(e)=>setOpenHours} value={openHours}>
+                        <select onChange={(e)=>setOpenHours(e.target.value)} value={openHours}>
                             {hours.map(hour =>
-                            <option key={hour} value={hour}>{hour}</option>
+                            <option key={hour}>{hour}</option>
                             )}
                         </select>
-                        <select onChange={(e)=>setOpenMinutes} value={openMinutes}>
+                        <select onChange={(e)=>setOpenMinutes(e.target.value)} value={openMinutes}>
                             {minutes.map(minute =>
                             <option key={minute}>{minute}</option>
                             )}
                         </select>
-                        <select onChange={(e)=>setOpenAMPM} value={openAMPM}>
+                        <select onChange={(e)=>setOpenAMPM(e.target.value)} value={openAMPM}>
                             {AMPM.map(amOrPm =>
                             <option key={amOrPm}>{amOrPm}</option>
                             )}
@@ -238,17 +243,17 @@ const AddBusinessForm = () => {
                         <div className='closing-times'>
                         <p>Closing hours</p>
                         <label>
-                        <select onChange={(e)=>setCloseHours} value={closeHours}>
+                        <select onChange={(e)=>setCloseHours(e.target.value)} value={closeHours}>
                             {hours.map(hour =>
                             <option key={hour}>{hour}</option>
                             )}
                         </select>
-                        <select onChange={(e)=>setCloseMinutes} value={closeMinutes}>
+                        <select onChange={(e)=>setCloseMinutes(e.target.value)} value={closeMinutes}>
                             {minutes.map(minute =>
                             <option key={minute}>{minute}</option>
                             )}
                         </select>
-                        <select onChange={(e)=>setCloseAMPM} value={closeAMPM}>
+                        <select onChange={(e)=>setCloseAMPM(e.target.value)} value={closeAMPM}>
                             {AMPM.map(amOrPm =>
                             <option key={amOrPm}>{amOrPm}</option>
                             )}

@@ -71,11 +71,12 @@ def get_one(id):
 def new_form():
     form = Business_Form()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print('This is form data', form.data)
+    print('-------------current user-----------', current_user.id)
     if form.validate_on_submit():
         new_business = Business()
         form.populate_obj(new_business)
-
+        new_business.owner_id = current_user.id
         db.session.add(new_business)
         db.session.commit()
         return new_business.to_dict(), 201

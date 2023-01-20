@@ -62,15 +62,18 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
           },
           body: JSON.stringify(newBiz)
     });
+    console.log('this is newBiz', newBiz)
+    console.log('this is newBiz response', response)
+    console.log('this is bizImage', bizImage)
 
     if(response.ok){
         const newBiz = await response.json();
-        const {imageUrl} = bizImage
+        const {image_url} = bizImage
         let newBizImage = {
-            // business_id: newBiz.id,
-            url: imageUrl
+            business_id: newBiz.id,
+            image_url
         }
-        const newImageResponse = await fetch(`/api/${newBiz.id}/images`, {
+        const newImageResponse = await fetch(`/api/biz/${newBiz.id}/images`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -79,7 +82,8 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
         })
         if(newImageResponse.ok){
             const newImage = await newImageResponse.json();
-            dispatch(CREATE(newBiz));
+            dispatch(create(newBiz));
+            dispatch(createImage(newImage))
             return newBiz
         }
     }

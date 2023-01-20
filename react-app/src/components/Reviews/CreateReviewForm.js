@@ -56,6 +56,7 @@ function CreateReviewForm() {
 
         if(newReview) clearData(newReview)
     }
+    
     return (
         <div className='reviewForm'>
             <form onSubmit={handleSubmit} className='reviewForm'>
