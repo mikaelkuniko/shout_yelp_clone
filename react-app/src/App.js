@@ -13,6 +13,7 @@ import { authenticate } from './store/session';
 import Review from './components/Reviews'
 import { allReviews } from './store/review';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
+import UserFavorites from './components/User/UserFavorites';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/user-favorites' exact={true} >
+          <UserFavorites />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Review />
