@@ -33,8 +33,8 @@ const Navigation = ({ loaded }) => {
         </div>
         <div className='upper-right-buttons'>
           <div className='nav-buttons-container'>
-            <NavLink exact to="/biz">CREATE BIZ</NavLink>
-            <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink>
+            <NavLink exact to={ sessionUser ? "/biz" : "/login"}>CREATE BIZ</NavLink>
+            {/* <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink> */}
             {!sessionUser && (
               <div>
                 <NavLink exact to="/login">

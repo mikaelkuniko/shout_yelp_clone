@@ -132,7 +132,7 @@ export default function reducer (state = initialState, action) {
             newState.allReviews[action.review.id] = action.review
             return newState
         case ALL:
-            newState = {...state, allReviews: {...state.allReviews}, user: {...state.user}}
+            newState = {...state, allReviews: {}, user: {...state.user}}
             action.reviews.Reviews.forEach(review => {
                 newState.allReviews[review.id] = review
             });
