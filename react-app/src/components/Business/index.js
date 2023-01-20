@@ -5,6 +5,7 @@ import { getOneBusiness, deleteBusiness } from "../../store/businessReducer";
 import './index.css'
 import BusinessReviews from "./BusinessReviews/BusinessReviews";
 import { authenticate } from '../../store/session';
+import { allReviews } from "../../store/review";
 
 const BusinessDetails = () => {
     const history = useHistory()
@@ -52,9 +53,10 @@ const BusinessDetails = () => {
     };
 
     // delete business
-    const removeBusiness = () => {
+    const removeBusiness = async () => {
         console.log("BUSINESS ID",business.id)
-        dispatch(deleteBusiness(business.id))
+        await dispatch(deleteBusiness(business.id))
+        await dispatch(allReviews())
         history.push('/')
         alert('Business Deleted')
     }
@@ -89,7 +91,9 @@ const BusinessDetails = () => {
                 <li>{business.city}</li>
                 <li>{business.review_avg}</li>
                 {/* <li>Rating: {avgRating}</li> */}
-                <Link to={`/biz/${businessId}/writeareview`}>Write a Review</Link>
+                { currentUser && (
+                    <Link to={`/biz/${businessId}/writeareview`}>Write a Review</Link>
+                )}
                 { currentUser &&
                 (<>
                     {bookMark ?
