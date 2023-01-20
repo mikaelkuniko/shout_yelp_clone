@@ -4,12 +4,13 @@
     align-items: center;
     margin: 0px;
     padding: 24px 40px 0px;
+    height:200px
 }
 
-.upper-nav {
+#upper-navigation {
     display: grid;
     grid-template-columns: 15fr 60fr 25fr;
-    width: 100%
+    width: 100%;
 }
 
 .upper-right-buttons {

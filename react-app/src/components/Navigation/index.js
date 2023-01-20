@@ -22,15 +22,13 @@ const Navigation = ({ loaded }) => {
 
   return (
     <div className='nav-container'>
-      <div className='upper-nav'>
+      <div id='upper-navigation'>
         <div className='upper-left-home'>
           <NavLink exact to="/">
             <img /> SHOUT!
           </NavLink>
         </div>
-        <div className='search-bar-form-container'>
-          <SearchBar/>
-        </div>
+        <SearchBar/>
         <div className='upper-right-buttons'>
           <div className='nav-buttons-container'>
             <NavLink exact to="/biz">CREATE BIZ</NavLink>
