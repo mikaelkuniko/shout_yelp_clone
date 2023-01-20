@@ -16,27 +16,22 @@ class Review(db.Model):
     stars = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
-    # created_at = db.Column(db.Date)
-    # updated_at = db.Column(db.Date)
 
-    user = relationship('User', back_populates='reviews')
-    business = relationship('Business', back_populates='reviews')
-    images = relationship('Review_Image', back_populates='review', cascade='all, delete')
+    user = db.relationship('User', back_populates='reviews')
+    business = db.relationship('Business', back_populates='reviews')
+    images = db.relationship('Review_Image', back_populates='review', cascade='all, delete-orphan')
 
-    useful = relationship("User",
+    useful = db.relationship("User",
                         secondary=useful_reviews,
-                        back_populates="useful_review",
-                        cascade='all, delete')
+                        back_populates="useful_review")
 
-    cool = relationship("User",
+    cool = db.relationship("User",
                         secondary=cool_reviews,
-                        back_populates="cool_review",
-                        cascade='all, delete')
+                        back_populates="cool_review")
 
-    funny = relationship("User",
+    funny = db.relationship("User",
                         secondary=funny_reviews,
-                        back_populates="funny_review",
-                        cascade='all, delete')
+                        back_populates="funny_review")
 
     def to_dict(self):
         """
@@ -53,14 +48,11 @@ class Review(db.Model):
             funny
             created_at,
             updated_at,
-            useful,
-            cool,
-            funny
         }
         """
         return {
             "id": self.id,
-            "user": self.user_id,
+            "user": self.user.to_dict_info(),
             "business_id": self.business_id,
             "review": self.review,
             "stars": self.stars,

@@ -1,22 +1,25 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import './ReviewDetails.css'
 
 function ReviewDetails(review) {
-
     if(!review) return null
     return (
-        <div>
-            <h4>User id: {review.user} --------- {review.stars}</h4>
-            <p>Review: {review.review}</p>
-            <div>
-                {review.useful}
-                {review.cool}
-                {review.funny}
-            </div>
-            {review.images.length ? (
-                <div style={{"display":"flex", "alignItems":"center"}}>
-                    <img style={{"height":"100px", "width":"100px"}} src={review.images[0].url} alt={'pic'}/>
+        <div className='reviewCard'>
+            <Link to={`/biz/${review.business_id}`}>
+                <h4>User id: {review.user.id} --------- Stars: {review.stars}</h4>
+                <p>Review: {review.review}</p>
+                <div>
+                    <span>Useful: {review.useful} </span>
+                    <span>Cool: {review.cool} </span>
+                    <span>Funny: {review.funny}</span>
                 </div>
-            ) : (null)}
+                {review.images.length ? (
+                    <div style={{"display":"flex", "alignItems":"center"}}>
+                        <img style={{"height":"100px", "width":"100px"}} src={review.images[0].url} alt={'pic'}/>
+                    </div>
+                ) : (null)}
+            </Link>
         </div>
     )
 }

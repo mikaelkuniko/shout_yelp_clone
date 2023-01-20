@@ -27,24 +27,26 @@ class Business(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
-    user = relationship('User', back_populates='business')
-    images = relationship('Business_Image', back_populates='business', cascade='all, delete')
-    reviews = relationship('Review', back_populates='business', cascade='all, delete')
+    # - Many to One: Business has one User through owner_id
+    user = db.relationship('User', back_populates='business')
 
-    user_favorites = relationship("User",
+    # - One to Many: Business has many images through business_id
+    images = db.relationship('Business_Image', back_populates='business', cascade='all, delete-orphan')
+
+    # - One to Many: Business has many reviews through business_id
+    reviews = db.relationship('Review', back_populates='business', cascade='all, delete-orphan')
+
+    user_favorites = db.relationship("User",
                                 secondary=favorites,
-                                back_populates='user_businesses',
-                                cascade='all, delete')
+                                back_populates='user_businesses')
 
-    business_amenity = relationship('Amenity',
+    business_amenity = db.relationship('Amenity',
                                     secondary=business_amenities,
-                                    back_populates='business',
-                                    cascade='all, delete')
+                                    back_populates='business')
 
-    business_type = relationship('Type',
+    business_type = db.relationship('Type',
                                 secondary=business_types,
-                                back_populates='business',
-                                cascade='all, delete')
+                                back_populates='business')
 
 
     def to_dict(self):
@@ -61,6 +63,7 @@ class Business(db.Model):
             city,
             state,
             country,
+            zip_code,
             preview_image,
             open,
             close,
@@ -84,6 +87,7 @@ class Business(db.Model):
             "city": self.city,
             "state": self.state,
             "country": self.country,
+            "zip_code": self.zip_code,
             "preview_image": self.preview_image,
             "open": self.open,
             "close": self.close,
@@ -92,7 +96,7 @@ class Business(db.Model):
             "num_reviews": len(self.reviews),
             "sum_rating": sum([review.to_dict()['stars'] for review in self.reviews]),
             "business_amenities": [amenity.to_dict()['name'] for amenity in self.business_amenity],
-            "business_types": [typ.to_dict()['type'] for typ in self.business_type]
+            "business_types": [type.to_dict()['type'] for type in self.business_type]
         }
 
     def to_dict_no_user(self):
@@ -109,6 +113,7 @@ class Business(db.Model):
             city,
             state,
             country,
+            zip_code,
             preview_image,
             open,
             close,
@@ -128,6 +133,7 @@ class Business(db.Model):
             "city": self.city,
             "state": self.state,
             "country": self.country,
+            "zip_code": self.zip_code,
             "preview_image": self.preview_image,
             "open": self.open,
             "close": self.close,

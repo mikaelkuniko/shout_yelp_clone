@@ -14,10 +14,9 @@ class Type(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
-    business = relationship('Business',
+    business = db.relationship('Business',
                                 secondary=business_types,
-                                back_populates='business_type',
-                                cascade='all, delete')
+                                back_populates='business_type')
 
     def to_dict(self):
         """

@@ -17,6 +17,7 @@ def all_reviews():
     for review in reviews:
         # print(review.to_dict())
         all_reviews.append(review.to_dict())
+        # print("Hi there")
         # print({"Reviews": all_reviews})
     # return {"Reviews": [review.to_dict() for review in reviews]}
     return {"Reviews": all_reviews}
@@ -74,8 +75,8 @@ def edit_review(id):
     if not review:
         return { "errors": "Review not found"}, 404
 
-    if current_user != review.user_id:
-        return { "errors": "Forbidden"}, 403
+    if current_user.id != review.user.id:
+        return { "errors": "Forbidden"}, 40
 
     form = ReviewForm()
 
@@ -105,7 +106,7 @@ def delete_review(id):
     if not review:
         return { "errors": "Review not found"}, 404
 
-    if current_user != review.user_id:
+    if current_user.id != review.user.id:
         return { "errors": "Forbidden"}, 403
 
     db.session.delete(review)

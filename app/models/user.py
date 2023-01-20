@@ -23,28 +23,28 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
     #--------------------------------------USER CLASS----------------------------------------
-    business = relationship('Business', back_populates='user')
-    reviews = relationship('Review', back_populates='user', cascade='all, delete')
+    # - One to Many: User has many businesses through owner_id
+    business = db.relationship('Business', back_populates='user', cascade='all, delete-orphan')
 
-    user_businesses = relationship("Business",
+    # - One to Many: User has many reviews through user_id
+    reviews = db.relationship('Review', back_populates='user', cascade='all, delete-orphan')
+
+    # - Many to Many: User has many favorite businesses through Favorites
+    user_businesses = db.relationship("Business",
                                     secondary=favorites,
-                                    back_populates='user_favorites',
-                                    cascade='all, delete')
+                                    back_populates='user_favorites')
 
-    useful_review = relationship("Review",
+    useful_review = db.relationship("Review",
                                 secondary=useful_reviews,
-                                back_populates="useful",
-                                cascade='all, delete')
+                                back_populates="useful")
 
-    cool_review = relationship("Review",
+    cool_review = db.relationship("Review",
                                 secondary=cool_reviews,
-                                back_populates="cool",
-                                cascade='all, delete')
+                                back_populates="cool")
 
-    funny_review = relationship("Review",
+    funny_review = db.relationship("Review",
                                 secondary=funny_reviews,
-                                back_populates="funny",
-                                cascade='all, delete')
+                                back_populates="funny")
     #----------------------------------------------------------------------------------------
 
     @property
@@ -82,6 +82,24 @@ class User(db.Model, UserMixin):
             # "useful_review": [useful.to_dict() for useful in self.useful_review],
             # "cool_review": [cool.to_dict() for cool in self.cool_review],
             # "funny_review": [funny.to_dict() for funny in self.funny_review],
+        }
+
+    def to_dict_info(self):
+        '''
+        Returns a dict representing User
+        {
+            id,
+            username,
+            email,
+            profile_pic,
+        }
+        '''
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            "profile_pic": self.profile_pic,
+
         }
 
     def to_dict_none(self):

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -10,7 +10,6 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const { closeModal } = useModal();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -28,8 +27,19 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const demoUser = async (e) => {
+    e.preventDefault();
+    // setEmail('demo@aa.io')
+    // setPassword('password')
+    let demoEmail = 'demo@aa.io'
+    let demoPw = 'password'
+    const demo = await dispatch(login(demoEmail, demoPw))
+    if (demo){
+      setErrors(demo);
+    }
+  }
+
   if (user) {
-    closeModal()
     return <Redirect to='/' />;
   }
 
@@ -60,6 +70,7 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button className='single-login' onClick={demoUser}>Demo</button>
       </div>
     </form>
   );

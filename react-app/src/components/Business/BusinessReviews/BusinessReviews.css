@@ -1,0 +1,40 @@
+.bizReview {
+    display: flex;
+    flex-direction: column;
+    border: solid black 1px;
+    width: 40em;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.reviewRating {
+    display: flex;
+    gap: 0.2em;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 0.5em;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.fill {
+    background-color: rgb(255, 100, 61);
+}
+
+.noFill {
+    background-color:rgb(187, 186, 192);
+}
+
+.pic {
+    font-size: 3em;
+    color: lightgray;
+    padding: 0.25em;
+}

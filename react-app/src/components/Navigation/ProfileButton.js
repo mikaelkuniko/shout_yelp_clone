@@ -4,7 +4,7 @@ import * as sessionActions from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import LoginForm from '../auth/LoginForm';
 import SignupForm from '../auth/SignUpForm';
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import './index.css'
 
 function ProfileButton({ user }) {
@@ -18,14 +18,18 @@ function ProfileButton({ user }) {
     setShowMenu(true);
   };
 
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
+
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
-        setShowMenu(false);
-      }
-    };
+    // const closeMenu = (e) => {
+    //   if (!ulRef.current.contains(e.target)) {
+    //     setShowMenu(false);
+    //   }
+    // };
 
     document.addEventListener('click', closeMenu);
 
@@ -48,30 +52,20 @@ function ProfileButton({ user }) {
       </button>
       <ul className={ulClassName} ref={ulRef}>
         <div className="dropdown-menu">
-          {user ? (
-            <>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-              <li>
-                <button className="loginSign-button1" onClick={logout}>Log Out</button>
-              </li>
-            </>
-          ) : (
-            <>
-              <li className="loginSign">
-                <OpenModalButton
-                  buttonText="Log In"
-                  modalComponent={<LoginForm />}
-                />
-              </li>
-              <li className="loginSign">
-                <OpenModalButton
-                  buttonText="Sign Up"
-                  modalComponent={<SignupForm />}
-                />
-              </li>
-            </>
-          )}
+          <>
+            <li>{user.username}</li>
+            <li>{user.email}</li>
+            <li>
+              <NavLink exact to="/user-favorites">
+                <button className='bookmark-button' onClick={closeMenu}>
+                  Bookmarks
+                </button>
+              </NavLink>
+            </li>
+            <li>
+              <button className="loginSign-button1" onClick={logout}>Log Out</button>
+            </li>
+          </>
         </div>
       </ul>
     </div>
