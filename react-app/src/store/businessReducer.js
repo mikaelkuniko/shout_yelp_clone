@@ -83,8 +83,8 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
     }
 }
 
-export const updateBusiness = (business) => async dispatch => {
-    const response = await fetch(`/api/biz/${business.id}`, {
+export const updateBusiness = (business, bizId) => async dispatch => {
+    const response = await fetch(`/api/biz/${bizId}`, {
         method: 'PUT',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(business)

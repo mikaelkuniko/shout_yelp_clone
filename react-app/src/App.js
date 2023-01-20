@@ -18,6 +18,7 @@ import PageNotFound from './components/PageNotFound';
 import EditReviewForm from './components/Business/BusinessReviews/EditReviewForm';
 import CreateBusinessForm from './components/Business/CreateBusinessForm'
 import UserFavorites from './components/User/UserFavorites';
+import EditBusinessForm from './components/Business/EditBusinessForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -66,6 +67,9 @@ function App() {
         </Route>
         <Route path='/biz/search' exact={true}>
           <BusinessSearchPage/>
+        </Route>
+        <Route exact path='/biz/:bizId/edit'>
+          <EditBusinessForm/>
         </Route>
         <Route path='/biz/:bizId/writeareview' exact={true} >
           <CreateReviewForm />
