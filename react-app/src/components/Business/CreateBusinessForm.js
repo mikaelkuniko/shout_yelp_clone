@@ -88,6 +88,14 @@ const AddBusinessForm = () => {
             open: `${openHours}:${openMinutes} ${openAMPM}`,
             close: `${closeHours}:${closeMinutes} ${closeAMPM}`,
         }
+        // unsure if imgpayload is necessary
+        const imgPayload = {
+            imageUrl: previewImage
+        }
+        let newBizId;
+        return dispatch(businessActions.addBusiness(payload, imgPayload))
+            .then((res)=> newBizId = res.id)
+            .then(() => history.push(`/biz/${newBizId}`))
         // unfinished
     }
 
@@ -212,7 +220,7 @@ const AddBusinessForm = () => {
                         <label>
                         <select onChange={(e)=>setOpenHours} value={openHours}>
                             {hours.map(hour =>
-                            <option key={hour}>{hour}</option>
+                            <option key={hour} value={hour}>{hour}</option>
                             )}
                         </select>
                         <select onChange={(e)=>setOpenMinutes} value={openMinutes}>

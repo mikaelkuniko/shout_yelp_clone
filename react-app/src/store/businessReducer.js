@@ -54,6 +54,38 @@ export const businessSearch = (params) => async dispatch => {
     return response
 }
 
+export const addBusiness = (newBiz, bizImage) => async dispatch => {
+    const response = await fetch(`/api/biz/new`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newBiz)
+    });
+
+    if(response.ok){
+        const newBiz = await response.json();
+        const {imageUrl} = bizImage
+        let newBizImage = {
+            // business_id: newBiz.id,
+            url: imageUrl
+        }
+        const newImageResponse = await fetch(`/api/${newBiz.id}/images`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(newBizImage)
+        })
+        if(newImageResponse.ok){
+            const newImage = await newImageResponse.json();
+            dispatch(CREATE(newBiz));
+            return newBiz
+        }
+    }
+
+}
+
 
 
 
@@ -80,6 +112,14 @@ const businessReducer = (state = initialState, action) => {
                 singleBusiness: {}
             }
             newState.singleBusiness = action.business
+            return newState
+        }
+        case CREATE: {
+            newState = {...state}
+            console.log('this is the business that was created', action.business)
+            let newAllBusinesses = {...state.allBusinesses, [action.business.id]: action.business}
+            // new all businesses may be incorrect
+            newState.allBusinesses = newAllBusinesses
             return newState
         }
         default:
