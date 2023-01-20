@@ -31,7 +31,7 @@ const Navigation = ({ loaded }) => {
         <SearchBar/>
         <div className='upper-right-buttons'>
           <div className='nav-buttons-container'>
-            <NavLink exact to={ sessionUser ? "/biz" : "/login"}>CREATE BIZ</NavLink>
+            <NavLink exact to={ sessionUser ? "/biz/create" : "/login"}>CREATE BIZ</NavLink>
             {/* <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink> */}
             {!sessionUser && (
               <div>

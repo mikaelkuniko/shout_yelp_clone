@@ -88,18 +88,9 @@ const BusinessDetails = () => {
 
             </div>
             <div className="photo-carousel">
-                <div className="carousel-image">
-                    <img src={business.images[0].url}/>
-                </div>
-
-                <div className="carousel-image">
-                    <img src={business.images[1].url}/>
-                </div>
-
-                <div className="carousel-image">
-                    <img src={business.images[2].url}/>
-                </div>
-
+                { business.images && business.images.map(image => (
+                    <img className="carousel-image" src={image.url} key={image.url}/>
+                ))}
             </div>
             <ul>
                 <li>{business.name}</li>
