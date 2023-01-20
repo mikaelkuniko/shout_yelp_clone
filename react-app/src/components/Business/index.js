@@ -72,7 +72,7 @@ const BusinessDetails = () => {
 
     useEffect(() => {
         if(userBusinesses) {
-            for(let i = 0; i < userBusinesses.length - 1; i++) {
+            for(let i = 0; i < userBusinesses.length; i++) {
                 if (Number(userBusinesses[i].id) === Number(businessId)) {
                     setBookMark(true)
                 }
