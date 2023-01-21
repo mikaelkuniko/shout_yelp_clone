@@ -1,0 +1,13 @@
+.footer-container {
+    border-top: 2px solid rgba(211,211,211, .2);
+    background-color: #F4F4F4;
+    height: 80px;
+    padding-bottom: 40px;
+}
+
+.code-languages-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2%;
+    padding-bottom: 20px;
+}

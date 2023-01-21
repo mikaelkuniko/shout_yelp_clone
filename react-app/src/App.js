@@ -19,6 +19,7 @@ import EditReviewForm from './components/Business/BusinessReviews/EditReviewForm
 import CreateBusinessForm from './components/Business/CreateBusinessForm'
 import UserFavorites from './components/User/UserFavorites';
 import EditBusinessForm from './components/Business/EditBusinessForm';
+import Footer from "./components/Footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -84,6 +85,7 @@ function App() {
           <PageNotFound />
         </Route>
       </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 }
