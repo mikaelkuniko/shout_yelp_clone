@@ -1,0 +1,20 @@
+.reviewCreateContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0.5em 1em 0.5em;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px gray;
+    width: 26em;
+}
+
+.reviewFormHeader {
+    margin-bottom: 1em;
+}
+
+.formChildren {
+    width: 30em;
+    height: 2em;
+}

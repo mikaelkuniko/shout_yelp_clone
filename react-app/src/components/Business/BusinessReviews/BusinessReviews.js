@@ -43,18 +43,18 @@ function BusinessReviews(review) {
                         <img style={{"height":"100px", "width":"100px"}} src={review.images[0].url} alt={'pic'}/>
                     </div>
                 ) : (null)}
-                <div>
+                {/* <div>
                     <span>Useful: {review.useful} </span>
                     <span>Cool: {review.cool} </span>
                     <span>Funny: {review.funny}</span>
-                </div>
+                </div> */}
             </div>
-            <div>
+            <div className='reviewButtons'>
                 {currentUser && currentUser.id === review.user.id && (
-                    <button onClick={deleteAReview}>Delete Review</button>
+                    <button className='deleteTheReview' onClick={deleteAReview}>Delete Review</button>
                 )}
                 {currentUser && currentUser.id === review.user.id && (
-                    <Link to={`/biz/${review.business_id}/reviews/${review.id}/edit`}>Edit</Link>
+                    <Link id='editReview' to={`/biz/${review.business_id}/reviews/${review.id}/edit`}>Edit</Link>
                 )}
             </div>
         </div>
