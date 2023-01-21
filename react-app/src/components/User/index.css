@@ -1,9 +1,7 @@
 .user-favorites {
-    display: grid;
-    grid-row: 1;
-    /* flex-direction: column; */
+    display: flex;
+    flex-direction: row;
     list-style: none;
-    /* align-items: flex-start; */
     padding-left: 40px;
     padding-right: 80px;
     margin: 0px 250px;
@@ -12,11 +10,78 @@
 .favorite-img img {
     width: 172.078px;
     height: 172.078px;
-    /* padding: 0 10px; */
 }
 
 .single-favorite {
     display: grid;
-    grid-row: 1;
+    grid-template-columns: 60fr 15fr;
+    width: 100%;
 }
 
+.left-bar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.right-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+}
+
+#review-info {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+#address {
+    margin: 0px 10px;
+}
+
+#name {
+    margin: 0px 10px;
+    font-weight: bold;
+}
+
+#num-reviews {
+    margin-left: 5px;
+}
+
+#bookmark-header {
+    padding-left: 80px;
+    margin: 40px 250px 0px 250px;
+    
+}
+
+#user-info {
+    display: flex;
+    flex-direction: row;
+    padding-left: 80px;
+    margin: 0px 250px 25px 250px;
+}
+
+#no-fav {
+    padding-left: 40px;
+    margin: 40px 250px 0px 250px;
+    font-weight: bold;
+}
+
+.flags {
+    background: none;
+    border: none;
+    color: red;
+    font-size: large;
+}
+
+.fa-user {
+    font-size: large;
+    margin-top: 21.28px;
+    margin-right: 10px;
+}
