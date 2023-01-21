@@ -25,39 +25,42 @@ const Navigation = ({ loaded }) => {
       <div id='upper-navigation'>
         <div className='upper-left-home'>
           <NavLink exact to="/">
-            <img /> SHOUT!
+            <img src='https://icons-for-free.com/iconfiles/png/512/megaphone+icon-1320087271597358684.png' className='web-icon'/>
           </NavLink>
         </div>
         <SearchBar/>
         <div className='upper-right-buttons'>
-          <div className='nav-buttons-container'>
-            <NavLink exact to={ sessionUser ? "/biz" : "/login"}>CREATE BIZ</NavLink>
+            <NavLink exact to={ sessionUser ? "/biz" : "/login"}><span id="for-business">For Businesses</span></NavLink>
             {/* <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink> */}
             {!sessionUser && (
+            <div className='nav-buttons-container'>
               <div>
                 <NavLink exact to="/login">
                   <button className='login-button'>
                   login
                   </button>
                 </NavLink>
+              </div>
+              <div>
                 <NavLink exact to="/sign-up">
                   <button className='signup-button'>
                     Sign Up
                   </button>
                 </NavLink>
+                </div>
               </div>
             )}
             {sessionUser && (
-              <div>
+              <div className='nav-buttons-container'>
               <ProfileButton user={sessionUser} />
             </div>
             )}
-          </div>
+
         </div>
       </div>
-      <div>
+      {/* <div>
         <LowerNav />
-      </div>
+      </div> */}
     </div>
   );
 }
