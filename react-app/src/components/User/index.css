@@ -1,0 +1,22 @@
+.user-favorites {
+    display: grid;
+    grid-row: 1;
+    /* flex-direction: column; */
+    list-style: none;
+    /* align-items: flex-start; */
+    padding-left: 40px;
+    padding-right: 80px;
+    margin: 0px 250px;
+}
+
+.favorite-img img {
+    width: 172.078px;
+    height: 172.078px;
+    /* padding: 0 10px; */
+}
+
+.single-favorite {
+    display: grid;
+    grid-row: 1;
+}
+

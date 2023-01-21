@@ -57,6 +57,7 @@ const BusinessDetails = () => {
         console.log("BUSINESS ID",business.id)
         await dispatch(deleteBusiness(business.id))
         await dispatch(allReviews())
+        await dispatch(authenticate())
         history.push('/')
         alert('Business Deleted')
     }
