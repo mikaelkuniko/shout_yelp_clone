@@ -20,6 +20,7 @@ import CreateBusinessForm from './components/Business/CreateBusinessForm'
 import UserFavorites from './components/User/UserFavorites';
 import EditBusinessForm from './components/Business/EditBusinessForm';
 import Footer from "./components/Footer";
+import { businessSearch } from './store/businessReducer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -29,6 +30,7 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       await dispatch(allReviews())
+      await dispatch(businessSearch('?business=&location=')) // change in backend
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -73,7 +75,9 @@ function App() {
           <EditBusinessForm/>
         </ProtectedRoute>
         <ProtectedRoute path='/biz/:bizId/writeareview' exact={true} >
-          <CreateReviewForm />
+          <div style={{"display":"flex", 'justifyContent':"center"}}>
+            <CreateReviewForm />
+          </div>
         </ProtectedRoute>
         <Route path='/biz/:businessId' exact={true}>
           <BusinessDetails/>
