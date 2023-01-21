@@ -38,3 +38,19 @@
     color: lightgray;
     padding: 0.25em;
 }
+
+#five {
+    background-color: rgb(251, 67, 60);
+}
+
+#three {
+    background-color:rgb(255, 135, 66);
+}
+
+#two {
+    background-color: rgb(255, 173, 72);
+}
+
+#one {
+    background-color: rgb(255, 204, 75);
+}
