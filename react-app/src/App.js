@@ -19,6 +19,8 @@ import EditReviewForm from './components/Business/BusinessReviews/EditReviewForm
 import CreateBusinessForm from './components/Business/CreateBusinessForm'
 import UserFavorites from './components/User/UserFavorites';
 import EditBusinessForm from './components/Business/EditBusinessForm';
+import Footer from "./components/Footer";
+import { businessSearch } from './store/businessReducer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,6 +30,7 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       await dispatch(allReviews())
+      await dispatch(businessSearch('?business=&location=')) // change in backend
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -58,9 +61,9 @@ function App() {
         <Route path='/' exact={true} >
           <Review />
         </Route>
-        <Route exact path='/biz'>
+        <ProtectedRoute exact path='/biz/create'>
           <CreateBusinessForm/>
-        </Route>
+        </ProtectedRoute>
         <Route path='/writeareview' exact={true} >
             {/* change to the search business form
             to then redirect you to /biz/bizId/writeareview */}
@@ -68,22 +71,25 @@ function App() {
         <Route path='/biz/search' exact={true}>
           <BusinessSearchPage/>
         </Route>
-        <Route exact path='/biz/:bizId/edit'>
+        <ProtectedRoute exact path='/biz/:bizId/edit'>
           <EditBusinessForm/>
-        </Route>
-        <Route path='/biz/:bizId/writeareview' exact={true} >
-          <CreateReviewForm />
-        </Route>
+        </ProtectedRoute>
+        <ProtectedRoute path='/biz/:bizId/writeareview' exact={true} >
+          <div style={{"display":"flex", 'justifyContent':"center"}}>
+            <CreateReviewForm />
+          </div>
+        </ProtectedRoute>
         <Route path='/biz/:businessId' exact={true}>
           <BusinessDetails/>
         </Route>
-        <Route path='/biz/:bizId/reviews/:reviewId/edit'>
+        <ProtectedRoute path='/biz/:bizId/reviews/:reviewId/edit'>
             <EditReviewForm />
-        </Route>
+        </ProtectedRoute>
         <Route path='/pageNotFound'>
           <PageNotFound />
         </Route>
       </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 }

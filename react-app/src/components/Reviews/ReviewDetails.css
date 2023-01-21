@@ -2,12 +2,43 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     height: fit-content;
-
     border-radius: 10px;
     color: white;
     box-sizing: border-box;
     flex-shrink: 1;
-    border: solid black 1px;
+    border: solid #ebebeb 1px;
+    max-width: 20em;
+    min-width: 20em;
+    height: 23em;
+    padding: 1em;
+}
+
+.reviewBody {
+    height: 5em;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bizName {
+    font-weight: bold;
+    color: rgba(2,122,151,1);
+    margin-bottom: 0.5em;
+}
+
+.bizName:hover {
+    text-decoration: underline;
+}
+
+.reviewImages {
+    display: flex;
+    align-items: center;
+    margin: 1em 1em 0em 0em;
+}
+
+#reviewAction {
+    font-size: 12px;
+    color: rgb(91, 102, 114);
 }

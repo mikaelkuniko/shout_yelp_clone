@@ -72,7 +72,6 @@ const BusinessDetails = () => {
     }, [dispatch, bizReviews.length, businessId])
 
     useEffect(() => {
-        console.log('IN THE USE EFFECT OUTSIDE THE LOOP--------', userBusinesses)
         if(userBusinesses) {
             for(let i = 0; i < userBusinesses.length; i++) {
                 if (Number(userBusinesses[i].id) === Number(businessId)) {
@@ -85,7 +84,17 @@ const BusinessDetails = () => {
     if(!business.name) return null
 
     else return (
-        <div>
+        <div className="photo-header">
+            <div className="photo-content-container">
+
+            </div>
+            <div className="photo-carousel">
+                { business.images && business.images.slice(0,3).map(image => (
+                    <div>
+                        <img className="carousel-image" src={image.url} key={image.url}/>
+                    </div>
+                ))}
+            </div>
             <ul>
                 <li>{business.name}</li>
                 <li>{business.description}</li>

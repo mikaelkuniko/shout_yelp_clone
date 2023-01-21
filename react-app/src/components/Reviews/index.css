@@ -1,5 +1,30 @@
+.recent-activities{
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid .5px grey;
+}
+
+#recent-act-text{
+    text-align: center;
+    font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 36px;
+    /* word-break: break-word !important;
+    overflow-wrap: break-word !important; */
+    color: rgba(45,46,47,1);
+}
+
 .reviewsContainer {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: 5em;
+    gap: 2em;
+}
+
+.reviewsContainer>* {
+    flex: 1 1 15em;
 }

@@ -11,8 +11,9 @@ function BusinessReviews(review) {
     const deleteAReview = async () => {
         await dispatch(removeReview(review.id, review.spotId))
     }
+    const n = review.stars
     let noFill = <i className="fa-solid fa-star stars noFill" />
-    let fill = <i className="fa-solid fa-star stars fill" />
+    let fill = <i className="fa-solid fa-star stars fill" id={n === 5 ? 'five' : n === 3 ? 'three' : n === 2 ? 'two' : n === 1 ? 'one' : ''}/>
     const stars = []
 
     for(let i = 0; i < 5; i++){

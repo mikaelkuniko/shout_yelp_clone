@@ -12,7 +12,7 @@ const SearchBar = () => {
     const dispatch = useDispatch()
 
     let pathname = window.location
-    console.log("PATHNAME ORIGIN", window.location)
+    console.log("LOCATION", window.location)
     // console.log("PATHNAME pathname", pathname.pathname)
 
 
@@ -27,20 +27,26 @@ const SearchBar = () => {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    value={business}
-                    type="text"
-                    placeholder="Search..."
-                    onChange={(e)=> setBusiness(e.target.value)}/>
-                <input
-                    value={location}
-                    type="text"
-                    placeholder="Search..."
-                    onChange={(e)=> setLocation(e.target.value)}/>
-                <button type="submit">
-                    Submit
+        <div className='search-bar-form-container'>
+            <form onSubmit={handleSubmit} className="search-form">
+                <div>
+                    <input
+                        value={business}
+                        type="text"
+                        placeholder="Five Guys, Papa Johns, Etta..."
+                        className="search-input"
+                        onChange={(e)=> setBusiness(e.target.value)}/>
+                </div>
+                <div>
+                    <input
+                        value={location}
+                        type="text"
+                        placeholder="CA, TX, Baltimore..."
+                        className="search-input"
+                        onChange={(e)=> setLocation(e.target.value)}/>
+                </div>
+                <button type="submit" className="search-button">
+                    <i className="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
         </div>

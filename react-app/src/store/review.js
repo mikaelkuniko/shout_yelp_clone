@@ -41,7 +41,6 @@ const deleteReview = (reviewId) => {
 }
 
 export const reviewCreate = (bizId, review) => async dispatch => {
-    console.log('in the thunk business id', bizId, '\n', 'review', review, '\n----------------')
     const response = await fetch(`/api/biz/${bizId}/reviews`, {
         method: 'POST',
         headers: {"Content-Type": "application/json"},

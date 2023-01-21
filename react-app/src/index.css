@@ -1,1 +1,59 @@
 /* TODO Add site wide styles */
+body, p, form, input{
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin:0;
+    padding: 0;
+    width: 100%
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
+ }
+.search-input{
+    height: 48px;
+    width: 100%;
+    border-style: hidden ;
+}
+
+.input-field-container{
+    margin: 0px;
+    padding: 0px;
+    border-style: hidden;
+    width:80%
+}
+
+.search-form{
+    display: grid;
+    grid-template-columns: 46.5% 46.5% 7%;
+    box-shadow: 0px .5px 1px rgba(0, 0, 0, 0.1)
+}
+
+.search-bar-form-container{
+    border: 1px solid rgb(212, 210, 210);
+    border-radius: 3px;
+}
+
+.search-button{
+    background-color:#FF1A1A;
+    color: white;
+    border: none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0px .5px 1px rgba(114, 113, 113, 0.2)
+}
+
+.web-icon{
+
+    height:45px;
+}
+
+input:focus {outline:none;}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+button {
+    cursor: pointer;
+}
