@@ -2,3 +2,25 @@
     display: flex;
     justify-content: center;
 }
+
+.businessCard {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.bImage {
+    border-radius: 0.5em;
+    width: 10em;
+    height: 10em;
+}
+
+.amenity {
+    font-size: 12px;
+    border-radius: 0.5em;
+    margin: 0.25em;
+    padding: 0.5em;
+    color: gray;
+    background-color: rgb(236, 236, 236);
+    font-weight: bold;
+}
