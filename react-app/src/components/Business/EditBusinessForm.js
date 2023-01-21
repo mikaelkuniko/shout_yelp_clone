@@ -14,7 +14,7 @@ const EditBusinessForm = () => {
     }
     createHours()
 
-    let minutes = ['00', '15', '30', '45']
+    let minutes = [':00', ':15', ':30', ':45']
     // let createMinutes = () => {
     //     for (let i = 0; i < 60; i++) {
     //         minutes.push(i)
@@ -36,10 +36,10 @@ const EditBusinessForm = () => {
     const [country, setCountry] = useState('')
     const [zipCode, setZipCode] = useState('')
     const [previewImage, setPreviewImage] = useState('')
-    const [openHours, setOpenHours] = useState(8)
-    const [closeHours, setCloseHours] = useState(8)
-    const [openMinutes, setOpenMinutes] = useState(0)
-    const [closeMinutes, setCloseMinutes] = useState(0)
+    const [openHours, setOpenHours] = useState('8')
+    const [closeHours, setCloseHours] = useState('8')
+    const [openMinutes, setOpenMinutes] = useState('00')
+    const [closeMinutes, setCloseMinutes] = useState('00')
     const [openAMPM, setOpenAMPM] = useState('AM')
     const [closeAMPM, setCloseAMPM] = useState('PM')
     const [errors, setErrors] = useState([])
@@ -124,8 +124,8 @@ const EditBusinessForm = () => {
             country,
             zip_code: zipCode,
             preview_image: previewImage,
-            open: `${openHours}:${openMinutes} ${openAMPM}`,
-            close: `${closeHours}:${closeMinutes} ${closeAMPM}`,
+            open: `${openHours}${openMinutes} ${openAMPM}`,
+            close: `${closeHours}${closeMinutes} ${closeAMPM}`,
             // open: openHours + ':' + openMinutes + ' ' + openAMPM,
             // close: closeHours + ':' + closeMinutes + ' ' +closeAMPM,
         }
