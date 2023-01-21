@@ -10,6 +10,7 @@
 .favorite-img img {
     width: 172.078px;
     height: 172.078px;
+    border-radius: 10px;
 }
 
 .single-favorite {
@@ -22,12 +23,24 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    margin: 5px 0px;
 }
 
 .right-bar {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin: 5px 0px;
+}
+
+.name {
+    margin: 0px 10px;
+    color: rgba(2,122,151,1);
+    font-weight: bold;
+}
+
+.name:hover {
+    text-decoration: underline;
 }
 
 #info {
@@ -45,10 +58,6 @@
     margin: 0px 10px;
 }
 
-#name {
-    margin: 0px 10px;
-    font-weight: bold;
-}
 
 #num-reviews {
     margin-left: 5px;

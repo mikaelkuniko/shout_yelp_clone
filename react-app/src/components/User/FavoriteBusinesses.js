@@ -87,7 +87,7 @@ function FavoriteBusinesses({ id, name, city, state, preview_image, num_reviews,
                             </NavLink>
                         </>
                         <div id='info'>
-                            <span id='name'>
+                            <span className='name'>
                                 <NavLink key={id} to={`/biz/${id}`}>{name}</NavLink>
                             </span>
                             <span id='review-info'>
