@@ -58,7 +58,7 @@ function CreateReviewForm() {
 
         if(newReview) clearData(newReview)
     }
-    
+
     return (
         <div className='reviewForm'>
             <form onSubmit={handleSubmit} className='reviewForm'>
@@ -68,7 +68,8 @@ function CreateReviewForm() {
                     </ul>
             }
             <h4>Create a Review</h4>
-            <input style={{"borderRadius":"10px 10px 0px 0px"}}
+            <textarea style={{"borderRadius":"10px 10px 0px 0px"}}
+                className='reviewText'
                 type={'text'}
                 placeholder={'Review'}
                 required
@@ -76,15 +77,19 @@ function CreateReviewForm() {
                 onChange={updateReview}
             />
             <input
+                className='formChildren'
                 type={'number'}
                 placeholder={'Stars'}
                 required
+                min={1}
+                max={5}
                 value={stars}
                 onChange={updateStars}
             />
             <input style={{"borderRadius":"0px 0px 10px 10px"}}
+                className='formChildren'
                 type={'url'}
-                placeholder={'Image'}
+                placeholder={'Image (optional)'}
                 value={image}
                 onChange={updateImage}
             />

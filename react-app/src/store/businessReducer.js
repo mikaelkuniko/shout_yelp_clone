@@ -19,6 +19,7 @@ const update = business => ({
     business
 })
 
+
 const getOne = business => ({
     type: GET_ONE,
     business
@@ -83,8 +84,8 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
     }
 }
 
-export const updateBusiness = (business, bizId) => async dispatch => {
-    const response = await fetch(`/api/biz/${bizId}`, {
+export const updateBusiness = (business) => async dispatch => {
+    const response = await fetch(`/api/biz/${business.id}`, {
         method: 'PUT',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(business)
@@ -149,6 +150,12 @@ const businessReducer = (state = initialState, action) => {
             newState.allBusinesses[action.business.id] = action.business
             return newState
         }
+        case DELETE: {
+            newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
+            delete newState.allBusinesses[action.id]
+            return newState
+        }
+
         case DELETE: {
             newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
             delete newState.allBusinesses[action.id]

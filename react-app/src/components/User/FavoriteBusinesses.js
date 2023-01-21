@@ -10,10 +10,7 @@ function FavoriteBusinesses({ id, name, city, state, preview_image, num_reviews,
     const currentUser = useSelector(state => state.session.user)
     const userBusinesses = currentUser.user_businesses
 
-    if (!currentUser || !userBusinesses) {
-        return null
-    }
-
+    
     // When the bookmark is filled
     const handleDelete = async (e) => {
         e.preventDefault();
@@ -25,7 +22,7 @@ function FavoriteBusinesses({ id, name, city, state, preview_image, num_reviews,
         const message = await response.json();
         dispatch(authenticate())
     };
-
+    
     // When the bookmark is unfilled
     const handleAdd = async (e) => {
         e.preventDefault();
@@ -38,16 +35,26 @@ function FavoriteBusinesses({ id, name, city, state, preview_image, num_reviews,
         dispatch(authenticate())
     };
 
+    useEffect(() => {
+        dispatch(authenticate())
+    }, [dispatch])
+    
+    if (!currentUser || !userBusinesses) {
+        return null
+    }
     return (
         <div>
             <li className='user-favorites' key={id}>
                 <>
                     <NavLink key={name} to={`/biz/${id}`}>
                         <div>
-                            <img className='favorites-image'
-                                src={preview_image}
-                                alt={name}
-                            />
+                            {preview_image ?
+                                <img className='favorites-image'
+                                    src={preview_image}
+                                    alt={name}
+                                /> :
+                                <p>No Image</p>
+                            }
                         </div>
                     </NavLink>
                 </>

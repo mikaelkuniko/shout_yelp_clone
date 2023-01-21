@@ -4,7 +4,7 @@ function LowerNav(){
 
     return (
         <div>
-            LOWER NAV BAR IS HERE
+            {/* LOWER NAV BAR IS HERE */}
         </div>
     )
 }

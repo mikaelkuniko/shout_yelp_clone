@@ -58,9 +58,9 @@ function App() {
         <Route path='/' exact={true} >
           <Review />
         </Route>
-        <Route exact path='/biz'>
+        <ProtectedRoute exact path='/biz/create'>
           <CreateBusinessForm/>
-        </Route>
+        </ProtectedRoute>
         <Route path='/writeareview' exact={true} >
             {/* change to the search business form
             to then redirect you to /biz/bizId/writeareview */}
@@ -68,18 +68,18 @@ function App() {
         <Route path='/biz/search' exact={true}>
           <BusinessSearchPage/>
         </Route>
-        <Route exact path='/biz/:bizId/edit'>
+        <ProtectedRoute exact path='/biz/:bizId/edit'>
           <EditBusinessForm/>
-        </Route>
-        <Route path='/biz/:bizId/writeareview' exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path='/biz/:bizId/writeareview' exact={true} >
           <CreateReviewForm />
-        </Route>
+        </ProtectedRoute>
         <Route path='/biz/:businessId' exact={true}>
           <BusinessDetails/>
         </Route>
-        <Route path='/biz/:bizId/reviews/:reviewId/edit'>
+        <ProtectedRoute path='/biz/:bizId/reviews/:reviewId/edit'>
             <EditReviewForm />
-        </Route>
+        </ProtectedRoute>
         <Route path='/pageNotFound'>
           <PageNotFound />
         </Route>
