@@ -173,14 +173,14 @@ const EditBusinessForm = () => {
                                 className='inputs'
                             />
                         </label>
-                        <p>Business Url</p>
+                        <p>Business URL</p>
                         <label>
                         <input
-                                type='text'
+                                type='url'
                                 value={businessUrl}
                                 onChange={(e)=> setBusinessUrl(e.target.value)}
                                 required
-                                placeholder='Business Url'
+                                placeholder='Business URL'
                                 className='inputs'
                             />
                         </label>
@@ -242,7 +242,7 @@ const EditBusinessForm = () => {
                         <p>Preview Image</p>
                         <label>
                         <input
-                                type='text'
+                                type='url'
                                 value={previewImage}
                                 onChange={(e)=> setPreviewImage(e.target.value)}
                                 required
