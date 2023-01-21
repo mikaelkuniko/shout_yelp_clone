@@ -11,10 +11,13 @@ function Reviews() {
     const reviews = Object.values(totalReviews)
 
     return (
+        <div className='recent-activities'>
+            <h1 id='recent-act-text'> Recent Activity </h1>
         <div className='reviewsContainer'>
             {reviews.map((review) => (
                 <ReviewDetails key={review.id} {...review} />
             ))}
+        </div>
         </div>
     )
 }
