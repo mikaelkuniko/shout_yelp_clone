@@ -1,5 +1,12 @@
 .reviewsContainer {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: 5em;
+    gap: 2em;
+}
+
+.reviewsContainer>* {
+    flex: 1 1 15em;
 }

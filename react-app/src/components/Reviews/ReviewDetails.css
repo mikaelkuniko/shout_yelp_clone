@@ -2,12 +2,21 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     height: fit-content;
-
     border-radius: 10px;
     color: white;
     box-sizing: border-box;
     flex-shrink: 1;
     border: solid black 1px;
+    max-width: 20em;
+    min-width: 20em;
+    height: 23em;
+    padding: 1em;
+}
+
+.reviewBody {
+    height: 5em;
+    width: auto;
+    overflow: hidden;
 }
