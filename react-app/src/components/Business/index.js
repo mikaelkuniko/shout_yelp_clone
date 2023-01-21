@@ -88,8 +88,10 @@ const BusinessDetails = () => {
 
             </div>
             <div className="photo-carousel">
-                { business.images && business.images.map(image => (
-                    <img className="carousel-image" src={image.url} key={image.url}/>
+                { business.images && business.images.slice(0,3).map(image => (
+                    <div>
+                        <img className="carousel-image" src={image.url} key={image.url}/>
+                    </div>
                 ))}
             </div>
             <ul>

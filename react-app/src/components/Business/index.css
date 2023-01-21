@@ -7,9 +7,12 @@
 .photo-carousel{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: 2100px;
+
 }
 
 .carousel-image{
-    width: 200px;
-    height:200px;
+    width: 700px;
+    height:450px;
 }

@@ -8,51 +8,51 @@ export const Footer = () => {
             <div className='code-languages-container'>
                 <div>
                     <span>
-                    <i class="devicon-javascript-plain"></i>
-                         JavaScript
+                    <i className="devicon-python-plain"></i>
+                         Python
                     </span>
                 </div>
                 <div>
                     <span>
-                    <i class="devicon-nodejs-plain"></i>
-                        Node
+                    <i className="devicon-flask-original"></i>
+                        Flask
                     </span>
                 </div>
                 <div>
                     <span>
-                    <i class="devicon-git-plain"></i>
+                    <i className="devicon-git-plain"></i>
                         Git
                     </span>
                 </div>
                     <span>
-                    <i class="devicon-html5-plain"></i>
+                    <i className="devicon-html5-plain"></i>
                         HTML
                     </span>
                 <div>
                     <span>
-                    <i class="devicon-css3-plain-wordmark"></i>
+                    <i className="devicon-css3-plain-wordmark"></i>
                         CSS
                     </span>
                 </div>
                 <div>
                     <span>
-                    <i class="devicon-express-original"></i>
+                    <i className="devicon-express-original"></i>
                         Express
                     </span>
                 </div>
                     <span>
-                    <i class="devicon-sqlite-plain"></i>
-                        SQL
+                    <i className="devicon-sqlalchemy-plain"></i>
+                        SQL Alchemy
                     </span>
                 <div>
                     <span>
-                    <i class="devicon-react-original"></i>
+                    <i className="devicon-react-original"></i>
                         React
                     </span>
                 </div>
                 <div>
                     <span>
-                    <i class="devicon-redux-original"></i>
+                    <i className="devicon-redux-original"></i>
                         Redux
                     </span>
                 </div>
