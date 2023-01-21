@@ -25,7 +25,7 @@ const Navigation = ({ loaded }) => {
       <div id='upper-navigation'>
         <div className='upper-left-home'>
           <NavLink exact to="/">
-            <img src='https://icons-for-free.com/iconfiles/png/512/megaphone+icon-1320087271597358684.png' className='web-icon'/>
+            <img src='https://i.ibb.co/YNhxfdc/shout-icon.png' className='web-icon'/>
           </NavLink>
         </div>
         <SearchBar/>

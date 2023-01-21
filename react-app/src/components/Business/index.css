@@ -3,16 +3,3 @@
     align-items: center;
     flex-direction: column;
 }
-
-.photo-carousel{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 2100px;
-
-}
-
-.carousel-image{
-    width: 700px;
-    height:450px;
-}
