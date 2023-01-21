@@ -27,6 +27,12 @@ def search():
     if "location" in args:
         location_search = args.get('location')
         print("LOCATION IN BACKEND", location_search)
+
+    if not location_search and not business_search:
+        businesses = Business.query.all()
+        return { "businesses": [business.to_dict() for business in businesses] }
+
+        
     business_id_list = []
     business_query = []
     location_query = []
