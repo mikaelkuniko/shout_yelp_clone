@@ -1,5 +1,5 @@
 /* TODO Add site wide styles */
-body, p, h1, h2, h3, h4, h5, h6, form, input{
+body, p, form, input{
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin:0;
     padding: 0;

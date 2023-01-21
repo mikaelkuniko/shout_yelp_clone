@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { reviewCreate } from '../../store/review'
 import './CreateReviewForm.css'
-
+import { getOneBusiness } from '../../store/businessReducer'
 function CreateReviewForm() {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -13,11 +13,22 @@ function CreateReviewForm() {
     const [ errors, setErrors ] = useState([])
 
     const { bizId } = useParams()
+    const business = useSelector(state => state.businesses.singleBusiness)
+    useEffect(() => {
+        dispatch(getOneBusiness(bizId))
+    }, [])
 
 
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
     const updateImage = (e) => setImage(e.target.value)
+
+    useEffect(() => {
+        const errors = []
+        if(stars > 5 || stars < 1) errors.push("Stars must be between 1 and 5")
+        if(!review.length) errors.push("Review is required")
+        setErrors(errors)
+    }, [stars, review])
 
     const clearData = (newReview) => {
         setReview('')
@@ -44,30 +55,23 @@ function CreateReviewForm() {
             }
         }
 
-
-        console.log(payload)
-
         let newReview = await dispatch(reviewCreate(bizId, payload))
-        // .then(createdReview => clearData(createdReview)).catch(
-        //     async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //     }); // change the bizId --------------------------------------------------
-        console.log('IN THE FORM AFTER DISPATCH', newReview)
-
 
         if(newReview) clearData(newReview)
     }
 
     return (
         <div className='reviewForm'>
-            <form onSubmit={handleSubmit} className='reviewForm'>
+            <button onClick={() => history.push(`/biz/${bizId}`)} style={{"padding":"0px", "height":"0px", "color":"black", "width":"20px", "position":"relative", "right":"195px", "top":"15px", "border":"none", "background":"none", "cursor":"pointer"}}>X</button>
+            <form onSubmit={handleSubmit} className='reviewCreateContainer'>
+            <div>
+                <h4 className={!errors.length ? 'reviewFormHeader' : ''}>{business.name}</h4>
+            </div>
             {errors.length !== 0 &&
-                    <ul style={{"marginBottom":"0px"}}>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
+                <ul style={{"marginBottom":"0px"}}>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
             }
-            <h4>Create a Review</h4>
             <textarea style={{"borderRadius":"10px 10px 0px 0px"}}
                 className='reviewText'
                 type={'text'}
@@ -93,7 +97,7 @@ function CreateReviewForm() {
                 value={image}
                 onChange={updateImage}
             />
-            <button>Submit</button>
+            <button className='reviewSubmit'>Submit</button>
             </form>
         </div>
     )
