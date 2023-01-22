@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import './ReviewDetails.css'
 
 function ReviewDetails(review) {
+    const n = review.stars
     let noFill = <i className="fa-solid fa-star stars noFill" />
-    let fill = <i className="fa-solid fa-star stars fill" />
+    let fill = <i className="fa-solid fa-star stars fill" id={n === 5 ? 'five' : n === 3 ? 'three' : n === 2 ? 'two' : n === 1 ? 'one' : ''}/>
     const stars = []
 
     const business = useSelector(state => state.businesses.allBusinesses[review.business_id])
@@ -25,7 +26,7 @@ function ReviewDetails(review) {
                         <p id='reviewAction'>Wrote a review</p>
                     </div>
                 </div>
-                <div className='bizName'>{business.name}</div>
+                {business && <div className='bizName'>{business.name}</div>}
                 <div className='reviewRating'>
                 {stars.map((star, i) => (
                     <span key={i}>{star}</span>
