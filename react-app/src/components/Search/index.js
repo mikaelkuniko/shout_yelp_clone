@@ -30,7 +30,7 @@ const BusinessSearchPage = () => {
         <div className="businesses-container">
             <ul>
                 {businesses.map((business)=>(
-                    <li style={{"listStyleType":"none", "margin":"1em"}}>
+                    <li key={business.name.toString()} style={{"listStyleType":"none", "margin":"1em"}}>
                         <Link className="businessCard" key={business.id} to={`/biz/${business.id}`}>
                             <div>
                                 {business.images && <img className="bImage" src={business.images[0].url} alt='businessImage' />}
@@ -40,8 +40,6 @@ const BusinessSearchPage = () => {
                                 <h5>{business.num_reviews ? 'Rating: ' + (business.sum_rating / business.num_reviews).toFixed(2) : 'No reviews'}</h5>
                                 {business.business_amenities.length ? business.business_amenities.map(amenity => (<span className="amenity">{amenity}</span>)) : <span className="amenity">No amenities</span>}
                             </div>
-
-
                         </Link>
                     </li>
                 ))}
