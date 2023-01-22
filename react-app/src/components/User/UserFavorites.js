@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+// import { useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import FavoriteBusinesses from './FavoriteBusinesses';
 import './index.css'
@@ -9,9 +10,9 @@ function UserFavorites() {
     let userBusinesses = currentUser.user_businesses
 
 
-    useEffect(() => {
-        userBusinesses = currentUser.user_businesses
-    }, [userBusinesses])
+    // useEffect(() => {
+    //     userBusinesses = currentUser.user_businesses
+    // }, [userBusinesses])
 
     if (!currentUser || !userBusinesses) {
         return null

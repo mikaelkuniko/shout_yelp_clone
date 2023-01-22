@@ -55,7 +55,7 @@ const BusinessDetails = () => {
 
     // delete business
     const removeBusiness = async () => {
-        console.log("BUSINESS ID",business.id)
+        // console.log("BUSINESS ID",business.id)
         await dispatch(deleteBusiness(business.id))
         await dispatch(allReviews())
         await dispatch(authenticate())
@@ -81,7 +81,7 @@ const BusinessDetails = () => {
                 }
             }
         }
-    }, [])
+    }, [businessId, userBusinesses])
 
     if(!business.name) return null
 
@@ -91,17 +91,17 @@ const BusinessDetails = () => {
 
                 {/* <li>Rating: {avgRating}</li> */}
                 { currentUser && (
-                    <Link to={`/biz/${businessId}/writeareview`}>Write a Review</Link>
+                    <Link className="writeReview" to={`/biz/${businessId}/writeareview`}><i className="fa-regular fa-star"></i><span style={{"paddingLeft":"5px", "position":"relative", "top":"2px"}}>Write a Review</span></Link>
                 )}
                 { currentUser &&
                 (<>
                     {bookMark ?
-                        <button onClick={handleDelete}>
-                            <i className="fa-solid fa-bookmark"></i>
+                        <button className="saved" onClick={handleDelete}>
+                            <i className="fa-solid fa-bookmark"></i> Saved
                         </button>
                         :
-                        <button onClick={handleAdd}>
-                           <i className="fa-regular fa-bookmark"></i>
+                        <button className="notSaved" onClick={handleAdd}>
+                           <i className="fa-regular fa-bookmark"></i> Save
                         </button>
                     }
                 </>)

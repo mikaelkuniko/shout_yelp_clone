@@ -33,7 +33,7 @@
 .upper-left-home{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 .upper-nav {
@@ -84,7 +84,8 @@ a:link {
 }
 
 .profile-dropdown {
-    position: relative;
+    position: absolute;
+    margin-top: 10px;
 }
 
 .dropdown-menu {

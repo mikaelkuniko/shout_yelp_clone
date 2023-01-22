@@ -16,7 +16,7 @@ function CreateReviewForm() {
     const business = useSelector(state => state.businesses.singleBusiness)
     useEffect(() => {
         dispatch(getOneBusiness(bizId))
-    }, [])
+    }, [dispatch, bizId])
 
 
     const updateReview = (e) => setReview(e.target.value)

@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import './ReviewDetails.css'
 
 function ReviewDetails(review) {
+    const n = review.stars
     let noFill = <i className="fa-solid fa-star stars noFill" />
-    let fill = <i className="fa-solid fa-star stars fill" />
+    let fill = <i className="fa-solid fa-star stars fill" id={n === 5 ? 'five' : n === 3 ? 'three' : n === 2 ? 'two' : n === 1 ? 'one' : ''}/>
     const stars = []
     console.log('REVIEW IN REVIEW', review)
     const business = useSelector(state => state.businesses.allBusinesses[review.business_id])
@@ -17,7 +18,7 @@ function ReviewDetails(review) {
     if(!review) return null
     return (
         <div className='reviewCard'>
-            <Link to={`/biz/${review.business_id}`}>
+            <Link className='gap' to={`/biz/${review.business_id}`}>
                 <div className='userInfo'>
                     {review.user.profile_pic !== null ? <img src={review.user.profile_pic} alt='profile_pic' /> : <i className="fa-regular fa-user pic"></i> }
                     <div>
@@ -25,7 +26,7 @@ function ReviewDetails(review) {
                         <p id='reviewAction'>Wrote a review</p>
                     </div>
                 </div>
-                <div className='bizName'>{business.name}</div>
+                {business && <div className='bizName'>{business.name}</div>}
                 <div className='reviewRating'>
                 {stars.map((star, i) => (
                     <span key={i}>{star}</span>

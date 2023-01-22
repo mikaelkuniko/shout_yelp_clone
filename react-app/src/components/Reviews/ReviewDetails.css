@@ -13,19 +13,26 @@
     min-width: 20em;
     height: 23em;
     padding: 1em;
+
+}
+
+.gap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 .reviewBody {
-    height: 5em;
+    height: 4.5em;
     width: auto;
     overflow: hidden;
+    white-space: wrap;
     text-overflow: ellipsis;
 }
 
 .bizName {
     font-weight: bold;
     color: rgba(2,122,151,1);
-    margin-bottom: 0.5em;
 }
 
 .bizName:hover {
