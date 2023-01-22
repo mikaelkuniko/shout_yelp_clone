@@ -25,7 +25,7 @@ function ReviewDetails(review) {
                         <p id='reviewAction'>Wrote a review</p>
                     </div>
                 </div>
-                <div className='bizName'>{business.name}</div>
+                {business ? <div className='bizName'>{business.name}</div> : ""}
                 <div className='reviewRating'>
                 {stars.map((star, i) => (
                     <span key={i}>{star}</span>

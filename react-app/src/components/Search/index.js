@@ -30,8 +30,8 @@ const BusinessSearchPage = () => {
         <div className="businesses-container">
             <ul>
                 {businesses.map((business)=>(
-                    <li style={{"listStyleType":"none", "margin":"1em"}}>
-                        <Link className="businessCard" key={business.id} to={`/biz/${business.id}`}>
+                    <li key={business.id} style={{"listStyleType":"none", "margin":"1em"}}>
+                        <Link className="businessCard" to={`/biz/${business.id}`}>
                             <div>
                                 {business.images && <img className="bImage" src={business.images[0].url} alt='businessImage' />}
                             </div>

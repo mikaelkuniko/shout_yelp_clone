@@ -1,4 +1,5 @@
 const LOAD = 'bizes/LOAD'
+// const ALL = 'bizes/ALL'
 const CREATE = 'bizes/CREATE'
 const UPDATE = 'bizes/UPDATE'
 const DELETE = 'bizes/DELETE'
@@ -8,6 +9,11 @@ const load = businesses => ({
     type: LOAD,
     businesses
 })
+
+// const all = businesses => ({
+//     type: ALL,
+//     businesses
+// })
 
 const create = business => ({
     type: CREATE,
@@ -52,6 +58,18 @@ export const businessSearch = (params) => async dispatch => {
     }
     return response
 }
+
+// export const businessLoad = () => async dispatch => {
+//     const response = await fetch(`/api/biz/search?business=&location=`)
+//     if (response.ok){
+//         const searchResultsObj = await response.json();
+//         console.log('RESPONSE', searchResultsObj)
+//         const searchResults = searchResultsObj.businesses
+//         dispatch(all(searchResults))
+//         return searchResults
+//     }
+//     return response
+// }
 
 export const addBusiness = (newBiz, bizImage) => async dispatch => {
     const response = await fetch(`/api/biz/new`, {
@@ -130,6 +148,13 @@ const businessReducer = (state = initialState, action) => {
             newState.allBusinesses = business2
             return newState
         }
+        // case ALL:{
+        //     newState = {...state, allBusinesses: {...state.allBusinesses}, businesses: {...state.businesses}, singleBusiness:{...state.singleBusiness}}
+        //     action.businesses.forEach(business => {
+        //         newState.businesses[business.id] = business
+        //     });
+        //     return newState
+        // }
         case GET_ONE: {
             newState = {
                 ...state,

@@ -105,10 +105,10 @@ const AddBusinessForm = () => {
     }
 
     return (
-        <div className='outerDiv'>
+        <div className='businessForm'>
             <div className='add-spot-div'>
                 <h3 id ='add-business-text'>Add Business</h3>
-                <form onSubmit={handleSubmit} className='add-business-form'>
+                <form onSubmit={handleSubmit} className='businessCreateContainer'>
                     <div className='add-business-inputs'>
                         <p>Name</p>
                         <label>
