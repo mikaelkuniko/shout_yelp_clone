@@ -85,6 +85,7 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
 }
 
 export const updateBusiness = (business) => async dispatch => {
+    console.log('BUESINES IN TEH HTUNKJ ', business)
     const response = await fetch(`/api/biz/${business.id}`, {
         method: 'PUT',
         headers: {"Content-Type": "application/json"},

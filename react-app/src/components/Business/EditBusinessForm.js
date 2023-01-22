@@ -38,8 +38,8 @@ const EditBusinessForm = () => {
     const [previewImage, setPreviewImage] = useState('')
     const [openHours, setOpenHours] = useState('8')
     const [closeHours, setCloseHours] = useState('8')
-    const [openMinutes, setOpenMinutes] = useState('00')
-    const [closeMinutes, setCloseMinutes] = useState('00')
+    const [openMinutes, setOpenMinutes] = useState(':00')
+    const [closeMinutes, setCloseMinutes] = useState(':00')
     const [openAMPM, setOpenAMPM] = useState('AM')
     const [closeAMPM, setCloseAMPM] = useState('PM')
     const [errors, setErrors] = useState([])
@@ -91,13 +91,13 @@ const EditBusinessForm = () => {
                 let openSplit = openTime.split(' ')
                 let openHoursMins = openSplit[0].split(':')
                 setOpenHours(openHoursMins[0])
-                setOpenMinutes(openHoursMins[1])
+                setOpenMinutes(':' + openHoursMins[1])
                 setOpenAMPM(openSplit[1])
                 let closeTime = res.close
                 let closeSplit = closeTime.split(' ')
                 let closeHoursMins = closeSplit[0].split(':')
                 setCloseHours(closeHoursMins[0])
-                setCloseMinutes(closeHoursMins[1])
+                setCloseMinutes(':' + closeHoursMins[1])
                 setCloseAMPM(closeSplit[1])
                 // setOpenHours(res.open_hours)
                 // setOpenMinutes(res.open_minutes)
@@ -114,6 +114,7 @@ const EditBusinessForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
+            id: bizId,
             name,
             description,
             phone_number: phoneNumber,
