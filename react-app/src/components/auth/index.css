@@ -3,15 +3,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 5em 0em 20em 0em;
-}
+    /* margin: 5em 0em 20em 0em; */
 
-.outer-div h3 {
-    display: flex;
-    justify-content: center;
- }
-
-.user-input-form {
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,6 +14,24 @@
     border: 1px solid gray;
     border-radius: 10px;
     box-shadow: 1px 1px 5px gray;
+    width: 444px;
+}
+
+.outer-div h3 {
+    display: flex;
+    justify-content: center;
+
+ }
+
+.user-input-form {
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0.5em 1em 0.5em;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px gray; */
 }
 
 .user-input-form input {
@@ -39,9 +51,66 @@
     border-radius: 7px;
     height: 1.5em;
     width: 7em;
-    background-color: rgba(224,7,7,1);
-    color: white;
-    border: none;
+    /* background-color: rgba(224,7,7,1); */
+    color: #fff;
+    /* border: none; */
     box-shadow: 0px .5px 1px rgba(114, 113, 113, 0.2);
-    transition: 0s background-color;
+    /* transition: 0s background-color; */
+
+
+    background: #d32323;
+    border: 1px solid #d32323;
+    transition: all 0.6s;
+    transition-property: background-color, background-position, background-size, border-color;
+    background-position: 50% 50%;
+    background-size: 15000px 15000px;
+}
+
+#login-text{
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 21px;
+    line-height: 1.28571em;
+    color: #d32323;
+  }
+
+
+  .login-subtext{
+    font-weight: bold;
+    width: fit-content;
+  }
+
+  .login-header{
+    border-bottom: 1px solid #ccc;
+    width: 444px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 14px;
+  }
+
+.placeholder
+{
+    position: relative;
+    font-size: 9px;
+}
+
+.placeholder::after
+{
+    position: absolute;
+    left: 2px;
+    top: -10px;
+    content: attr(data-placeholder);
+    pointer-events: none;
+    opacity: 0.7;
+
+}
+
+#password-input{
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
+}
+
+#email-input{
+    margin-top: 10px;
 }
