@@ -45,34 +45,45 @@ const LoginForm = () => {
 
   return (
     <div className='outer-div'>
-      <h3>Login</h3>
+      <div className='login-header'>
+        <h2 id='login-text'>Log in to Shout!</h2>
+        <p class='login-subtext'>New to Shout? <a id='signup-link' href='/sign-up'>Sign up</a></p>
+      </div>
       <div className='user-input-div'>
         <form className='user-input-form' onSubmit={onLogin}>
           <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
-          <div>
-            <p htmlFor='email'>Email</p>
+            <label
+            className='placeholder'
+            data-placeholder='Email'>
             <input
               name='email'
               type='text'
               placeholder='Email'
               value={email}
               onChange={updateEmail}
+              id='email-input'
             />
+            </label>
           </div>
           <div>
-            <p htmlFor='password'>Password</p>
+          <label
+            className='placeholder'
+            data-placeholder='Password'>
             <input
               name='password'
               type='password'
               placeholder='Password'
               value={password}
               onChange={updatePassword}
+              id='password-input'
             />
+            </label>
           </div>
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
           <div className='submit-button'>
             <button type='submit'>Login</button>
             <button className='single-login' onClick={demoUser}>Demo</button>
