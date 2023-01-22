@@ -68,21 +68,13 @@ const BusinessPageHeader = () => {
                               </div>
                             </div>
                             <div className="upper-header-details">
-                                {(business.business_types[0])&&(business.business_types[1])&&
+                                {(business.business_types[0])&&
                                     <span key='0'>{business.business_types[0]}, </span>
                                 }
-                                {(business.business_types[0])&&(business.business_types[1]===undefined)&&
-                                    <span key='0'>{business.business_types[0]} </span>
+                                {(business.business_amenities[0])&&
+                                    <span key='1'>{business.business_amenities[0]}</span>
                                 }
-                                {(business.business_types[1])&&(business.business_types[2])&&
-                                    <span key='1'>{business.business_types[1]}, </span>
-                                }
-                                {(business.business_types[1])&&(business.business_types[2]===undefined)&&
-                                    <span key='1'>{business.business_types[1]} </span>
-                                }
-                                {(business.business_types[2])&&
-                                    <span key='2'>{business.business_types[2]} </span>
-                                }
+
                             </div>
                             <div className="lower-header-details">
                                 <span>{business.open} - {business.close}</span>

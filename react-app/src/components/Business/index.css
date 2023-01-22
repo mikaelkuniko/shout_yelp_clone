@@ -1,3 +1,36 @@
+.business-page-body{
+    margin: 0 4%;
+}
+.business-user-crud{
+    display: flex;
+    border-bottom: lightgray .5px solid;
+}
+
+.business-user-crud > button{
+    margin:20px 5px;
+}
+
+.business-user-crud > a{
+    margin:20px 5px;
+}
+
+.owner-crud-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.owner-crud{
+    margin: 20px 5px ;
+    font-weight: bold;
+    color: rgba(45,46,47,1);
+    height: 3em;
+    width: 7em;
+    border-radius: 7px;
+    border: rgb(172, 172, 172) solid 0.5px;
+    background-color: transparent;
+}
+
 .reviews {
     display: flex;
     align-items: center;

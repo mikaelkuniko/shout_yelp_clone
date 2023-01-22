@@ -88,34 +88,37 @@ const BusinessDetails = () => {
     else return (
         <>
             <BusinessPageHeader/>
-
-                {/* <li>Rating: {avgRating}</li> */}
-                { currentUser && (
-                    <Link className="writeReview" to={`/biz/${businessId}/writeareview`}><i className="fa-regular fa-star"></i><span style={{"paddingLeft":"5px", "position":"relative", "top":"2px"}}>Write a Review</span></Link>
-                )}
-                { currentUser &&
-                (<>
-                    {bookMark ?
-                        <button className="saved" onClick={handleDelete}>
-                            <i className="fa-solid fa-bookmark"></i> Saved
-                        </button>
-                        :
-                        <button className="notSaved" onClick={handleAdd}>
-                           <i className="fa-regular fa-bookmark"></i> Save
-                        </button>
-                    }
-                </>)
-                }
-                { currentUser && currentUser.id === business.owner_id && (
-                    <div>
-                        <button onClick={removeBusiness}>Delete Business</button>
-                        <button onClick={editBusiness}>Edit Business</button>
+                <div className="business-page-body">
+                    <div className="business-user-crud">
+                        {/* <li>Rating: {avgRating}</li> */}
+                        { currentUser && (
+                            <Link className="writeReview" to={`/biz/${businessId}/writeareview`}><i className="fa-regular fa-star"></i><span style={{"paddingLeft":"5px", "position":"relative", "top":"2px"}}>Write a Review</span></Link>
+                        )}
+                        { currentUser &&
+                        (<>
+                            {bookMark ?
+                                <button className="saved" onClick={handleDelete}>
+                                    <i className="fa-solid fa-bookmark"></i> Saved
+                                </button>
+                                :
+                                <button className="notSaved" onClick={handleAdd}>
+                                <i className="fa-regular fa-bookmark"></i> Save
+                                </button>
+                            }
+                        </>)
+                        }
+                        { currentUser && currentUser.id === business.owner_id && (
+                            <div className="owner-crud-container">
+                                <button onClick={removeBusiness} className="owner-crud">Delete Business</button>
+                                <button onClick={editBusiness} className="owner-crud">Edit Business</button>
+                            </div>
+                        )}
                     </div>
-                )}
-                <div className="reviews">
-                    {bizReviews.map((review) => (
-                        <BusinessReviews key={review.id} {...review}/>
-                    ))}
+                    <div className="reviews">
+                        {bizReviews.map((review) => (
+                            <BusinessReviews key={review.id} {...review}/>
+                        ))}
+                    </div>
                 </div>
     </>
     )

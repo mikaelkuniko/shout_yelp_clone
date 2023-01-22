@@ -17,7 +17,7 @@
 
 .business-content-container{
     position: absolute;
-    top: 225px;
+    top: 325px;
     left: 200px
 
 }
@@ -29,10 +29,20 @@
     color: #ece9e9;
 
 }
+
+.business-content-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .business-name{
     font-size: 40px;
     font-weight: bold;
     text-shadow: .25px .5px grey;
+}
+
+.business-name > h1{
+    margin: 0px
 }
 
 .business-review-container {
