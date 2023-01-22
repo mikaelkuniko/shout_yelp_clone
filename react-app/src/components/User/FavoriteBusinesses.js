@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { authenticate } from '../../store/session';
-import { allReviews } from "../../store/review";
+// import { allReviews } from "../../store/review";
 import './index.css'
 
 function FavoriteBusinesses({ id, name, city, state, preview_image, num_reviews, sum_rating }) {
@@ -44,7 +44,7 @@ function FavoriteBusinesses({ id, name, city, state, preview_image, num_reviews,
             method: 'DELETE',
             headers: { "Content-Type": "application/json" }
         })
-        const message = await response.json();
+        await response.json();
         dispatch(authenticate())
     };
 
@@ -56,7 +56,7 @@ function FavoriteBusinesses({ id, name, city, state, preview_image, num_reviews,
             method: 'POST',
             headers: { "Content-Type": "application/json" }
         })
-        const message = await response.json();
+        await response.json();
         dispatch(authenticate())
     };
 

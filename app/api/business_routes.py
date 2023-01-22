@@ -12,7 +12,7 @@ business_routes = Blueprint('business', __name__)
 # Search businesses
 @business_routes.route('/search', methods=['GET'])
 def search():
-    print('HELLO FROM BACKEND')
+    # print('HELLO FROM BACKEND')
     business_search = ""
     location_search = ""
     form = Search_Form()
@@ -21,25 +21,26 @@ def search():
         "errors": form.errors
         }
     args = request.args
-    print("ARGS IN BACKEND", args)
+    # print("ARGS IN BACKEND", args)
     if "business" in args:
-        business_search = args.get('business')
+        business_search = args.get('business').strip() #added
     if "location" in args:
-        location_search = args.get('location')
-        print("LOCATION IN BACKEND", location_search)
+        location_search = args.get('location').strip() #added
+        # print("LOCATION IN BAND", location_search)
 
     if not location_search and not business_search:
         businesses = Business.query.all()
         return { "businesses": [business.to_dict() for business in businesses] }
 
-        
+
     business_id_list = []
     business_query = []
     location_query = []
     businesses = []
     business_set = set()
     if business_search:
-        business_list = business_search.split(' ')
+        business_list = business_search.strip().split(' ') #added
+        # print(business_list, "THE LIST ----------------------")
         for business_args in business_list:
             business_set.add(business_args)
 
@@ -50,7 +51,7 @@ def search():
         location_query.append(Business.city.ilike(f'%{location_search}%'))
         location_query.append(Business.zip_code.ilike(f'%{location_search}%'))
         location_query.append(Business.state.ilike(f'%{location_search}%'))
-        print('LOCATION QUERY', location_query)
+        # print('LOCATION QUERY', location_query)
         for l_query in location_query:
             # the comma in the filter params is an AND statement
             if business_query:

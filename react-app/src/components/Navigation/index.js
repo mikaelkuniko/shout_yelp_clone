@@ -1,9 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import * as sessionActions from '../../store/session';
-import { useHistory } from "react-router-dom";
-import LowerNav from './LowerNav'
+// import * as sessionActions from '../../store/session';
+// import { useHistory } from "react-router-dom";
 import ProfileButton from './ProfileButton';
 import SearchBar from './SearchBar'
 
@@ -11,13 +10,13 @@ import './index.css'
 
 const Navigation = ({ loaded }) => {
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-    history.push('/')
-  };
+  // const history = useHistory()
+  // const dispatch = useDispatch()
+  // const logout = (e) => {
+  //   e.preventDefault();
+  //   dispatch(sessionActions.logout());
+  //   history.push('/')
+  // };
 
 
   return (
@@ -25,7 +24,7 @@ const Navigation = ({ loaded }) => {
       <div id='upper-navigation'>
         <div className='upper-left-home'>
           <NavLink exact to="/">
-            <img src='https://i.ibb.co/YNhxfdc/shout-icon.png' className='web-icon'/>
+            <img src='https://i.ibb.co/YNhxfdc/shout-icon.png' className='web-icon' alt='icon'/>
           </NavLink>
         </div>
         <SearchBar/>

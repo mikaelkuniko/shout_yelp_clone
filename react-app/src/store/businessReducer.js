@@ -45,7 +45,7 @@ export const businessSearch = (params) => async dispatch => {
     const response = await fetch(`/api/biz/search${params}`)
     if (response.ok){
         const searchResultsObj = await response.json();
-        console.log('RESPONSE', searchResultsObj)
+        // console.log('RESPONSE', searchResultsObj)
         const searchResults = searchResultsObj.businesses
         dispatch(load(searchResults))
         return searchResults
@@ -77,7 +77,7 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
               body: JSON.stringify(newBizImage)
         })
         if(newImageResponse.ok){
-            const newImage = await newImageResponse.json();
+            await newImageResponse.json();
             dispatch(create(createdBiz));
             return createdBiz
         }
@@ -85,7 +85,7 @@ export const addBusiness = (newBiz, bizImage) => async dispatch => {
 }
 
 export const updateBusiness = (business) => async dispatch => {
-    console.log('BUESINES IN TEH HTUNKJ ', business)
+    // console.log('BUESINES IN TEH HTUNKJ ', business)
     const response = await fetch(`/api/biz/${business.id}`, {
         method: 'PUT',
         headers: {"Content-Type": "application/json"},
@@ -93,7 +93,7 @@ export const updateBusiness = (business) => async dispatch => {
     })
 
     if(response.ok){
-        const review = await response.json()
+        await response.json()
         dispatch(update(business))
         return business
     }
@@ -151,12 +151,6 @@ const businessReducer = (state = initialState, action) => {
             newState.allBusinesses[action.business.id] = action.business
             return newState
         }
-        case DELETE: {
-            newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
-            delete newState.allBusinesses[action.id]
-            return newState
-        }
-
         case DELETE: {
             newState = {...state, allBusinesses: {...state.allBusinesses}, singleBusiness:{...state.singleBusiness}}
             delete newState.allBusinesses[action.id]

@@ -12,16 +12,16 @@ const BusinessSearchPage = () => {
 
     useEffect(() => {
         dispatch(businessSearch(search))
-    }, [search])
+    }, [dispatch, search])
     // console.log("SEARCH IN USE EFFECT", search)
     const businessesObj = useSelector(state=> state.businesses.allBusinesses)
     // console.log("BUSINESSESOBJ IN SEARCH", businessesObj)
     const businesses = Object.values(businessesObj)
     // console.log("BUSINESSES IN SEARCH", businesses)
 
-    let noFill = <i className="fa-solid fa-star stars noFill" />
-    let fill = <i className="fa-solid fa-star stars fill" />
-    const stars = []
+    // let noFill = <i className="fa-solid fa-star stars noFill" />
+    // let fill = <i className="fa-solid fa-star stars fill" />
+    // const stars = []
 
     if(!businesses){
         return null

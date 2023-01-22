@@ -55,7 +55,7 @@ const BusinessDetails = () => {
 
     // delete business
     const removeBusiness = async () => {
-        console.log("BUSINESS ID",business.id)
+        // console.log("BUSINESS ID",business.id)
         await dispatch(deleteBusiness(business.id))
         await dispatch(allReviews())
         await dispatch(authenticate())
@@ -81,7 +81,7 @@ const BusinessDetails = () => {
                 }
             }
         }
-    }, [])
+    }, [businessId, userBusinesses])
 
     if(!business.name) return null
 

@@ -1,6 +1,6 @@
 import { useParams} from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getOneBusiness} from "../../../../store/businessReducer"
 import './index.css'
 
@@ -8,38 +8,38 @@ const BusinessPageHeader = () => {
     const dispatch = useDispatch()
     const { businessId } = useParams()
 
-    const currentUser = useSelector(state => state.session.user)
-    let userBusinesses = ''
+    // const currentUser = useSelector(state => state.session.user)
+    // let userBusinesses = ''
 
-    if (currentUser) {
-        userBusinesses = currentUser.user_businesses
-    }
+    // if (currentUser) {
+    //     userBusinesses = currentUser.user_businesses
+    // }
 
 
          // console.log('BUSINESS ID FROM PARAMS', businessId)
-         const business = useSelector((state)=> state.businesses.singleBusiness)
+    const business = useSelector((state)=> state.businesses.singleBusiness)
 
 
-        const starsFunction =()=>{
-            // requires fill and noFill classes in html and css to function
-            const stars = []
-            let noFill = <i className="fa-solid fa-star stars noFill" />
-            let fill = <i className="fa-solid fa-star stars fill" />
-            let reviewAggr = business.sum_rating/business.num_reviews
-            for(let i = 0; i < 5; i++){
-                if (i < reviewAggr) stars.push(fill)
-                else stars.push(noFill)
-            }
-            return stars
+    const starsFunction =()=>{
+        // requires fill and noFill classes in html and css to function
+        const stars = []
+        let noFill = <i className="fa-solid fa-star stars noFill" />
+        let fill = <i className="fa-solid fa-star stars fill" />
+        let reviewAggr = business.sum_rating/business.num_reviews
+        for(let i = 0; i < 5; i++){
+            if (i < reviewAggr) stars.push(fill)
+            else stars.push(noFill)
         }
-        const stars = starsFunction()
+        return stars
+    }
+    const stars = starsFunction()
 
 
 
 
-        useEffect(()=>{
-            dispatch(getOneBusiness(businessId))
-        }, [dispatch, businessId])
+    useEffect(()=>{
+        dispatch(getOneBusiness(businessId))
+    }, [dispatch, businessId])
 
     if(!business.name) return null
 
@@ -71,13 +71,13 @@ const BusinessPageHeader = () => {
                                 {(business.business_types[0])&&(business.business_types[1])&&
                                     <span key='0'>{business.business_types[0]}, </span>
                                 }
-                                {(business.business_types[0])&&(business.business_types[1]==undefined)&&
+                                {(business.business_types[0])&&(business.business_types[1]===undefined)&&
                                     <span key='0'>{business.business_types[0]} </span>
                                 }
                                 {(business.business_types[1])&&(business.business_types[2])&&
                                     <span key='1'>{business.business_types[1]}, </span>
                                 }
-                                {(business.business_types[1])&&(business.business_types[2]== undefined)&&
+                                {(business.business_types[1])&&(business.business_types[2]===undefined)&&
                                     <span key='1'>{business.business_types[1]} </span>
                                 }
                                 {(business.business_types[2])&&
@@ -96,7 +96,7 @@ const BusinessPageHeader = () => {
             <div className="photo-carousel">
                 { business.images && business.images.slice(0,3).map(image => (
                     <div>
-                        <img className="carousel-image" src={image.url} key={image.url}/>
+                        <img className="carousel-image" src={image.url} key={image.url} alt='carousel'/>
                     </div>
                 ))}
             </div>

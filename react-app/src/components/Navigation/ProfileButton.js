@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import OpenModalButton from '../OpenModalButton';
-import LoginForm from '../auth/LoginForm';
-import SignupForm from '../auth/SignUpForm';
 import { NavLink, useHistory } from "react-router-dom";
 import './index.css'
 
