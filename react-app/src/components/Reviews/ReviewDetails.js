@@ -18,7 +18,7 @@ function ReviewDetails(review) {
     if(!review) return null
     return (
         <div className='reviewCard'>
-            <Link to={`/biz/${review.business_id}`}>
+            <Link className='gap' to={`/biz/${review.business_id}`}>
                 <div className='userInfo'>
                     {review.user.profile_pic !== null ? <img src={review.user.profile_pic} alt='profile_pic' /> : <i className="fa-regular fa-user pic"></i> }
                     <div>

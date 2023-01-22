@@ -5,25 +5,6 @@
     width: 40em;
     padding: 1em;
     gap: 1em;
-    max-width: 20em;
-    min-width: 20em;
-    height: 23em;
-    padding: 1em;
-}
-.something {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: flex-start;
-    height: fit-content;
-    border-radius: 10px;
-    color: white;
-    box-sizing: border-box;
-    flex-shrink: 1;
-    border: solid #ebebeb 1px;
-    max-width: 20em;
-    min-width: 20em;
-    height: 23em;
     padding: 1em;
 }
 
@@ -40,7 +21,7 @@
 .reviewButtons {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .stars {
