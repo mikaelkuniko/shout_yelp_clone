@@ -17,7 +17,7 @@
 
 .business-content-container{
     position: absolute;
-    top:350px;
+    top: 225px;
     left: 200px
 
 }
@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: #f1f1f1;
+    color: #ece9e9;
 
 }
 .business-name{
@@ -43,18 +43,18 @@
 
 .review-info{
     margin: 10px;
-    color: #f1f1f1;
+    color: #ece9e9;
     font-size: 22px;
     text-shadow: .25px .5px grey;
 }
 .upper-header-details{
-    color: #f1f1f1;
+    color: #ece9e9;
     font-size: 22px;
     text-shadow: .25px .5px grey;
 }
 
 .lower-header-details{
-    color: #f1f1f1;
+    color: #ece9e9;
     font-size: 22px;
     text-shadow: .25px .5px grey;
 }

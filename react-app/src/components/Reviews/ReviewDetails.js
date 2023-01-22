@@ -7,9 +7,9 @@ function ReviewDetails(review) {
     let noFill = <i className="fa-solid fa-star stars noFill" />
     let fill = <i className="fa-solid fa-star stars fill" />
     const stars = []
-
+    console.log('REVIEW IN REVIEW', review)
     const business = useSelector(state => state.businesses.allBusinesses[review.business_id])
-
+    console.log('BUSINESS IN REVEIW', business)
     for(let i = 0; i < 5; i++){
         if (i < review.stars) stars.push(fill)
         else stars.push(noFill)
