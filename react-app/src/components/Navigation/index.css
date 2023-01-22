@@ -84,7 +84,8 @@ a:link {
 }
 
 .profile-dropdown {
-    position: relative;
+    position: absolute;
+    margin-top: 10px;
 }
 
 .dropdown-menu {
