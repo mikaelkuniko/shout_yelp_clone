@@ -36,8 +36,9 @@ export const Footer = () => {
                 </div>
                 <div>
                     <span>
-                    <i className="devicon-express-original"></i>
-                        Express
+                    <i className="devicon-javascript-plain"></i>
+
+                        Javascript
                     </span>
                 </div>
                     <span>

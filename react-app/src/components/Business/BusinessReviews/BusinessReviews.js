@@ -12,14 +12,22 @@ function BusinessReviews(review) {
         await dispatch(removeReview(review.id, review.spotId))
     }
     const n = review.stars
-    let noFill = <i className="fa-solid fa-star stars noFill" />
-    let fill = <i className="fa-solid fa-star stars fill" id={n === 5 ? 'five' : n === 3 ? 'three' : n === 2 ? 'two' : n === 1 ? 'one' : ''}/>
-    const stars = []
 
-    for(let i = 0; i < 5; i++){
-        if (i < review.stars) stars.push(fill)
-        else stars.push(noFill)
+    const starsFunction =()=>{
+        // requires fill and noFill classes in html and css to function
+        // requires const stars = [] outside function to work
+        const stars = []
+        let noFill = <i className="fa-solid fa-star stars noFill" />
+        let fill = <i className="fa-solid fa-star stars fill" id={n === 5 ? 'five' : n === 3 ? 'three' : n === 2 ? 'two' : n === 1 ? 'one' : ''}/>
+
+        for(let i = 0; i < 5; i++){
+            if (i < review.stars) stars.push(fill)
+            else stars.push(noFill)
+        }
+        return stars
     }
+
+    const stars =starsFunction()
 
 
     if(!review) return null

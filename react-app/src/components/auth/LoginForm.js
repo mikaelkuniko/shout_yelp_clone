@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
-import { useModal } from "../../context/Modal";
-import './LoginForm.css'
+import './index.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -45,42 +44,52 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='log-in-form-div'>
+    <div className='outer-div'>
       <div className='login-header'>
         <h2 id='login-text'>Log in to Shout!</h2>
         <p class='login-subtext'>New to Shout? <a id='signup-link' href='/sign-up'>Sign up</a></p>
       </div>
-      <form onSubmit={onLogin} className='login-form'>
-        <div className='login-inputs'>
-          <label htmlFor='email'>Email</label>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          />
-
-          <label htmlFor='password'>Password</label>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
+      <div className='user-input-div'>
+        <form className='user-input-form' onSubmit={onLogin}>
           <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
+            <label
+            className='placeholder'
+            data-placeholder='Email'>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+              id='email-input'
+            />
+            </label>
           </div>
+          <div>
+          <label
+            className='placeholder'
+            data-placeholder='Password'>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+              id='password-input'
+            />
+            </label>
           </div>
-          <button type='submit'>Login</button>
-          <button className='single-login' onClick={demoUser}>Demo</button>
-      </form>
-
-
-
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
+          <div className='submit-button'>
+            <button type='submit'>Login</button>
+            <button className='single-login' onClick={demoUser}>Demo</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

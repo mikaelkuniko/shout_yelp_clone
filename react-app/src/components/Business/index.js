@@ -6,6 +6,7 @@ import './index.css'
 import BusinessReviews from "./BusinessReviews/BusinessReviews";
 import { authenticate } from '../../store/session';
 import { allReviews } from "../../store/review";
+import BusinessPageHeader from "./BusinessReviews/BusinessPageHeader";
 
 const BusinessDetails = () => {
     const history = useHistory()
@@ -67,6 +68,7 @@ const BusinessDetails = () => {
         history.push(`/biz/${business.id}/edit`)
     }
 
+
     useEffect(()=>{
         dispatch(getOneBusiness(businessId))
     }, [dispatch, bizReviews.length, businessId])
@@ -84,23 +86,9 @@ const BusinessDetails = () => {
     if(!business.name) return null
 
     else return (
-        <div className="photo-header">
-            <div className="photo-content-container">
+        <>
+            <BusinessPageHeader/>
 
-            </div>
-            <div className="photo-carousel">
-                { business.images && business.images.slice(0,3).map(image => (
-                    <div>
-                        <img className="carousel-image" src={image.url} key={image.url}/>
-                    </div>
-                ))}
-            </div>
-            <ul>
-                <li>{business.name}</li>
-                <li>{business.description}</li>
-                <li>{business.phone_number}</li>
-                <li>{business.city}</li>
-                <li>{business.review_avg}</li>
                 {/* <li>Rating: {avgRating}</li> */}
                 { currentUser && (
                     <Link to={`/biz/${businessId}/writeareview`}>Write a Review</Link>
@@ -129,8 +117,7 @@ const BusinessDetails = () => {
                         <BusinessReviews key={review.id} {...review}/>
                     ))}
                 </div>
-            </ul>
-        </div>
+    </>
     )
 }
 export default BusinessDetails

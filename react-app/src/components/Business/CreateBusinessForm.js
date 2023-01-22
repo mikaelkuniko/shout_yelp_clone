@@ -262,7 +262,7 @@ const AddBusinessForm = () => {
                         </div>
                     </div>
                     {!!errors.length && (
-                        <div>
+                        <div className="add-business-errors">
                             The following errors were found:
                             <ul className='errors'>
                                 {errors.map((error) => (

@@ -37,7 +37,7 @@ const BusinessSearchPage = () => {
                             </div>
                             <div>
                                 <h3>{business.name}</h3>
-                                <h5>{business.num_reviews ? 'Rating: ' + business.sum_rating / business.num_reviews : 'No reviews'}</h5>
+                                <h5>{business.num_reviews ? 'Rating: ' + (business.sum_rating / business.num_reviews).toFixed(2) : 'No reviews'}</h5>
                                 {business.business_amenities.length ? business.business_amenities.map(amenity => (<span className="amenity">{amenity}</span>)) : <span className="amenity">No amenities</span>}
                             </div>
 
