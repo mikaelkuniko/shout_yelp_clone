@@ -114,6 +114,31 @@ const BusinessDetails = () => {
                             </div>
                         )}
                     </div>
+                    <div className="body-element-container">
+                          <div className="menu-header">
+                            <h2>Menu</h2>
+                          </div>
+                          <div className="menu-link-container">
+                            <span>We need to update our database to implement a menu link</span>
+                          </div>
+                    </div>
+                    <div className="body-element-container">
+                        <div className="ammenities-header">
+                            <h2>Ammenities and More</h2>
+                        </div>
+                        <div className="ammenities-content">
+                            {business.business_amenities.map((amenity) =>(
+                                <div className="ammenity-container">
+                                    <div className="ammenity-check">
+                                        <i className="fa-solid fa-check"></i>
+                                    </div>
+                                    <div className="ammenity">
+                                        {amenity}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                     <div className="reviews">
                         {bizReviews.map((review) => (
                             <BusinessReviews key={review.id} {...review}/>
