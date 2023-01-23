@@ -1,9 +1,27 @@
+.photo-header{
+    position: relative;
+}
+
+
+/* incomplete implementation of gradient over the photoheader */
+/* .photo-header::after{
+    display: block;
+    position: relative;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, rgba(54, 53, 53, 0.374) 100%);
+    margin-top: -300px;
+    height: 295px;
+    width: 100%;
+    content: '';
+    } */
+    
 .photo-carousel{
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 2100px;
 }
+
+
 
 .carousel-image{
     width: 700px;
@@ -17,16 +35,16 @@
 
 .business-content-container{
     position: absolute;
-    top: 325px;
-    left: 200px
-
+    top: 225px;
+    left: 200px;
+    /* background-image: linear-gradient(to bottom, black, white); */
 }
 
 .business-content{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: #ece9e9;
+    color: white;
 
 }
 
@@ -53,18 +71,18 @@
 
 .review-info{
     margin: 10px;
-    color: #ece9e9;
+    color: white;
     font-size: 22px;
     text-shadow: .25px .5px grey;
 }
 .upper-header-details{
-    color: #ece9e9;
+    color: white;
     font-size: 22px;
     text-shadow: .25px .5px grey;
 }
 
 .lower-header-details{
-    color: #ece9e9;
+    color: white;
     font-size: 22px;
     text-shadow: .25px .5px grey;
 }
