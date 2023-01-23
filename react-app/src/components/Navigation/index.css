@@ -18,7 +18,7 @@
 .upper-right-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -27,7 +27,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 50%
+    width: 30%
 }
 
 .upper-left-home {
@@ -137,7 +137,14 @@ a:link {
     text-decoration: none;
     color: rgba(45, 46, 47, 1);
     font-weight: bold;
-    font-size: 18px;
+    width: fit-content;
+    font-size: 16px;
+    padding: 0.7em;
+    border-radius: 0.5em;
+}
+
+#for-business:hover {
+    background-color: rgb(230, 230, 230);
 }
 
 .bookmark-button {

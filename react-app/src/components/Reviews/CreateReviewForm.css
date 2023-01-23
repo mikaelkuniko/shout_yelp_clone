@@ -42,7 +42,7 @@
     color: white;
     border: none;
     box-shadow: 0px .5px 1px rgba(114, 113, 113, 0.2);
-    transition: 0s background-color;
+    transition: background-color 1s;
 }
 
 .reviewSubmit:hover {
