@@ -31,10 +31,24 @@
     background-color: transparent;
 }
 
-.body-element-container{
+.body-element-container1{
+    padding: 2em 0em;
+    border-bottom: rgb(235, 232, 232) 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.location-phone-details{
+    margin: 10px 0px;
+    font-size: 18px;
+}
+
+.body-element-container2{
     padding: 2em 0em;
     border-bottom: rgb(235, 232, 232) 1px solid;
 }
+
 .ammenities-content{
     width:50%;
     display: grid;

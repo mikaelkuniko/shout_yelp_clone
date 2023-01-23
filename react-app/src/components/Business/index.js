@@ -115,17 +115,34 @@ const BusinessDetails = () => {
                         )}
                     </div>
                     {(business.menu_url)&&
-                    <div className="body-element-container">
+                    <>
+                    <div className="body-element-container1">
+                        <div className="menu-container">
                           <div className="menu-header">
                             <h2>Menu</h2>
                           </div>
                           <div className="menu-link-container">
                             <a href={business.menu_url}>Website Menu</a>
                           </div>
+                        </div>
+                        <div>
+                        <div className="menu-container">
+                          <div className="menu-header">
+                            <h2>Business details</h2>
+                          </div>
+                            <div className="location-phone-details">
+                                <span>Location: {business.address}, {business.city}, {business.state}, {business.zip_code}</span>
+                            </div>
+                            <div className="location-phone-details">
+                                <span>Phone Number: ({business.phone_number.slice(0,3)}) {business.phone_number.slice(2,5)} - {business.phone_number.slice(4)}</span>
+                            </div>
+                        </div>
+                        </div>
                     </div>
+                    </>
                     }
                     {(business.business_amenities)&&
-                    <div className="body-element-container">
+                    <div className="body-element-container2">
                         <div className="ammenities-header">
                             <h2>Ammenities and More</h2>
                         </div>
