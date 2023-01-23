@@ -91,7 +91,7 @@ const LoginForm = () => {
         </form>
       </div>
         <div className='image-div'>
-          <img src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png'/>
+          <img src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png' alt='welcome'/>
         </div>
     </div>
   );
