@@ -134,7 +134,7 @@ const BusinessDetails = () => {
                                 <span>Location: {business.address}, {business.city}, {business.state}, {business.zip_code}</span>
                             </div>
                             <div className="location-phone-details">
-                                <span>Phone Number: ({business.phone_number.slice(0,3)}) {business.phone_number.slice(3,6)} - {business.phone_number.slice(5)}</span>
+                                <span>Phone Number: ({business.phone_number.slice(0,3)}) {business.phone_number.slice(3,6)} - {business.phone_number.slice(6)}</span>
                             </div>
                         </div>
                         </div>
