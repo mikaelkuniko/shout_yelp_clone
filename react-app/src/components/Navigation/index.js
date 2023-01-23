@@ -36,7 +36,7 @@ const Navigation = ({ loaded }) => {
               <div>
                 <NavLink exact to="/login">
                   <button className='login-button'>
-                  login
+                  log in
                   </button>
                 </NavLink>
               </div>
