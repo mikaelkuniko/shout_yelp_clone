@@ -28,27 +28,27 @@ def seed_business_images():
     )
     etta_image1 = Business_Image(
         business_id = 3,
-        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/C0MbfZGgO_2VgL09LHrC_w/l.jpg'
+        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/xy3esgO1FMmsCWHyiSvTIA/o.jpg'
     )
     etta_image2 = Business_Image(
         business_id = 3,
-        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/Qzv1zbcSZkDtrrnAaAzjEA/l.jpg'
+        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/d6JCfq_IQRLbrammGrakKQ/348s.jpg'
     )
     etta_image3 = Business_Image(
         business_id = 3,
-        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/YpqPObIOWxCw91ne_8Owuw/l.jpg'
+        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/Pr9LiKgBahuc5vGNbnz4_A/o.jpg'
     )
     five_guys_image1 = Business_Image(
         business_id = 4,
-        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/IaTE03zUWTnF4WSSw59hMw/348s.jpg'
+        url = 'https://assets3.thrillist.com/v1/image/2835023/828x610/flatten;crop;webp=auto;jpeg_quality=60.jpg'
     )
     five_guys_image2 = Business_Image(
         business_id = 4,
-        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/88MMCFqtw3G3u062ikiW9A/l.jpg'
+        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/qg3hQS27Nozu_v1Xy_Mi1g/348s.jpg'
     )
     five_guys_image3 = Business_Image(
         business_id = 4,
-        url = 'https://s3-media0.fl.yelpcdn.com/bphoto/7tOruVB_bm4mlY54LStoBQ/o.jpg'
+        url = 'https://assets3.thrillist.com/v1/image/2835036/1000x666/flatten;crop;webp=auto;jpeg_quality=60.jpg'
     )
     ini_image1 = Business_Image(
         business_id = 5,

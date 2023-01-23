@@ -43,6 +43,34 @@ def seed_review_images():
         review_id = 3,
         url= 'https://s3-media0.fl.yelpcdn.com/bphoto/c2DQvXKpgA_R8roH79tluA/o.jpg'
     )
+    etta2 = Review_Image(
+        review_id = 3,
+        url= 'https://s3-media0.fl.yelpcdn.com/bphoto/4iJQNZesEmBZwWPIAqumSg/180s.jpg'
+    )
+    fiveguys3 = Review_Image(
+        review_id = 9,
+        url= 'https://s3-media0.fl.yelpcdn.com/bphoto/0KJhSPv01l5yUrI8DgEbTg/348s.jpg'
+    )
+    ini4 = Review_Image(
+        review_id = 10,
+        url= 'https://s3-media0.fl.yelpcdn.com/bphoto/QKxW6SLK4j4yQRCdSetjrQ/o.jpg'
+    )
+    tatsu3 = Review_Image(
+        review_id = 11,
+        url= 'https://s3-media0.fl.yelpcdn.com/bphoto/3m45eEN004_jKeWzOgXFqQ/o.jpg'
+    )
+    papajohns3 = Review_Image(
+        review_id = 12,
+        url= 'https://s3-media0.fl.yelpcdn.com/bphoto/w_H_JfN-haiHFpCcKwAlgQ/o.jpg'
+    )
+    beast_company = Review_Image(
+        review_id = 13,
+        url= 'https://s3-media0.fl.yelpcdn.com/bphoto/ZeugZ5JtH1v4fKtJ0WuysQ/o.jpg'
+    )
+    beast_company2 = Review_Image(
+        review_id = 14,
+        url= 'https://s3-media0.fl.yelpcdn.com/bphoto/5F0Qn6-LObiItcwydGEW9g/o.jpg'
+    )
 
 
 
@@ -58,6 +86,13 @@ def seed_review_images():
     db.session.add(ini3)
     db.session.add(papajohns2)
     db.session.add(tatsu2)
+    db.session.add(etta2)
+    db.session.add(fiveguys3)
+    db.session.add(ini4)
+    db.session.add(tatsu3)
+    db.session.add(papajohns3)
+    db.session.add(beast_company)
+    db.session.add(beast_company2)
     db.session.commit()
 
 
