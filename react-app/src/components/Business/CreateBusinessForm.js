@@ -132,6 +132,7 @@ const AddBusinessForm = () => {
                                 required
                                 placeholder='Description'
                                 className='inputs'
+                                id='description-text'
                             />
                         </label>
                         <p>Phone Number</p>

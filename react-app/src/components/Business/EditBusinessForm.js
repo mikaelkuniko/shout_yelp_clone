@@ -77,7 +77,7 @@ const EditBusinessForm = () => {
     useEffect(()=>{
         dispatch(businessActions.getOneBusiness(bizId))
             .then((res)=>{
-                console.log('--------this is the response-------', res)
+                // console.log('--------this is the response-------', res)
                 setName(res.name)
                 setDescription(res.description)
                 setPhoneNumber(res.phone_number)
@@ -161,6 +161,7 @@ const EditBusinessForm = () => {
                                 required
                                 placeholder='Description'
                                 className='inputs'
+                                id='description-text'
                             />
                         </label>
                         <p>Phone Number</p>
