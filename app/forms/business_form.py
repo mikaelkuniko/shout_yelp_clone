@@ -14,6 +14,7 @@ class Business_Form(FlaskForm):
     country = StringField('country', validators=[DataRequired()])
     zip_code = StringField('zip code', validators=[DataRequired()])
     preview_image = StringField('preview image', validators=[DataRequired(), URL()])
+    menu_url = StringField('menu url', validators=[DataRequired(), URL()])
     open = StringField('open', validators=[DataRequired()])
     close = StringField('close', validators=[DataRequired()])
     submit = SubmitField('submit')
