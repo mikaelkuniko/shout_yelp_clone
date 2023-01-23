@@ -5,7 +5,7 @@
     margin: 0px;
     padding: 24px 40px 0px;
     height: 100px;
-    background-color:#f9f9f9;
+    background-color: #f9f9f9;
     border-bottom: lightgray .5px solid;
 }
 
@@ -22,7 +22,7 @@
     align-items: center;
 }
 
-.nav-buttons-container{
+.nav-buttons-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -30,12 +30,13 @@
     width: 50%
 }
 
-.upper-left-home{
+.upper-left-home {
     display: flex;
     flex-direction: row;
     justify-content: start;
     align-items: center;
 }
+
 .upper-nav {
     display: flex;
     flex-direction: row;
@@ -54,17 +55,18 @@
 .upper-right-buttons {
     display: flex;
 }
+
 .login-button {
-background-color: transparent;
-color: black;
-border: 1px solid black;
-border-radius: 4px;
-padding: 4px;
-height: 38px;
-width: 70px
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+    height: 38px;
+    width: 70px
 }
 
-.signup-button{
+.signup-button {
     background-color: #ff1a1a;
     color: white;
     border: .5px solid #ff1a1a;
@@ -89,11 +91,11 @@ a:link {
 }
 
 .dropdown-menu {
-    align-items: flex-start;
+    align-items: center;
     align-content: flex-end;
     background-color: white;
     border-radius: .25rem;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0, 0.1);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     font-size: 14px;
@@ -106,7 +108,16 @@ a:link {
     top: calc(100% + 0.25rem);
 }
 
-.profile-button{
+.dropdown-menu .user-info {
+    display: flex;
+    flex: column;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+}
+
+.profile-button {
     height: 50px;
     width: 50px;
     border-radius: 100%;
@@ -114,7 +125,7 @@ a:link {
     background-color: transparent;
 }
 
-.fa-user-circle{
+.fa-user-circle {
     font-size: 50px;
     color: gray;
     height: 20px;
@@ -122,9 +133,34 @@ a:link {
 
 }
 
-#for-business{
+#for-business {
     text-decoration: none;
-    color: rgba(45,46,47,1);
+    color: rgba(45, 46, 47, 1);
     font-weight: bold;
     font-size: 18px;
+}
+
+.bookmark-button {
+    transition: all 0.3s ease-in-out;
+    background: none;
+    border: none;
+    width: 80px;
+    height: 30px;
+}
+
+.loginSign-button1 {
+    background: none;
+    border: none;
+    width: 80px;
+    height: 30px;
+}
+
+.bookmark-button:hover {
+    background-color: #dcd7d7;
+    border-radius: 5px;
+}
+
+.loginSign-button1:hover {
+    background-color: #dcd7d7;
+    border-radius: 5px;
 }
