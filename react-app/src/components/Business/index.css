@@ -111,6 +111,6 @@
     transition: background-color 1s;
 }
 
-.notSaved:hover, .saved:hover {
+.notSaved:hover, .saved:hover, .owner-crud:hover {
     background-color: lightgray;
 }
