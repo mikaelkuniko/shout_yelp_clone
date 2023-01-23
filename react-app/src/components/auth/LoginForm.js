@@ -46,7 +46,7 @@ const LoginForm = () => {
   return (
     <div className='outer-div'>
       <div className='login-header'>
-        <h2 id='login-text'>Log in to Shout!</h2>
+        <h2 id='login-text'>Log In to Shout!</h2>
         <p className='login-subtext'>New to Shout? <a id='signup-link' href='/sign-up'>Sign up</a></p>
       </div>
       <div className='user-input-div'>
