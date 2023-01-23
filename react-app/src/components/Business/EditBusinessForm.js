@@ -36,6 +36,7 @@ const EditBusinessForm = () => {
     const [country, setCountry] = useState('')
     const [zipCode, setZipCode] = useState('')
     const [previewImage, setPreviewImage] = useState('')
+    const [menuUrl, setMenuUrl] = useState('')
     const [openHours, setOpenHours] = useState('8')
     const [closeHours, setCloseHours] = useState('8')
     const [openMinutes, setOpenMinutes] = useState(':00')
@@ -87,6 +88,7 @@ const EditBusinessForm = () => {
                 setCountry(res.country)
                 setZipCode(res.zip_code)
                 setPreviewImage(res.preview_image)
+                setMenuUrl(res.menu_url)
                 let openTime = res.open
                 let openSplit = openTime.split(' ')
                 let openHoursMins = openSplit[0].split(':')
@@ -122,6 +124,7 @@ const EditBusinessForm = () => {
             country,
             zip_code: zipCode,
             preview_image: previewImage,
+            menu_url: menuUrl,
             open: `${openHours}${openMinutes} ${openAMPM}`,
             close: `${closeHours}${closeMinutes} ${closeAMPM}`,
             // open: openHours + ':' + openMinutes + ' ' + openAMPM,
@@ -245,6 +248,17 @@ const EditBusinessForm = () => {
                                 onChange={(e)=> setPreviewImage(e.target.value)}
                                 required
                                 placeholder='Preview Image'
+                                className='inputs'
+                            />
+                        </label>
+                        <p>Menu Url</p>
+                        <label>
+                        <input
+                                type='url'
+                                value={menuUrl}
+                                onChange={(e)=> setMenuUrl(e.target.value)}
+                                required
+                                placeholder='Menu Url'
                                 className='inputs'
                             />
                         </label>
