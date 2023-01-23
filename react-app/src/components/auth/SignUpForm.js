@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -22,6 +22,13 @@ const SignUpForm = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const errors = []
+    if(password !== repeatPassword) errors.push("Passwords must match")
+    else setErrors([])
+    setErrors(errors)
+  }, [password, repeatPassword])
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -75,7 +82,7 @@ const SignUpForm = () => {
             className='placeholder'
             data-placeholder='Email'>
             <input
-              type='text'
+              type='email'
               name='email'
               onChange={updateEmail}
               value={email}
