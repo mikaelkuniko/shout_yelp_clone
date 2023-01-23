@@ -114,3 +114,24 @@
 .notSaved:hover, .saved:hover, .owner-crud:hover {
     background-color: lightgray;
 }
+
+
+
+.menu-link-container{
+    display: flex;
+    background-color: transparent;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    height: 50px;
+    width:200px;
+    border-radius: 5px;
+    font-size: 20px;
+    transition-property: background-color;
+}
+
+.menu-link-container:hover{
+    background-color: rgba(114, 113, 113, 0.2);
+    transition-duration: 1s;
+}

@@ -114,14 +114,17 @@ const BusinessDetails = () => {
                             </div>
                         )}
                     </div>
+                    {(business.menu_url)&&
                     <div className="body-element-container">
                           <div className="menu-header">
                             <h2>Menu</h2>
                           </div>
                           <div className="menu-link-container">
-                            <span>We need to update our database to implement a menu link</span>
+                            <a href={business.menu_url}>Website Menu</a>
                           </div>
                     </div>
+                    }
+                    {(business.business_amenities)&&
                     <div className="body-element-container">
                         <div className="ammenities-header">
                             <h2>Ammenities and More</h2>
@@ -139,6 +142,7 @@ const BusinessDetails = () => {
                             ))}
                         </div>
                     </div>
+                    }
                     <div className="reviews">
                         {bizReviews.map((review) => (
                             <BusinessReviews key={review.id} {...review}/>
