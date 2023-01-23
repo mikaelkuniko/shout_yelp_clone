@@ -14,7 +14,10 @@ Pseudocode used to visualize Redux Store Shape.
 
 ### This project is built with:
 - Python
+- Javascript
 - SQLAlchemy
 - Flask
 - React
 - Redux
+- HTML
+- CSS
