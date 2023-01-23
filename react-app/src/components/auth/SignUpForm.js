@@ -45,7 +45,10 @@ const SignUpForm = () => {
 
   return (
     <div className='outer-div'>
-      <h3>Sign Up</h3>
+      <div className='signup-header'>
+        <h2 id='signup-text'>Sign Up for Shout!</h2>
+        <p className='signup-subtext'>Connect with great local businesses</p>
+      </div>
       <div className='user-input-div'>
         <form className='user-input-form' onSubmit={onSignUp}>
           <div>
@@ -54,47 +57,72 @@ const SignUpForm = () => {
             ))}
           </div>
           <div>
-            <p>User Name</p>
+            <label
+            className='placeholder'
+            data-placeholder='Username'>
             <input
               type='text'
               name='username'
+              placeholder='Username'
               onChange={updateUsername}
               value={username}
+              id='username-input'
             ></input>
+            </label>
           </div>
           <div>
-            <p>Email</p>
+            <label
+            className='placeholder'
+            data-placeholder='Email'>
             <input
               type='text'
               name='email'
               onChange={updateEmail}
               value={email}
+              placeholder='Email'
+              id='email-input'
             ></input>
+            </label>
           </div>
           <div>
-            <p>Password</p>
+            <label
+            className='placeholder'
+            data-placeholder='Password'>
             <input
               type='password'
               name='password'
               onChange={updatePassword}
               value={password}
+              placeholder='Password'
+              id='pw-input'
             ></input>
+            </label>
           </div>
           <div>
-            <p>Repeat Password</p>
+            <label
+            className='placeholder'
+            data-placeholder='Confirm Password'>
             <input
               type='password'
               name='repeat_password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
               required={true}
+              placeholder='Confirm Password'
+              id='confirm-pw-input'
             ></input>
+            </label>
           </div>
-          <div className='submit-button'>
-            <button type='submit'>Sign Up</button>
+          <div
+          // className='submit-button'
+          >
+            <button type='submit' id='signup-button'>Sign Up</button>
           </div>
         </form>
       </div>
+      <div className='image-div'>
+          <img src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png'/>
+        </div>
     </div>
   );
 };

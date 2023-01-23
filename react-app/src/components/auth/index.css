@@ -99,6 +99,23 @@
     margin-bottom: 10px;
 }
 
+.signup-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: inherit;
+}
+
+.signup-subtext{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 #signup-link{
     margin-left: 2.5px;
     color: #0073bb
@@ -116,6 +133,14 @@
     color: #d32323;
 }
 
+#signup-text{
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 21px;
+    line-height: 1.28571em;
+    color: #d32323;
+}
+
 .image-div{
     margin-top: 10px;
 }
@@ -126,4 +151,35 @@
 
 #email-input{
     font-size: 14px;
+}
+
+#username-input{
+    font-size: 14px;
+}
+#pw-input{
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+#confirm-pw-input{
+    font-size: 14px;
+}
+
+#signup-button{
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    height: 60%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    color: #fff;
+    background: #d32323;
+    border: 1px solid #d32323;
+    border-radius: 3px;
+    box-shadow: 0px .5px 1px rgba(114, 113, 113, 0.2);
+    transition: 0s background-color;
+
+    cursor: pointer;
+    padding: 7px;
+
 }
