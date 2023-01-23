@@ -29,7 +29,9 @@ const Navigation = ({ loaded }) => {
         </div>
         <SearchBar/>
         <div className='upper-right-buttons'>
-            <NavLink exact to="/biz/create"><span id="for-business">For Businesses</span></NavLink>
+            <div className='for-business-container'>
+              <NavLink exact to="/biz/create"><span id="for-business">For Businesses</span></NavLink>
+            </div>
             {/* <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink> */}
             {!sessionUser && (
             <div className='nav-buttons-container'>
