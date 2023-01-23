@@ -3,7 +3,7 @@
 }
 .business-user-crud{
     display: flex;
-    border-bottom: lightgray .5px solid;
+    border-bottom: rgb(235, 232, 232) 1px solid;
 }
 
 .business-user-crud > button{
@@ -29,6 +29,31 @@
     border-radius: 7px;
     border: rgb(172, 172, 172) solid 0.5px;
     background-color: transparent;
+}
+
+.body-element-container{
+    padding: 2em 0em;
+    border-bottom: rgb(235, 232, 232) 1px solid;
+}
+.ammenities-content{
+    width:50%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+.fa-check{
+    margin-top:15px;
+    font-size: 25px;
+}
+
+.ammenity{
+    margin: 1em .5em;
+    font-size: 1.2em;
+}
+
+.ammenity-container{
+    display: flex;
+    flex-direction: row;
 }
 
 .reviews {

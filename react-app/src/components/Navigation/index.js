@@ -33,14 +33,14 @@ const Navigation = ({ loaded }) => {
             {/* <NavLink exact to="/writeareview">WRITE A REVIEW</NavLink> */}
             {!sessionUser && (
             <div className='nav-buttons-container'>
-              <div>
+              <div className='nav-button'>
                 <NavLink exact to="/login">
                   <button className='login-button'>
-                  login
+                  log in
                   </button>
                 </NavLink>
               </div>
-              <div>
+              <div className='nav-button'>
                 <NavLink exact to="/sign-up">
                   <button className='signup-button'>
                     Sign Up

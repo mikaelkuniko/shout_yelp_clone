@@ -21,6 +21,7 @@ class Business(db.Model):
     country = db.Column(db.String(100), nullable=False)
     zip_code = db.Column(db.String(5), nullable=False)
     preview_image = db.Column(db.String(1000), nullable=False)
+    menu_url = db.Column(db.String(1000))
     open = db.Column(db.String(15), nullable=False)
     close = db.Column(db.String(15), nullable=False)
     # Added created and updated at using datetime and importing func from sqlalchemy.sql
@@ -65,6 +66,7 @@ class Business(db.Model):
             country,
             zip_code,
             preview_image,
+            menu_url
             open,
             close,
             user,
@@ -89,6 +91,7 @@ class Business(db.Model):
             "country": self.country,
             "zip_code": self.zip_code,
             "preview_image": self.preview_image,
+            "menu_url": self.menu_url,
             "open": self.open,
             "close": self.close,
             "user": self.user.to_dict_none(),
@@ -115,6 +118,7 @@ class Business(db.Model):
             country,
             zip_code,
             preview_image,
+            menu_url
             open,
             close,
             images,
@@ -135,6 +139,7 @@ class Business(db.Model):
             "country": self.country,
             "zip_code": self.zip_code,
             "preview_image": self.preview_image,
+            "menu_url": self.menu_url,
             "open": self.open,
             "close": self.close,
             "images": [image.to_dict() for image in self.images],
