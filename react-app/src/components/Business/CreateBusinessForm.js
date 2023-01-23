@@ -36,6 +36,7 @@ const AddBusinessForm = () => {
     const [country, setCountry] = useState('')
     const [zipCode, setZipCode] = useState('')
     const [previewImage, setPreviewImage] = useState('')
+    const [menuUrl, setMenuUrl] = useState('')
     const [openHours, setOpenHours] = useState('8')
     const [closeHours, setCloseHours] = useState('8')
     const [openMinutes, setOpenMinutes] = useState(':00')
@@ -48,22 +49,22 @@ const AddBusinessForm = () => {
     useEffect(()=> {
         // do the errors
         const errors = [];
-        if(name.length == 0) errors.push("Business name must be inputted")
-        if(description.length == 0) errors.push("Business description must be inputted")
-        if(phoneNumber.length == 0) errors.push("Business phone number must be valid")
-        if(businessUrl.length == 0) errors.push("Business website url must be inputted")
-        if(address.length == 0) errors.push("Business address must be inputted")
-        if(city.length == 0) errors.push("City must be inputted")
-        if(state.length == 0) errors.push("State must be inputted")
-        if(country.length == 0) errors.push("Country must be inputted")
-        if(zipCode.length == 0) errors.push("Zipcode must be inputted")
+        if(name.length === 0) errors.push("Business name must be inputted")
+        if(description.length === 0) errors.push("Business description must be inputted")
+        if(phoneNumber.length ===0) errors.push("Business phone number must be valid")
+        if(businessUrl.length === 0) errors.push("Business website url must be inputted")
+        if(address.length === 0) errors.push("Business address must be inputted")
+        if(city.length === 0) errors.push("City must be inputted")
+        if(state.length === 0) errors.push("State must be inputted")
+        if(country.length === 0) errors.push("Country must be inputted")
+        if(zipCode.length === 0) errors.push("Zipcode must be inputted")
         // if(previewImage.length == 0) errors.push("At least one preview image must be uploaded")
         if(openHours < 0 || openHours > 12) errors.push("Business hours must be valid")
         if(closeHours < 0 || closeHours > 12) errors.push("Business hours must be valid")
         if(openMinutes < 0 || openMinutes > 59) errors.push("Business hours must be valid")
         if(closeMinutes < 0 || closeMinutes > 59) errors.push("Business hours must be valid")
-        if(openAMPM.length == 0) errors.push("Business hours must be valid")
-        if(closeAMPM.length == 0) errors.push("Business hours must be valid")
+        if(openAMPM.length === 0) errors.push("Business hours must be valid")
+        if(closeAMPM.length === 0) errors.push("Business hours must be valid")
 
         setErrors(errors);
     }, [name, description, phoneNumber, businessUrl, address, city, state, country, zipCode, openHours, openMinutes, openAMPM, closeHours, closeMinutes, closeAMPM])
@@ -85,6 +86,7 @@ const AddBusinessForm = () => {
             country,
             zip_code: zipCode,
             preview_image: previewImage,
+            menu_url: menuUrl,
             open: `${openHours}${openMinutes} ${openAMPM}`,
             close: `${closeHours}${closeMinutes} ${closeAMPM}`,
             // open: openHours + ':' + openMinutes + ' ' + openAMPM,
@@ -130,16 +132,19 @@ const AddBusinessForm = () => {
                                 required
                                 placeholder='Description'
                                 className='inputs'
+                                id='description-text'
                             />
                         </label>
                         <p>Phone Number</p>
                         <label>
                         <input
-                                type='text'
+                                type='tel'
+                                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                                 value={phoneNumber}
                                 onChange={(e)=> setPhoneNumber(e.target.value)}
+                                maxLength={10}
                                 required
-                                placeholder='Phone Number'
+                                placeholder='1234567890'
                                 className='inputs'
                             />
                         </label>
@@ -220,6 +225,17 @@ const AddBusinessForm = () => {
                                 className='inputs'
                             />
                         </label>
+                        <p>Menu Url</p>
+                        <label>
+                        <input
+                                type='url'
+                                value={menuUrl}
+                                onChange={(e)=> setMenuUrl(e.target.value)}
+                                required
+                                placeholder='Menu Url'
+                                className='inputs'
+                            />
+                        </label>
                         <div className='opening-times'>
                         <p>Opening hours</p>
                         <label>
@@ -262,7 +278,7 @@ const AddBusinessForm = () => {
                         </div>
                     </div>
                     {!!errors.length && (
-                        <div>
+                        <div className="add-business-errors">
                             The following errors were found:
                             <ul className='errors'>
                                 {errors.map((error) => (

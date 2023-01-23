@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import { useModal } from "../../context/Modal";
+import './index.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -22,6 +22,13 @@ const SignUpForm = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const errors = []
+    if(password !== repeatPassword) errors.push("Passwords must match")
+    else setErrors([])
+    setErrors(errors)
+  }, [password, repeatPassword])
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -44,51 +51,86 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className='outer-div'>
+      <div className='signup-header'>
+        <h2 id='signup-text'>Sign Up for Shout!</h2>
+        <p className='signup-subtext'>Connect with great local businesses</p>
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
+      <div className='user-input-div'>
+        <form className='user-input-form' onSubmit={onSignUp}>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div>
+            <label
+            className='placeholder'
+            data-placeholder='Username'>
+            <input
+              type='text'
+              name='username'
+              placeholder='Username'
+              onChange={updateUsername}
+              value={username}
+              id='username-input'
+            ></input>
+            </label>
+          </div>
+          <div>
+            <label
+            className='placeholder'
+            data-placeholder='Email'>
+            <input
+              type='email'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+              placeholder='Email'
+              id='email-input'
+            ></input>
+            </label>
+          </div>
+          <div>
+            <label
+            className='placeholder'
+            data-placeholder='Password'>
+            <input
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+              placeholder='Password'
+              id='pw-input'
+            ></input>
+            </label>
+          </div>
+          <div>
+            <label
+            className='placeholder'
+            data-placeholder='Confirm Password'>
+            <input
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+              placeholder='Confirm Password'
+              id='confirm-pw-input'
+            ></input>
+            </label>
+          </div>
+          <div
+          // className='submit-button'
+          >
+            <button type='submit' id='signup-button'>Sign Up</button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+      <div className='image-div'>
+          <img src='https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png' alt='welcome'/>
+        </div>
+    </div>
   );
 };
 

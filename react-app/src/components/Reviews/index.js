@@ -2,9 +2,14 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ReviewDetails from './ReviewDetails'
 import './index.css'
-import { allReviews } from '../../store/review'
+import { businessSearch } from '../../store/businessReducer'
+// import { allReviews } from '../../store/review'
 
 function Reviews() {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(businessSearch('?business=&location='))
+    }, [dispatch])
 
     const totalReviews = useSelector(state => state.reviews.allReviews)
 

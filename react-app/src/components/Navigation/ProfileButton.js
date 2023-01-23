@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import OpenModalButton from '../OpenModalButton';
-import LoginForm from '../auth/LoginForm';
-import SignupForm from '../auth/SignUpForm';
 import { NavLink, useHistory } from "react-router-dom";
 import './index.css'
 
@@ -24,12 +21,6 @@ function ProfileButton({ user }) {
 
   useEffect(() => {
     if (!showMenu) return;
-
-    // const closeMenu = (e) => {
-    //   if (!ulRef.current.contains(e.target)) {
-    //     setShowMenu(false);
-    //   }
-    // };
 
     document.addEventListener('click', closeMenu);
 
@@ -53,8 +44,8 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         <div className="dropdown-menu">
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
+            <li className='user-info'>{user.username}</li>
+            <li className='user-info'>{user.email}</li>
             <li>
               <NavLink exact to="/user-favorites">
                 <button className='bookmark-button' onClick={closeMenu}>

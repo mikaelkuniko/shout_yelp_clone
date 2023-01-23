@@ -14,6 +14,7 @@ def seed_businesses():
         country='USA',
         zip_code='76201',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/e0EPesEFpP9A7_TW1DYpAg/348s.jpg',
+        menu_url='https://www.papajohns.com/order/menu?_ga=2.235094913.1489817495.1674442350-1043718660.1674442350',
         open='9:00 AM',
         close='9:00 PM',
         )
@@ -32,6 +33,7 @@ def seed_businesses():
         country='USA',
         zip_code = '90046',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/UyWh2n4YdPiDXbDThkZxCw/l.jpg',
+        menu_url='https://tatsuramen.com/our-food/',
         open='11:00 AM',
         close='11:00 PM'
         )
@@ -42,12 +44,13 @@ def seed_businesses():
         description='etta is a neighborhood restaurant that specializes in serving delicious, wood-fired food from our custom hearth in a fun, relaxed dining     environment. etta is where memories are made... where friends and family alike to eat and drink as if they are in their own home.',
         phone_number='1234567890',
         business_url='https://www.ettarestaurant.com/',
-        address='password',
+        address='8801 Washington Blvd',
         city='Los Angeles',
         state='CA',
         country='USA',
         zip_code='90232',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/C0MbfZGgO_2VgL09LHrC_w/348s.jpg',
+        menu_url='https://www.ettarestaurant.com/menu/',
         open='5:00 PM',
         close='10:00 PM'
         )
@@ -64,6 +67,7 @@ def seed_businesses():
         country='USA',
         zip_code='91745',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/qjRKSO__un5V7A4W-mPZ0Q/l.jpg',
+        menu_url='https://www.fiveguys.com/menu',
         open='11:00 AM',
         close='10:00 PM'
         )
@@ -84,6 +88,7 @@ by Kei Concepts.
         country='USA',
         zip_code = '92708',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/jh7LHPoCj-nlh12eSwIv1A/l.jpg',
+        menu_url='https://www.iniristorante.com/menus',
         open='10:00 AM',
         close='10:00 PM'
         )
@@ -102,6 +107,7 @@ by Kei Concepts.
         country='USA',
         zip_code='77018',
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/Xr9EucTmLMFFpCqsPUDOXA/l.jpg',
+        menu_url='http://thebeastandco.com/dinner-menu',
         open='5:00 PM',
         close='11:00 PM'
         )

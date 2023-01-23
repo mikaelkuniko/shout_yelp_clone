@@ -1,0 +1,70 @@
+.photo-carousel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 2100px;
+}
+
+.carousel-image{
+    width: 700px;
+    height:450px;
+}
+
+.photo-business-content-container{
+    position: relative;
+    width: 100%;
+}
+
+.business-content-container{
+    position: absolute;
+    top: 325px;
+    left: 200px
+
+}
+
+.business-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #ece9e9;
+
+}
+
+.business-content-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.business-name{
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: .25px .5px grey;
+}
+
+.business-name > h1{
+    margin: 0px
+}
+
+.business-review-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.review-info{
+    margin: 10px;
+    color: #ece9e9;
+    font-size: 22px;
+    text-shadow: .25px .5px grey;
+}
+.upper-header-details{
+    color: #ece9e9;
+    font-size: 22px;
+    text-shadow: .25px .5px grey;
+}
+
+.lower-header-details{
+    color: #ece9e9;
+    font-size: 22px;
+    text-shadow: .25px .5px grey;
+}

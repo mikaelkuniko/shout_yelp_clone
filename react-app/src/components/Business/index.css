@@ -1,15 +1,151 @@
-.reviews {
+.business-page-body{
+    margin: 0 4%;
+}
+.business-user-crud{
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    border-bottom: rgb(235, 232, 232) 1px solid;
 }
 
-.photo-carousel{
+.business-user-crud > button{
+    margin:20px 5px;
+}
+
+.business-user-crud > a{
+    margin:20px 5px;
+}
+
+.owner-crud-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.owner-crud{
+    margin: 20px 5px ;
+    font-weight: bold;
+    color: rgba(45,46,47,1);
+    height: 3em;
+    width: 7em;
+    border-radius: 7px;
+    border: rgb(172, 172, 172) solid 0.5px;
+    background-color: transparent;
+}
+
+.body-element-container1{
+    padding: 2em 0em;
+    border-bottom: rgb(235, 232, 232) 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.location-phone-details{
+    margin: 10px 0px;
+    font-size: 18px;
+}
+
+.body-element-container2{
+    padding: 2em 0em;
+    border-bottom: rgb(235, 232, 232) 1px solid;
+}
+
+.ammenities-content{
+    width:50%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+.fa-check{
+    margin-top:15px;
+    font-size: 25px;
+}
+
+.ammenity{
+    margin: 1em .5em;
+    font-size: 1.2em;
+}
+
+.ammenity-container{
     display: flex;
     flex-direction: row;
 }
 
-.carousel-image{
-    width: 200px;
-    height:200px;
+.reviews {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin: 5em 0em 5em 0em;
+}
+
+.writeReview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 1em;
+    border-radius: 7px;
+    height: 2.5em;
+    width: 10em;
+    background-color: rgba(224,7,7,1);
+    color: white;
+    border: none;
+    box-shadow: 0px .5px 1px rgba(114, 113, 113, 0.2);
+    transition: background-color 1s;
+}
+
+.writeReview:hover {
+    background-color:#ff2b2b;
+}
+
+.saved {
+    margin: 1em;
+    font-weight: bold;
+    color: rgba(45,46,47,1);
+    height: 3em;
+    width: 7em;
+    border-radius: 7px;
+    border: rgb(172, 172, 172) solid 0.5px;
+    background-color: transparent;
+    transition: background-color 1s;
+}
+
+.notSaved {
+    margin: 1em;
+    font-weight: bold;
+    color: rgba(45,46,47,1);
+    height: 3em;
+    width: 7em;
+    border-radius: 7px;
+    border: rgb(172, 172, 172) solid 0.5px;
+    background-color: transparent;
+    transition: background-color 1s;
+}
+
+.notSaved:hover, .saved:hover, .owner-crud:hover {
+    background-color: lightgray;
+}
+
+
+
+.menu-link-container{
+    display: flex;
+    background-color: transparent;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    height: 50px;
+    width:200px;
+    border-radius: 5px;
+    font-size: 20px;
+    transition-property: background-color;
+}
+
+.menu-link-container:hover{
+    background-color: rgba(114, 113, 113, 0.2);
+    transition-duration: 1s;
 }

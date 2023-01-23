@@ -4,38 +4,41 @@
     align-items: center;
     margin: 0px;
     padding: 24px 40px 0px;
-    height: 100px;
-    background-color:#f9f9f9;
+    height: 70px;
+    background-color: #f9f9f9;
     border-bottom: lightgray .5px solid;
 }
 
 #upper-navigation {
     display: grid;
-    grid-template-columns: 15fr 60fr 25fr;
+    grid-template-columns: 15fr 50fr 25fr;
     width: 100%;
 }
 
 .upper-right-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
-.nav-buttons-container{
+.nav-buttons-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 50%
+    width: 30%
 }
 
-.upper-left-home{
+.upper-left-home {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
+    margin-right: 10px;
 }
+
 .upper-nav {
     display: flex;
     flex-direction: row;
@@ -50,22 +53,32 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+.nav-button {
+    margin:0px 10px;
+}
 
 .upper-right-buttons {
     display: flex;
 }
+
 .login-button {
-background-color: transparent;
-color: black;
-border: 1px solid black;
-border-radius: 4px;
-padding: 4px;
-height: 38px;
-width: 70px
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+    height: 38px;
+    width: 70px;
+    transition-property: background-color;
 }
 
-.signup-button{
-    background-color: #ff1a1a;
+.login-button:hover{
+    background-color: rgba(175, 174, 174, 0.2);
+    transition-duration: .5s;
+}
+
+.signup-button {
+    background-color: rgba(224,7,7,1);
     color: white;
     border: .5px solid #ff1a1a;
     height: 38px;
@@ -73,7 +86,15 @@ width: 70px
     border-radius: 4px;
     padding: 4px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: background-color 1s;
 }
+
+.signup-button:hover {
+    background-color:#ff2b2b;
+}
+
+
+
 
 a:link {
     text-decoration: none;
@@ -83,7 +104,39 @@ a:link {
     display: none
 }
 
-.profile-button{
+.profile-dropdown {
+    position: absolute;
+    margin-top: 10px;
+}
+
+.dropdown-menu {
+    align-items: center;
+    align-content: flex-end;
+    background-color: white;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 0.25rem;
+    height: auto;
+    list-style: none;
+    padding: 0.75rem;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.25rem);
+}
+
+.dropdown-menu .user-info {
+    display: flex;
+    flex: column;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+}
+
+.profile-button {
     height: 50px;
     width: 50px;
     border-radius: 100%;
@@ -91,7 +144,7 @@ a:link {
     background-color: transparent;
 }
 
-.fa-user-circle{
+.fa-user-circle {
     font-size: 50px;
     color: gray;
     height: 20px;
@@ -99,9 +152,46 @@ a:link {
 
 }
 
-#for-business{
+.for-business-container {
+    margin-right: 1.4em;
+
+}
+
+#for-business {
     text-decoration: none;
-    color: rgba(45,46,47,1);
+    color: rgba(45, 46, 47, 1);
     font-weight: bold;
-    font-size: 18px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0.7em;
+    border-radius: 0.5em;
+}
+
+#for-business:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.bookmark-button {
+    transition: all 0.3s ease-in-out;
+    background: none;
+    border: none;
+    width: 80px;
+    height: 30px;
+}
+
+.loginSign-button1 {
+    background: none;
+    border: none;
+    width: 80px;
+    height: 30px;
+}
+
+.bookmark-button:hover {
+    background-color: #dcd7d7;
+    border-radius: 5px;
+}
+
+.loginSign-button1:hover {
+    background-color: #dcd7d7;
+    border-radius: 5px;
 }

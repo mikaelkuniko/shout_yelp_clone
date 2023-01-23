@@ -1,7 +1,24 @@
 .reviewForm {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 5em 0em 20em 0em;
+}
+
+.reviewCreateContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0.5em 1em 0.5em;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px gray;
+}
+
+.reviewFormHeader {
+    margin-bottom: 1em;
 }
 
 .formChildren {
@@ -12,4 +29,23 @@
 .reviewText {
     width: 30em;
     height: 5em;
+}
+
+.reviewSubmit {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 1em;
+    border-radius: 7px;
+    height: 2.5em;
+    width: 8em;
+    background-color: rgba(224,7,7,1);
+    color: white;
+    border: none;
+    box-shadow: 0px .5px 1px rgba(114, 113, 113, 0.2);
+    transition: background-color 1s;
+}
+
+.reviewSubmit:hover {
+    background-color:#ff2b2b;
+    transition:0.5s;
 }

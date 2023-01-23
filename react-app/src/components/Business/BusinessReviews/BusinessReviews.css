@@ -1,8 +1,11 @@
 .bizReview {
     display: flex;
     flex-direction: column;
-    border: solid black 1px;
+    border: solid #ebebeb 1px;
     width: 40em;
+    padding: 1em;
+    gap: 1em;
+    padding: 1em;
 }
 
 .userInfo {
@@ -15,6 +18,12 @@
     gap: 0.2em;
 }
 
+.reviewButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 .stars {
     display: flex;
     align-items: center;
@@ -24,6 +33,54 @@
     width: 1.5em;
     height: 1.5em;
 }
+
+.deleteTheReview {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 1em;
+    border-radius: 7px;
+    height: 2.5em;
+    width: 8em;
+    background-color: rgba(224,7,7,1);
+    color: white;
+    border: none;
+    box-shadow: 0px .5px 1px rgba(114, 113, 113, 0.2);
+    transition: background-color 1s;
+}
+
+#editReview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 1em;
+    border-radius: 7px;
+    height: 2.5em;
+    width: 8em;
+    background-color: rgba(224,7,7,1);
+    color: white;
+    border: none;
+    box-shadow: 0px .5px 1px rgba(114, 113, 113, 0.2);
+    transition: background-color 1s;
+}
+
+.deleteTheReview:hover {
+    background-color:#ff2b2b;
+}
+
+#editReview:hover {
+    background-color:#ff2b2b;
+}
+
+
+
+
+
+
+
+
+
 
 .fill {
     background-color: rgb(255, 100, 61);
@@ -37,4 +94,20 @@
     font-size: 3em;
     color: lightgray;
     padding: 0.25em;
+}
+
+#five {
+    background-color: rgb(251, 67, 60);
+}
+
+#three {
+    background-color:rgb(255, 135, 66);
+}
+
+#two {
+    background-color: rgb(255, 173, 72);
+}
+
+#one {
+    background-color: rgb(255, 204, 75);
 }
