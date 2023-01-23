@@ -59,3 +59,7 @@
 #add-business-button:hover {
     background-color:#ff2b2b;
 }
+
+#description-text{
+    height: 80px;
+}
