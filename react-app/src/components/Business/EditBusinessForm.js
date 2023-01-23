@@ -167,11 +167,13 @@ const EditBusinessForm = () => {
                         <p>Phone Number</p>
                         <label>
                         <input
-                                type='text'
+                                type='tel'
+                                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                                 value={phoneNumber}
                                 onChange={(e)=> setPhoneNumber(e.target.value)}
+                                maxLength={10}
                                 required
-                                placeholder='Phone Number'
+                                placeholder='1234567890'
                                 className='inputs'
                             />
                         </label>
