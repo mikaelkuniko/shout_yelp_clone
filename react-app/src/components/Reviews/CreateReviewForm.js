@@ -64,15 +64,15 @@ function CreateReviewForm() {
         <div className='reviewForm'>
             <button onClick={() => history.push(`/biz/${bizId}`)} style={{"padding":"0px", "height":"0px", "color":"black", "width":"20px", "position":"relative", "right":"195px", "top":"15px", "border":"none", "background":"none", "cursor":"pointer"}}>X</button>
             <form onSubmit={handleSubmit} className='reviewCreateContainer'>
-            <div>
+            <div style={{"marginBottom":"2em"}}>
                 <h4 className={!errors.length ? 'reviewFormHeader' : ''}>{business.name}</h4>
             </div>
             {errors.length !== 0 &&
-                <ul style={{"marginBottom":"0px"}}>
+                <ul className='errorsForCreateReviewForm' style={{"marginBottom":"0px"}}>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
             }
-            <textarea style={{"borderRadius":"10px 10px 0px 0px"}}
+            <textarea style={{"borderRadius":"10px 10px 0px 0px", "boxSizing":"border-box"}}
                 className='reviewText'
                 type={'text'}
                 placeholder={'Review'}

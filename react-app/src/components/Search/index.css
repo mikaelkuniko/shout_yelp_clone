@@ -1,6 +1,7 @@
 .businesses-container {
     display: flex;
     justify-content: center;
+    min-height: 43vw;
 }
 
 .businessCard {

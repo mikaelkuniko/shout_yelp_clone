@@ -26,6 +26,11 @@ const BusinessSearchPage = () => {
     if(!businesses){
         return null
     }
+    if(businesses.length == 0){
+        return <div className="businesses-container" id='no-results'>
+            <h2 >No Results Found!</h2>
+        </div>
+    }
     return (
         <div className="businesses-container">
             <ul>
