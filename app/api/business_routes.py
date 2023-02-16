@@ -46,7 +46,7 @@ def search():
 
     if business_search:
         for business_search_params in business_set:
-            business_query.append(Business.name.like(f'%{business_search_params}%'))
+            business_query.append(Business.name.ilike(f'%{business_search_params}%'))
     if location_search:
         location_query.append(Business.city.ilike(f'%{location_search}%'))
         location_query.append(Business.zip_code.ilike(f'%{location_search}%'))
