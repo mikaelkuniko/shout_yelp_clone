@@ -9,5 +9,41 @@
     display: flex;
     justify-content: space-evenly;
     margin: 2%;
+    /* padding-bottom: 20px; */
+}
+
+.my-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #F4F4F4;
+    z-index: 1;
+}
+
+.my-information p {
+    font-weight: bold;
+    padding: 5px;
+}
+
+.my-information-creators {
+    display: flex;
+    flex-direction: row;
+    background-color: #F4F4F4;
     padding-bottom: 20px;
+}
+
+.single-creator {
+    font-size: 14px;
+}
+
+.single-creator a {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.single-creator a:hover {
+    background-color: gray;
+    border-radius: 5px;
 }
