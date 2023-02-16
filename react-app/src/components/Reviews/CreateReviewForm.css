@@ -27,8 +27,10 @@
 }
 
 .reviewText {
-    width: 30em;
-    height: 5em;
+    min-width: 30.3em;
+    max-width: 30.3em;
+    min-height: 5em;
+    max-height: 5em;
 }
 
 .reviewSubmit {
@@ -48,4 +50,9 @@
 .reviewSubmit:hover {
     background-color:#ff2b2b;
     transition:0.5s;
+}
+
+.errorsForCreateReviewForm {
+    position: absolute;
+    top: 14em;
 }

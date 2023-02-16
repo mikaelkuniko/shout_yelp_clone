@@ -91,7 +91,7 @@ const BusinessDetails = () => {
                 <div className="business-page-body">
                     <div className="business-user-crud">
                         {/* <li>Rating: {avgRating}</li> */}
-                        { currentUser && (
+                        { currentUser && currentUser.id !== business.owner_id && (
                             <Link className="writeReview" to={`/biz/${businessId}/writeareview`}><i className="fa-regular fa-star"></i><span style={{"paddingLeft":"5px", "position":"relative", "top":"2px"}}>Write a Review</span></Link>
                         )}
                         { currentUser &&
