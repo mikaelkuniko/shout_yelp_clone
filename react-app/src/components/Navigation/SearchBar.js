@@ -30,6 +30,7 @@ const SearchBar = () => {
                         type="text"
                         placeholder="Five Guys, Papa Johns, Etta..."
                         className="search-input"
+                        id='biz-input'
                         onChange={(e)=> setBusiness(e.target.value)}/>
                 </div>
                 <div>
@@ -38,6 +39,7 @@ const SearchBar = () => {
                         type="text"
                         placeholder="CA, TX, Baltimore..."
                         className="search-input"
+                        id='loc-input'
                         onChange={(e)=> setLocation(e.target.value)}/>
                 </div>
                 <button type="submit" className="search-button">
