@@ -64,37 +64,37 @@ export const Footer = () => {
                 <div className="my-information-creators">
                     <div className="single-creator">
                         <p>Brandon Bimestefer</p>
-                        <a className="user-link" href="https://github.com/bbimestefer" target="_blank">
+                        <a className="user-link" href="https://github.com/bbimestefer" rel="noreferrer" target="_blank">
                             <i className="fa-brands fa-github"></i>
                         </a>
-                        <a className="user-link" href="https://www.linkedin.com/in/brandon-bimestefer-a01924250/" target="_blank">
+                        <a className="user-link" href="https://www.linkedin.com/in/brandon-bimestefer-a01924250/" rel="noreferrer" target="_blank">
                             <i className="fa-brands fa-linkedin"></i>
                         </a>
                     </div>
                     <div className="single-creator">
                         <p>Mikael Kuniko</p>
-                        <a className="user-link" href="https://github.com/mikaelkuniko" target="_blank">
+                        <a className="user-link" href="https://github.com/mikaelkuniko" rel="noreferrer" target="_blank">
                             <i className="fa-brands fa-github"></i>
                         </a>
-                        <a className="user-link" href="https://www.linkedin.com/in/mikael-kuniko-0705bb261/" target="_blank">
+                        <a className="user-link" href="https://www.linkedin.com/in/mikael-kuniko-0705bb261/" rel="noreferrer" target="_blank">
                             <i className="fa-brands fa-linkedin"></i>
                         </a>
                     </div>
                     <div className="single-creator">
                         <p>Marc Smith</p>
-                        <a className="user-link" href="https://github.com/marcsmithr" target="_blank">
+                        <a className="user-link" href="https://github.com/marcsmithr" rel="noreferrer" target="_blank">
                             <i className="fa-brands fa-github"></i>
                         </a>
-                        {/* <a className="user-link" href="https://www.linkedin.com/in/joyce-kang-18b70624b/" target="_blank">
+                        {/* <a className="user-link" href="https://www.linkedin.com/in/joyce-kang-18b70624b/" rel="noreferrer" target="_blank">
                             <i className="fa-brands fa-linkedin"></i>
                         </a> */}
                     </div>
                     <div className="single-creator">
                         <p>Joyce Kang</p>
-                        <a className="user-link" href="https://github.com/joyceyukang" target="_blank">
+                        <a className="user-link" href="https://github.com/joyceyukang" rel="noreferrer" target="_blank">
                             <i className="fa-brands fa-github"></i>
                         </a>
-                        <a className="user-link" href="https://www.linkedin.com/in/joyce-kang-18b70624b/" target="_blank">
+                        <a className="user-link" href="https://www.linkedin.com/in/joyce-kang-18b70624b/" rel="noreferrer" target="_blank">
                             <i className="fa-brands fa-linkedin"></i>
                         </a>
                     </div>

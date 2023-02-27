@@ -149,3 +149,8 @@
     background-color: rgba(114, 113, 113, 0.2);
     transition-duration: 1s;
 }
+
+.createImageButton {
+    color: blue;
+    border: 1px solid red;
+}
