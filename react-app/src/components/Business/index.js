@@ -7,6 +7,9 @@ import BusinessReviews from "./BusinessReviews/BusinessReviews";
 import { authenticate } from '../../store/session';
 import { allReviews } from "../../store/review";
 import BusinessPageHeader from "./BusinessReviews/BusinessPageHeader";
+import OpenModalButton from "../OpenModalButton";
+import CreateImage from "./BusinessImages/CreateImage";
+import DeleteImage from "./BusinessImages/DeleteImage";
 
 const BusinessDetails = () => {
     const history = useHistory()
@@ -111,7 +114,17 @@ const BusinessDetails = () => {
                             <div className="owner-crud-container">
                                 <button onClick={removeBusiness} className="owner-crud">Delete Business</button>
                                 <button onClick={editBusiness} className="owner-crud">Edit Business</button>
-                            </div>
+                                    <OpenModalButton
+                                        buttonText={'Add image'}
+                                        style={{"width":"10em", "color":"blue"}}
+                                        id="createImageButton"
+                                        modalComponent={<CreateImage businessId={business.id} />}
+                                    />
+                                    <OpenModalButton
+                                        buttonText={'Delete images'}
+                                        modalComponent={<DeleteImage {...business} />}
+                                    />
+                                </div>
                         )}
                     </div>
                     {(business.menu_url)&&
@@ -148,7 +161,7 @@ const BusinessDetails = () => {
                         </div>
                         <div className="ammenities-content">
                             {business.business_amenities.map((amenity) =>(
-                                <div className="ammenity-container">
+                                <div key={amenity.id} className="ammenity-container">
                                     <div className="ammenity-check">
                                         <i className="fa-solid fa-check"></i>
                                     </div>

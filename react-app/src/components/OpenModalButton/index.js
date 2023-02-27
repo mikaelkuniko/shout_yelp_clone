@@ -16,7 +16,7 @@ function OpenModalButton({
   };
 
   return (
-    <button className="loginSign-button"onClick={onClick}>{buttonText}</button>
+    <button className={`${buttonText.slice(0,3)}Button`} onClick={onClick}>{buttonText}</button>
   );
 }
 

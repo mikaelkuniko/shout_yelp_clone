@@ -1,0 +1,46 @@
+.deleteImages {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.deleteImagesContainer{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    align-items: center;
+}
+
+.imageLabels {
+    width: fit-content;
+}
+
+.imageSelect {
+    width: 7em;
+    height: 5em;
+    border-radius: 5px;
+}
+/*
+.radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+} */
+
+.DelButton {
+    margin: 20px 5px ;
+    font-weight: bold;
+    color: rgba(45,46,47,1);
+    height: 3em;
+    width: 7em;
+    border-radius: 7px;
+    border: rgb(172, 172, 172) solid 0.5px;
+    background-color: transparent;
+}
+
+.DelButton:hover {
+    background-color: lightgray;
+}
