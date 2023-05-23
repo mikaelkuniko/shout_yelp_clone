@@ -96,6 +96,7 @@ def get_one(id):
         review_avg = biz_to_dict['sum_rating'] / biz_to_dict["num_reviews"]
     biz_to_dict["reviews"] = [review.to_dict() for review in reviews]
     biz_to_dict["review_avg"] = review_avg
+    
     return {"business": biz_to_dict}
 
 
@@ -164,12 +165,11 @@ def add_biz_image(id):
     '''
     Creates a new business image to the current business.
     '''
-    current_biz = Business.query.get_or_404(id)
-    form = BusinessImageForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    # print('----------this is image form data------------', form.data)
+    current_biz = Business.query.get(id)
     if not current_biz:
         return {"errors": "Business not found"}, 404
+    form = BusinessImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         new_business_image = Business_Image()
@@ -183,6 +183,18 @@ def add_biz_image(id):
         return {
              "errors": form.errors
         }, 400
+
+# DELETE A BUSINESS IMAGE
+@business_routes.route('/<int:id>/images/<int:imageId>', methods=['DELETE'])
+@login_required
+def delete_business_image(id, imageId):
+    biz = Business.query.get(id)
+    image = Business_Image.query.get(imageId)
+    db.session.delete(image)
+    db.session.commit()
+    if not image:
+        return {"errors": "Business not found"}, 404
+    return {"message": "business deleted"}
 
 # GET ALL REVIEWS FOR BUSINESS (untested)
 # @business_routes.route('/<int:id>/reviews')

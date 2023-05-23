@@ -86,9 +86,9 @@ const BusinessPageHeader = () => {
                 </div>
             </div>
             <div className="photo-carousel">
-                { business.images && business.images.slice(0,3).map(image => (
+                { business.images && business.images.slice(0,3).map((image, index) => (
                     <div>
-                        <img className="carousel-image" src={image.url} key={image.url} alt='carousel'/>
+                        <img className="carousel-image" src={image.url} key={index} alt='carousel'/>
                     </div>
                 ))}
             </div>
